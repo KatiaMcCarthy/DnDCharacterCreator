@@ -10,11 +10,14 @@ public class onButtonClickTest : MonoBehaviour {
 
         Feat temp = null;
 
-        if(AppLibary.featDictionary.TryGetValue("Power Attack", out temp))
+        if(AppLibary.featDictionary.TryGetValue(AppLibary.AlignmentChannel, out temp))
         {
             Debug.Log(temp.featName);
             Debug.Log(temp.features);
+            Debug.Log(temp.description);
+            Debug.Log(temp.special);
         }
+
     }
 
 }
