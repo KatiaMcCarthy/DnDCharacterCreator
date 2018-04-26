@@ -5,6 +5,9 @@ using UnityEngine;
 public static class AppLibary{
 
     public static Dictionary<string, Feat> featDictionary = new Dictionary<string, Feat>();
+
+    public static Dictionary<string, Item> itemDictionary = new Dictionary<string, Item>();
+
     #region FeatKeys
     public const string Acrobatic = "Acrobatic";
     public const string Alertness = "Alertness";
@@ -262,7 +265,7 @@ public static class AppLibary{
     public const string SwordBastard = "Sword, Bastard";
     public const string WaraxeDwarven = "Waraxe, Dwarven";
     public const string Whip = "Whip";
-    public const string AxeDoube = "Axe, Double";
+    public const string AxeOrcDouble = "Axe, Orc Double";
     public const string ChainSpiked = "Chain, Spiked";
     public const string CurveBladeElven = "Curve blade, Elven";
     public const string FlailDire = "Flail, Dire";

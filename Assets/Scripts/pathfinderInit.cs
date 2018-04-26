@@ -8,12 +8,37 @@ using UnityEngine.UI;
 
 public class pathfinderInit : MonoBehaviour {
 
+    //For feats
     string tempName = "";
     string tempFeature = "";
     string tempDescription = "";
     string tempSpecial = "";
     string tempNormal = "";
     Image tempTable = null;
+
+    //For Items
+
+    string tempType = "";
+    string tempitemName = "";
+    int tempCost = 0;
+    string tempDamageS = "";
+    string tempDamageM = "";
+    string tempCritical = "";
+    float tempRange = 0.0f;
+    float tempWeight = 0.0f;
+    string tempDamageType = "";
+    string tempSpecialAbility = "";
+    string tempOther = "";
+    int tempArmorBonus = 0;
+    int tempMaxDexBonus = 0;
+    int tempArmorCheckPenality = 0;
+    int tempArcaneSpellFailure = 0;
+    int tempSpeed20 = 0;
+    int tempSpeed30 = 0;
+    //temp description already initialized
+
+    
+
 
 	// Use this for initialization
 	void Start () {
@@ -2526,5 +2551,1643 @@ public class pathfinderInit : MonoBehaviour {
         #endregion FeatInitalization 
     }
 
+    void InitalizeItems()
+    {
+        #region ItemInitalization
+        
+        #region Weapons
+        #region SimpleWeapons
 
+        //Gauntlet
+        tempType = "Weapon, Unarmed Attacks";
+        tempitemName = "Gauntlet";
+        tempCost = 2;
+        tempDamageS = "1d2";
+        tempDamageM = "1d3";
+        tempCritical = "x2";
+        tempRange = 0;
+        tempWeight = 1;
+        tempDamageType = "B";
+        tempDescription = "This metal glove lets you deal lethal damage rather than nonleathal damage. The cost and weight is for a single gauntlet. Medium and heavy-armors (except for breastplate) come with gauntlets. your opponent cannot use a disarm action to disarm you of gauntlets.";
+
+        Item gauntlet = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Gauntlet))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Gauntlet, gauntlet);
+        }
+
+        //End Gauntlet
+
+        //Unarmed Strike
+        tempType = "Weapon, Unarmed Attack";
+        tempitemName = "Unarmed Strike";
+        tempCost = 0;
+        tempDamageS = "1d2";
+        tempDamageM = "1d3";
+        tempCritical = "x2";
+        tempRange = 0;
+        tempWeight = 0;
+        tempDamageType = "B";
+        tempDescription = "Unarmed strikes are always considered light weapons.";
+
+        Item unarmedStrike = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.UnarmedStrike))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.UnarmedStrike, unarmedStrike);
+        }
+
+        //End Unarmed Strike
+
+        //Dagger
+        tempType = "Weapon, , Light";
+        tempitemName = "Dagger";
+        tempCost = 2;
+        tempDamageS = "1d3";
+        tempDamageM = "1d3";
+        tempCritical = "19-20/x2";
+        tempRange = 10;
+        tempWeight = 1;
+        tempDamageType = "P or S";
+        tempSpecialAbility = "You get a +2 bonus on slight of hand skill checks made to conceal a dagger on your body.";
+        tempDescription = "A dagger has a blade that is about 1 food in length.";
+
+        Item dagger = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Dagger))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Dagger, dagger);
+        }
+
+        tempSpecialAbility = "";
+        //End Dagger
+
+        //Dagger, Punching
+        tempType = "Weapon , Light";
+        tempitemName = "Dagger, Punching";
+        tempCost = 2;
+        tempDamageS = "1d3";
+        tempDamageM = "1d4";
+        tempCritical = "x3";
+        tempRange = 0;
+        tempWeight = 1;
+        tempDamageType = "P";
+        tempDescription = "A punching dagger's blade is attached to a horizontal handle that projects out from the fist when held.";
+
+        Item daggerPunching = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.DaggerPunching))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.DaggerPunching, daggerPunching);
+        }
+
+        //End Dagger, Punching
+
+        //Gauntlet, Spiked
+        tempType = "Weapon, Light";
+        tempitemName = "Gauntlet, Spiked";
+        tempCost = 2;
+        tempDamageS = "1d3";
+        tempDamageM = "1d4";
+        tempCritical = "x2";
+        tempRange = 0;
+        tempWeight = 1;
+        tempDamageType = "P";
+        tempSpecialAbility = "Your opponent cannot use a disarm action to disarm you of spiked gauntlets.";
+        tempDescription = "The cost and weight given are for a single gauntlet.";
+
+        Item spikedGauntlet = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.GauntletSpiked))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.GauntletSpiked, spikedGauntlet);
+        }
+
+        tempSpecialAbility = "";
+        //End Gauntlet, Spiked
+
+        //Mace, light
+        tempType = "Weapon, Light";
+        tempitemName = "Mace, Light";
+        tempCost = 5;
+        tempDamageS = "1d4";
+        tempDamageM = "1d6";
+        tempCritical = "x2";
+        tempRange = 0;
+        tempWeight = 4;
+        tempDamageType = "B";
+        tempDescription = "A mace is made up of an ornate metal head attached to a simple wooden or metal shaft.";
+
+        Item maceLight = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.MaceLight))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.MaceLight, maceLight);
+        }
+        //End Mace, light
+
+        //Sickle
+        tempType = "Weapon, Light";
+        tempitemName = "Sickle";
+        tempCost = 6;
+        tempDamageS = "1d4";
+        tempDamageM = "1d6";
+        tempCritical = "x2";
+        tempRange = 0;
+        tempWeight = 2;
+        tempDamageType = "S";
+        tempSpecialAbility = "You may make trip attacks with this weapon.";
+        tempDescription = "A simple farming impliment, consisting of a curved blade attaching to a short wooden or metal handle.";
+
+        Item sickle = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Sickle))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Sickle, sickle);
+        }
+
+        tempSpecialAbility = "";
+        //End Sickle
+
+        //Club
+        tempType = "Weapon, One Handed Melee";
+        tempitemName = "Club";
+        tempCost = 0;
+        tempDamageS = "1d4";
+        tempDamageM = "1d6";
+        tempCritical = "x2";
+        tempRange = 10;
+        tempWeight = 3;
+        tempDamageType = "B";
+        tempDescription = "A large wooden piece of wood, used for clobbering.";
+
+        Item club = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Club))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Club, club);
+        }
+        //End Club
+
+        //Mace, Heavy
+        tempType = "Weapon, One Handed Melee";
+        tempitemName = "Mace, Heavy";
+        tempCost = 12;
+        tempDamageS = "1d6";
+        tempDamageM = "1d8";
+        tempCritical = "x2";
+        tempRange = 0;
+        tempWeight = 8;
+        tempDamageType = "B";
+        tempDescription = "A heavy mace has a larger head and a longer shaft than a normal mace.";
+
+        Item maceHeavy = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.MaceHeavy))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.MaceHeavy, maceHeavy);
+        }
+
+        //End Mace, Heavy
+
+        //Morningstar
+        tempType = "Weapon, One Handed Melee";
+        tempitemName = "Morningstar";
+        tempCost = 8;
+        tempDamageS = "1d6";
+        tempDamageM = "1d8";
+        tempCritical = "x2";
+        tempRange = 0;
+        tempWeight = 6;
+        tempDamageType = "B and P";
+        tempDescription = "A morningstar is a spiked metal ball, affixed to the top of a long handle.";
+
+        Item morningstar = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Morningstar))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Morningstar, morningstar);
+        }
+
+        //End Morningstar
+
+        //Shortspear
+        tempType = "Weapon, One Handed Melee";
+        tempitemName = "Shortspear";
+        tempCost = 1;
+        tempDamageS = "1d4";
+        tempDamageM = "1d6";
+        tempCritical = "x2";
+        tempRange = 20;
+        tempWeight = 3;
+        tempDamageType = "P";
+        tempDescription = "A shortspear is about 3 feet in length, making it a suitable thrown weapon.";
+
+        Item shortspear = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Shortspear))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Shortspear, shortspear);
+        }
+
+        //End Shortspear
+
+        //Longspear
+        tempType = "Weapon, Two Handed Melee";
+        tempitemName = "Longspear";
+        tempCost = 0;
+        tempDamageS = "1d6";
+        tempDamageM = "1d8";
+        tempCritical = "x3";
+        tempRange = 10;
+        tempWeight = 9;
+        tempSpecial = "Brace (If you use a readied action to set a brace weapon against a charge, you deal double damage on a successful hit against a charging creature), Reach (can only attack 10 feet away)";
+        tempDamageType = "P";
+        tempDescription = "A longspear is about 8 feet in length.";
+
+        Item longspear = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Longspear))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Longspear, longspear);
+        }
+
+        tempSpecial = "";
+        //End Longspear
+
+        //Quarterstaff
+        tempType = "Weapon, Two Handed Melee";
+        tempitemName = "Quaterstaff";
+        tempCost = 0;
+        tempDamageS = "1d4/1d4";
+        tempDamageM = "1d6/1d6";
+        tempCritical = "x2";
+        tempRange = 0;
+        tempWeight = 4;
+        tempDamageType = "B";
+        tempSpecial = "Double (can be either used as a 2 handed with 1 attack, or dual wielding with all the normal penalities for a single handed and a light weapon), Monk (this weapon can be used by a monk for flurry of blows).";
+        tempDescription = "A quaterstaff is a simple piece of wood about 5 feet in length.";
+
+        Item quaterstaff = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Quaterstaff))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Quaterstaff, quaterstaff);
+        }
+
+        tempSpecial = "";
+        //End Quarterstaff
+
+        //Spear
+        tempType = "Weapon, Two Handed Melee";
+        tempitemName = "Spear";
+        tempCost = 1;
+        tempDamageS = "1d6";
+        tempDamageM = "1d8";
+        tempCritical = "x3";
+        tempRange = 20;
+        tempWeight = 6;
+        tempDamageType = "P";
+        tempSpecial = "Brace (If you use a readied action to set a brace weapon against a charge, you deal double damage on a successful hit against a charging creature).";
+        tempDescription = "A spear is 5ft in length and can be thrown.";
+
+        Item spear = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Spear))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Spear, spear);
+        }
+
+        tempSpecial = "";
+        //End, Spear
+
+        //Blowgun
+        tempType = "Weapon, Ranged";
+        tempitemName = "Blowgun";
+        tempCost = 2;
+        tempDamageS = "1";
+        tempDamageM = "1d2";
+        tempCritical = "x2";
+        tempRange = 20;
+        tempWeight = 1;
+        tempDamageType = "P";
+        tempDescription = "Blowguns are generally used to deliver debilitating poisons from a distance. They are nearly silent when fired.";
+
+        Item blowgun = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Blowgun))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Blowgun, blowgun);
+        }
+
+        //End Blowgun
+
+        //Darts, Blowgun
+        tempType = "Weapon, Ranged";
+        tempitemName = "Darts, Blowgun";
+        tempCost = 1;
+        tempDamageS = "see blowgun";
+        tempDamageM = "see blowgun";
+        tempCritical = "see blowgun";
+        tempRange = 0;
+        tempWeight = 0.1f;
+        tempDamageType = "P";
+        tempDescription = "Darts for a blowgun.";
+
+        Item dartsBlowgun = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.BlowgunDarts))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.BlowgunDarts, dartsBlowgun);
+        }
+
+        //End Darts, Blowgun
+
+        //Crossbow, Heavy
+        tempType = "Weapon, Ranged";
+        tempitemName = "Crossbow, Heavy";
+        tempCost = 50;
+        tempDamageS = "1d8";
+        tempDamageM = "1d10";
+        tempCritical = "19-20/x2";
+        tempRange = 120;
+        tempWeight = 8;
+        tempDamageType = "P";
+        tempDescription = "You load a heavy crossbow back by turning a small winch. Loading a heavy crossbow is a full-round action that provokes attacks of opportunity. Normally, operating a heavy crossbow requires two hands. However, you can shoot, but not load, a heavy crossbow with one hand at a -4 penalty on attack rolls. You can shoot a heavy crossbow with each hand, but you take a penalty on attack rolls as if attacking with two one-handed weapons. This penalty is cummulative with the penalty for one-handed fireing.";
+
+        Item crossbowHeavy = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.CrossbowHeavy))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.CrossbowHeavy, crossbowHeavy);
+        }
+
+        //End Crossbow, Heavy
+
+        //Crossbow, Light
+        tempType = "Weapon, Ranged";
+        tempitemName = "Crossbow, Light";
+        tempCost = 35;
+        tempDamageS = "1d6";
+        tempDamageM = "1d8";
+        tempCritical = "19-20/x2";
+        tempRange = 80;
+        tempWeight = 4;
+        tempDamageType = "P";
+        tempDescription = "You draw a light crossbow back by pulling a lever. This is a move action that provokes attacks of opportunity. Normaly, operating a light crossbow requries two hands. You can shoot, but not load, with one hand at a -2 penalty. You can fire with two light crossbows in each hand, but you take a penalty on attack rolls as if attacking with two light weapons. This penalty is cumulative with the penalty for one-hand firing. ";
+
+        Item crossbowLight = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.CrossbowLight))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.CrossbowLight, crossbowLight);
+        }
+
+        //End Crossbow, Light
+
+        //Dart
+        tempType = "Weapon, Ranged";
+        tempitemName = "Dart";
+        tempCost = 0;
+        tempDamageS = "1d3";
+        tempDamageM = "1d4";
+        tempCritical = "x2";
+        tempRange = 20;
+        tempWeight = 0.5f;
+        tempDamageType = "P";
+        tempDescription = "A small weighted dart. ";
+
+        Item dart = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Darts))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Darts, dart);
+        }
+
+        //End Dart
+
+        //Javelin
+        tempType = "Weapon, Ranged";
+        tempitemName = "Javilin";
+        tempCost = 1;
+        tempDamageS = "1d4";
+        tempDamageM = "1d6";
+        tempCritical = "x2";
+        tempRange = 30;
+        tempWeight = 2;
+        tempDamageType = "P";
+        tempDescription = "A javelin is a thin throwing spear. Since it is not designed for melee, you are treated as nonproficient iwth it and take a -4 penalty on attack rolls if you use a javelin as a melee weapon.";
+
+        Item javilin = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Javelin))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Javelin, javilin);
+        }
+
+        //End Javelin
+
+        //Sling
+        tempType = "Weapon, Ranged";
+        tempitemName = "Sling";
+        tempCost = 0;
+        tempDamageS = "1d3";
+        tempDamageM = "1d4";
+        tempCritical = "x2";
+        tempRange = 50;
+        tempWeight = 0;
+        tempDamageType = "B";
+        tempDescription = "A sling is little more than a leather cup attached to a pair of strings. Your Strength modifier applies to damage rolls when you use a sling, just as it does for thrown weapons. You can fire but not load a sling with one hand. You can use normal stones but they take a -1 penalty to attack rolls and such an attack deals damage one size catagory smaller.";
+
+        Item sling = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Sling))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Sling, sling);
+        }
+        //End Sling
+
+        //Bolts, Crossbow
+        tempType = "Weapon, Ranged";
+        tempitemName = "Bolts, Crossbow";
+        tempCost = 1;
+        tempDamageS = "N/A";
+        tempDamageM = "N/A";
+        tempCritical = "N/A";
+        tempRange = 0;
+        tempWeight = 0;
+        tempDamageType = "P";
+        tempDescription = "A crossbow bolt used as a melee weapon is treated as a light improvised weapon (-4 penalty on attack rolls) and deals damage as a dagger of its size (crit x2). Bolts come in a case or quiver that holds 10 bolts (or 5, for a repeating crossbow).";
+
+        Item boltsCrossbow = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.CrossbowBolts))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.CrossbowBolts, boltsCrossbow);
+        }
+        //End Bolts, Crossbow
+
+        //Bullet, Sling
+        tempType = "Weapon, Ranged";
+        tempitemName = "Bullet, Sling";
+        tempCost = 1;
+        tempDamageS = "N/A";
+        tempDamageM = "N/A";
+        tempCritical = "N/A";
+        tempRange = 0;
+        tempWeight = 0;
+        tempDamageType = "B";
+        tempDescription = "Bullet, Sling";
+
+        Item bulletSling = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.BulletsSling))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.BulletsSling, bulletSling);
+        }
+        //End Bullet, Sling
+        #endregion SimpleWeapons
+        #region Martial Weapons
+
+        //Axe, Throwing
+        tempType = "Weapon, Light";
+        tempitemName = "Axe, Throwing";
+        tempCost = 8;
+        tempDamageS = "1d4";
+        tempDamageM = "1d6";
+        tempCritical = "x2";
+        tempRange = 10;
+        tempWeight = 2;
+        tempDamageType = "S";
+        tempDescription = "A small weighted axe, weighted for throwing.";
+
+        Item axeThrowing = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.AxeThrowing))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.AxeThrowing, axeThrowing);
+        }
+        //End Axe, Throwing
+
+        //Hammer, light
+        tempType = "Weapon, Light";
+        tempitemName = "Hammer, Light";
+        tempCost = 1;
+        tempDamageS = "1d3";
+        tempDamageM = "1d4";
+        tempCritical = "x2";
+        tempRange = 20;
+        tempWeight = 2;
+        tempDamageType = "B";
+        tempDescription = "A short weighted hammer, great for cracking skulls.";
+
+        Item hammerLight = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.HammerLight))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.HammerLight, hammerLight);
+        }
+
+        //End Hammer, light
+
+        //Handaxe
+        tempType = "Weapon, Light";
+        tempitemName = "Handaxe";
+        tempCost = 6;
+        tempDamageS = "1d4";
+        tempDamageM = "1d6";
+        tempCritical = "x3";
+        tempRange = 0;
+        tempWeight = 3;
+        tempDamageType = "S";
+        tempDescription = "A simple axe.";
+
+        Item handaxe = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Handaxe))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Handaxe, handaxe);
+        }
+
+        //End Handaxe
+
+        //Kurki
+        tempType = "Weapon, Light";
+        tempitemName = "Kukri";
+        tempCost = 8;
+        tempDamageS = "1d3";
+        tempDamageM = "1d4";
+        tempCritical = "18-20/x2";
+        tempRange = 0;
+        tempWeight = 2;
+        tempDamageType = "S";
+        tempDescription = "A curved blade about 1 foot in length.";
+
+        Item kukri = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Kukri))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Kukri, kukri);
+        }
+
+        //End Kurki
+
+        //Pick, Light
+        tempType = "Weapon, Light";
+        tempitemName = "Pick, Light";
+        tempCost = 4;
+        tempDamageS = "1d3";
+        tempDamageM = "1d4";
+        tempCritical = "x4";
+        tempRange = 0;
+        tempWeight = 3;
+        tempDamageType = "P";
+        tempDescription = "A small sharp pick.";
+
+        Item pickLight = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.PickLight))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.PickLight, pickLight);
+        }
+
+        //End Pick, Light
+
+        //Sap
+        tempType = "Weapon, Light";
+        tempitemName = "Sap";
+        tempCost = 1;
+        tempDamageS = "1d4";
+        tempDamageM = "1d6";
+        tempCritical = "x2";
+        tempRange = 0;
+        tempWeight = 2;
+        tempSpecial = "nonleathal (This weapon does nonlethal damage.";
+        tempDamageType = "P";
+        tempDescription = "A small sharp pick.";
+
+        Item sap = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Sap))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Sap, sap);
+        }
+
+        //End Sap
+
+        //Shield, Light
+        tempType = "Weapon, Light";
+        tempitemName = "Shield, Light (As weapon)";
+        tempCost = 5;
+        tempDamageS = "1d2";
+        tempDamageM = "1d3";
+        tempCritical = "x2";
+        tempRange = 0;
+        tempWeight = 2;
+        tempSpecial = "Cost and weight vary depending on what the shield is made of.";
+        tempDamageType = "B";
+        tempDescription = "You can bash with a shield rather than using it for defense..";
+
+        Item shieldLight = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SheildLight))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.SheildHeavy, shieldLight);
+        }
+        //End Shield, Light
+
+        //Spiked Armor
+        tempType = "Weapon, Light";
+        tempitemName = "Spiked Armor";
+        tempCost = 5;
+        tempDamageS = "1d4";
+        tempDamageM = "1d6";
+        tempCritical = "x2";
+        tempRange = 0;
+        tempWeight = 2;
+        tempSpecial = "Cost and weight vary depending on what the armor is made of.";
+        tempDamageType = "P";
+        tempDescription = "Your spikes on your armor can be used as weapons.";
+
+        Item spikedArmor = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SpikedArmor))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.SpikedArmor, spikedArmor);
+        }
+        //End Spiked Armor
+
+        //Spiked Shield, Light
+        tempType = "Weapon, Light";
+        tempitemName = "Spiked Shield, Light";
+        tempCost = 5;
+        tempDamageS = "1d3";
+        tempDamageM = "1d4";
+        tempCritical = "x2";
+        tempRange = 0;
+        tempWeight = 2;
+        tempSpecial = "Cost and weight vary depending on what the shield is made of.";
+        tempDamageType = "P";
+        tempDescription = "You can bash with a shield rather than using it for defense.";
+
+        Item spikedShieldLight = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SpikedShieldlight))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.SpikedShieldlight, spikedShieldLight);
+        }
+
+        tempSpecial = "";
+        //End Spiked Shield, Light
+
+        //Starkinfe
+        tempType = "Weapon, Light";
+        tempitemName = "Starknife";
+        tempCost = 24;
+        tempDamageS = "1d3";
+        tempDamageM = "1d4";
+        tempCritical = "x3";
+        tempRange = 20;
+        tempWeight = 3;
+        tempDamageType = "P";
+        tempDescription = "From a central metal ring, four tapering metal blades extend like points on a compass rose. A wielder can stab with the starknife or throw it.";
+
+        Item starknife = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Starknife))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Starknife, starknife);
+        }
+
+        //End Starknife
+
+        //Sword, Short
+        tempType = "Weapon, Light";
+        tempitemName = "Sword, Short";
+        tempCost = 10;
+        tempDamageS = "1d4";
+        tempDamageM = "1d6";
+        tempCritical = "19-20/x2";
+        tempRange = 0;
+        tempWeight = 2;
+        tempDamageType = "S/P";
+        tempDescription = "A simple short sword.";
+
+        Item swordShort = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SwordShort))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.SwordShort, swordShort);
+        }
+        //End Sword, Short
+
+        //Battleaxe
+        tempType = "Weapon, One Handed Melee";
+        tempitemName = "Battleaxe";
+        tempCost = 10;
+        tempDamageS = "1d6";
+        tempDamageM = "1d8";
+        tempCritical = "x3";
+        tempRange = 0;
+        tempWeight = 6;
+        tempDamageType = "S";
+        tempDescription = "A simple battleaxe.";
+
+        Item battleaxe = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Battleaxe))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Battleaxe, battleaxe);
+        }
+        //End Battleaxe.
+
+        //Flail
+        tempType = "Weapon, One Handed Melee";
+        tempitemName = "Flail";
+        tempCost = 8;
+        tempDamageS = "1d6";
+        tempDamageM = "1d8";
+        tempCritical = "x2";
+        tempRange = 0;
+        tempWeight = 5;
+        tempDamageType = "S";
+        tempDescription = "A weighted length of metal attached to a stick.";
+
+        Item flail = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Flail))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Flail, flail);
+        }
+        //End Flail
+
+        //Longsword
+        tempType = "Weapon, One Handed Melee";
+        tempitemName = "Longsword";
+        tempCost = 15;
+        tempDamageS = "1d6";
+        tempDamageM = "1d8";
+        tempCritical = "19-20/x2";
+        tempRange = 0;
+        tempWeight = 4;
+        tempDamageType = "S";
+        tempDescription = "A simple longsword.";
+
+        Item longsword = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Longsword))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Longsword, longsword);
+        }
+        //End longsword
+
+        //Pick, Heavy
+        tempType = "Weapon, One Handed Melee";
+        tempitemName = "Pick, Heavy";
+        tempCost = 8;
+        tempDamageS = "1d4";
+        tempDamageM = "1d6";
+        tempCritical = "x4";
+        tempRange = 0;
+        tempWeight = 6;
+        tempDamageType = "P";
+        tempDescription = "A reinforced battle pick.";
+
+        Item pickHeavy = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.PickHeavy))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.PickHeavy, pickHeavy);
+        }
+        //End Pick, Heavy
+
+        //Rapier
+        tempType = "Weapon, One Handed Melee";
+        tempitemName = "Rapier";
+        tempCost = 20;
+        tempDamageS = "1d4";
+        tempDamageM = "1d6";
+        tempCritical = "18-20/x2";
+        tempRange = 0;
+        tempWeight = 2;
+        tempDamageType = "P";
+        tempDescription = "You can use the Weapon Finesse feat to apply your Dexterity modifier instead of your Strength modifier to attack rolls with a rapier size for you, even though it isn't a light weapon. You can't wield a rapier in two hands in order to apply 1-1/2 times your Strength to damage.";
+
+        Item rapier = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Rapier))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Rapier, rapier);
+        }
+        //End Rapier
+
+        //Scimitar
+        tempType = "Weapon, One Handed Melee";
+        tempitemName = "Scimitar";
+        tempCost = 15;
+        tempDamageS = "1d4";
+        tempDamageM = "1d6";
+        tempCritical = "18-20/x2";
+        tempRange = 0;
+        tempWeight = 4;
+        tempDamageType = "S";
+        tempDescription = "A wicked curved blade.";
+
+        Item scimitar = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Scimitar))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Scimitar, scimitar);
+        }
+        //End Scimitar
+
+        //Shield, Heavy
+        tempType = "Weapon, One Handed Melee";
+        tempitemName = "Shield, Heavy";
+        tempCost = 10;
+        tempDamageS = "1d3";
+        tempDamageM = "1d4";
+        tempCritical = "x2";
+        tempRange = 0;
+        tempWeight = 6;
+        tempSpecial = "Cost and weight depent on the type of shield.";
+        tempDamageType = "S";
+        tempDescription = "You can attack with your shield instead of using it defensivly.";
+
+        Item shieldHeavy = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SheildHeavy))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.SheildHeavy, shieldHeavy);
+        }
+        //End Shield, Heavy
+
+        //Spiked Shield, Heavy
+        tempType = "Weapon, One Handed Melee";
+        tempitemName = "Spiked Shield, Heavy";
+        tempCost = 10;
+        tempDamageS = "1d4";
+        tempDamageM = "1d6";
+        tempCritical = "x2";
+        tempRange = 0;
+        tempWeight = 6;
+        tempSpecial = "Cost and weight depent on the type of shield.";
+        tempDamageType = "S";
+        tempDescription = "You can attack with your shield instead of using it defensivly.";
+
+        Item spikedShieldHeavy = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SpikedShieldHeavy))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.SpikedShieldHeavy, spikedShieldHeavy);
+        }
+        tempSpecial = "";
+        //End Spiked Shield, Heavy
+
+        //Trident
+        tempType = "Weapon, One Handed Melee";
+        tempitemName = "Trident";
+        tempCost = 15;
+        tempDamageS = "1d6";
+        tempDamageM = "1d8";
+        tempCritical = "x2";
+        tempRange = 10;
+        tempWeight = 4;
+        tempDamageType = "S";
+        tempDescription = "A trident has three metal prongs at the end of a 4-foot-long shaft. This weapon can be thrown.";
+
+        Item trident = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Trident))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Trident, trident);
+        }
+        //End Trident
+
+        //Warhammer
+        tempType = "Weapon, One Handed Melee";
+        tempitemName = "Warhammer";
+        tempCost = 12;
+        tempDamageS = "1d6";
+        tempDamageM = "1d8";
+        tempCritical = "x2";
+        tempRange = 0;
+        tempWeight = 5;
+        tempDamageType = "B";
+        tempDescription = "A Warhammer has a heavy metal head on a short shaft.";
+
+        Item warhammer = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Warhammer))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Warhammer, warhammer);
+        }
+        //End Warhammer
+
+        //Falchion
+        tempType = "Weapon, Two Handed Melee";
+        tempitemName = "Falchion";
+        tempCost = 75;
+        tempDamageS = "1d6";
+        tempDamageM = "2d4";
+        tempCritical = "18-20/x2";
+        tempRange = 0;
+        tempWeight = 8;
+        tempDamageType = "S";
+        tempDescription = "A large two-handed curved blade.";
+
+        Item falchion = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Falchion))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Falchion, falchion);
+        }
+        //End Falchion
+
+        //Glaive
+        tempType = "Weapon, Two Handed Melee";
+        tempitemName = "Glaive";
+        tempCost = 8;
+        tempDamageS = "1d8";
+        tempDamageM = "1d10";
+        tempCritical = "18-20/x2";
+        tempRange = 0;
+        tempWeight = 10;
+        tempSpecial = "Reach (You can attack 10 feet away from you but you cannot attack adjacent to you).";
+        tempDamageType = "S";
+        tempDescription = "A Glaive consists of a streight or curved blade on the end of a long stick.";
+
+        Item glaive = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Glaive))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Glaive, glaive);
+        }
+
+        tempSpecial = "";
+        //End Glaive
+
+        //Greataxe
+        tempType = "Weapon, Two Handed Melee";
+        tempitemName = "Greataxe";
+        tempCost = 20;
+        tempDamageS = "1d10";
+        tempDamageM = "1d12";
+        tempCritical = "x3";
+        tempRange = 0;
+        tempWeight = 12;
+        tempDamageType = "S";
+        tempDescription = "A large two-handed axe.";
+
+        Item greataxe = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Greataxe))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Greataxe, greataxe);
+        }
+        //End Greataxe
+
+        //Greatclub
+        tempType = "Weapon, Two Handed Melee";
+        tempitemName = "Greatclub";
+        tempCost = 5;
+        tempDamageS = "1d8";
+        tempDamageM = "1d10";
+        tempCritical = "x2";
+        tempRange = 0;
+        tempWeight = 8;
+        tempDamageType = "B";
+        tempDescription = "A large club.";
+
+        Item greatclub = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Greatclub))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Greatclub, greatclub);
+        }
+        //End Greatclub
+
+        //Flail, Heavy
+        tempType = "Weapon, Two Handed Melee";
+        tempitemName = "Flail, Heavy";
+        tempCost = 15;
+        tempDamageS = "1d8";
+        tempDamageM = "1d10";
+        tempCritical = "19-20/x2";
+        tempRange = 0;
+        tempWeight = 10;
+        tempSpecial = "Disarm (you may made disarm attacks with this weapon), trip (You may make a trip attemp with this weapon).";
+        tempDamageType = "S";
+        tempDescription = "Similar to a flail, a heavy flail hs a larger metal ball and a longer handle.";
+
+        Item flailHeavy = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.FlailHeavy))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.FlailHeavy, flailHeavy);
+        }
+        tempSpecial = "";
+        //End Flail, Heavy
+
+        //Greatsword
+        tempType = "Weapon, Two Handed Melee";
+        tempitemName = "Greatsword";
+        tempCost = 50;
+        tempDamageS = "1d10";
+        tempDamageM = "2d16";
+        tempCritical = "19-20/x2";
+        tempRange = 0;
+        tempWeight = 8;
+        tempDamageType = "S";
+        tempDescription = "This immense two-handed sword is about 5 feet in length.";
+
+        Item greatsword = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Greatsword))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Greatsword, greatsword);
+        }
+        //End Greatsword
+
+        //Guisarme
+        tempType = "Weapon, Two Handed Melee";
+        tempitemName = "Guisarme";
+        tempCost = 9;
+        tempDamageS = "1d6";
+        tempDamageM = "2d4";
+        tempCritical = "x3";
+        tempRange = 0;
+        tempWeight = 12;
+        tempSpecial = "Reach (You can attack 10 feet away from you but you cannot attack adjacent to you), Trip (You may make trip attacks with this weapon).";
+        tempDamageType = "S";
+        tempDescription = "A guisarme is an 8-foot-long shaft with a blade and hook mounted at the top.";
+
+        Item guisarme = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Guisarme))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Guisarme, guisarme);
+        }
+        //End Guisarme
+
+        //Halberd
+        tempType = "Weapon, Two Handed Melee";
+        tempitemName = "Halberd";
+        tempCost = 10;
+        tempDamageS = "1d8";
+        tempDamageM = "1d10";
+        tempCritical = "x3";
+        tempRange = 0;
+        tempWeight = 12;
+        tempSpecial = "Brace (When you use a readied action to set a brace weapon against a charge, you deal double damage on a successful hit against a charging creature), Trip (You may make trip attacks with this weapon).";
+        tempDamageType = "P or S";
+        tempDescription = "A halberd is similar to a 5-foot-long spear, but it also has a small, axe-like head mounted near the tip.";
+
+        Item halberd = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Halberd))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Halberd, halberd);
+        }
+        //End Halberd
+
+        //Lance
+        tempType = "Weapon, Two Handed Melee";
+        tempitemName = "Lance";
+        tempCost = 10;
+        tempDamageS = "1d6";
+        tempDamageM = "1d8";
+        tempCritical = "x3";
+        tempRange = 0;
+        tempWeight = 12;
+        tempSpecial = "Reach (You can attack 10 feet away from you but you cannot attack adjacent to you).";
+        tempDamageType = "P";
+        tempDescription = "A long stick with a metal tip, ment to be used from horseback. A lance deals double damge when used from the back of a charging mount. WHile mounted, you can wield a lance with one hand.";
+
+        Item lance = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Lance))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Lance, lance);
+        }
+        //End Lance
+
+        //Ranseur
+        tempType = "Weapon, Two Handed Melee";
+        tempitemName = "Ranseur";
+        tempCost = 10;
+        tempDamageS = "1d6";
+        tempDamageM = "2d4";
+        tempCritical = "x3";
+        tempRange = 0;
+        tempWeight = 12;
+        tempSpecial = "Reach (You can attack 10 feet away from you but you cannot attack adjacent to you), Disarm (When you use a disarm weapon, you gain a +2 bonus on Combat Maneuver checks to disarm an enemy).";
+        tempDamageType = "P";
+        tempDescription = "Similar in apperance ot a trident, a ranseur has a single spear at its tip, flanked bya a pair of short, curving blades.";
+
+        Item ranseur = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Ranseur))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Ranseur, ranseur);
+        }
+        //Ranseur
+
+        //Scythe
+        tempType = "Weapon, Two Handed Melee";
+        tempitemName = "Scythe";
+        tempCost = 18;
+        tempDamageS = "1d6";
+        tempDamageM = "2d4";
+        tempCritical = "x4";
+        tempRange = 0;
+        tempWeight = 10;
+        tempSpecial = "Trip (You can use a trip weapon to make trip attacks. If you are tripped during your own trip attemp, you can drop the weapon to avoid being tripped).";
+        tempDamageType = "P";
+        tempDescription = "A scythe is a long curved blade attacked to the top of a long shaft.";
+
+        Item scythe = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Scythe))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Scythe, scythe);
+        }
+        tempSpecial = "";
+        //End Scythe
+
+        //Longbow
+        tempType = "Weapon, Ranged";
+        tempitemName = "Longbow";
+        tempCost = 75;
+        tempDamageS = "1d6";
+        tempDamageM = "1d8";
+        tempCritical = "x3";
+        tempRange = 100;
+        tempWeight = 2;
+        tempDamageType = "P";
+        tempDescription = "At almost 5 feet in height, a longbow is made up of one solid piece of carefully curved wood. You need two hands to use a bow, regardless of its size. A longbow is too unwieldy to use while you are mounted. If you have a penalty for low Strength, apply it to damage rolls when you use a longbow. If you have a Strength bonus, you can apply it to damage rolls when you use a composite longbow, but not when you use a regular longbow.";
+
+        Item longbow = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Longbow))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Longbow, longbow);
+        }
+        //End Longbow
+
+        //Longbow, Composite
+        tempType = "Weapon, Ranged";
+        tempitemName = "Longbow, Composite";
+        tempCost = 100;
+        tempDamageS = "1d6";
+        tempDamageM = "1d8";
+        tempCritical = "x3";
+        tempRange = 110;
+        tempWeight = 3;
+        tempDamageType = "P";
+        tempDescription = "You need at least two hands to use a bow, regaurdless of size. You can use a composite longbow while mounted. All composite bows are mae with a particular strength rating. If your Strength bonus is less than the strength rating of the composite bow, you can't effectivly use it, so you take a -2 penalty on attacks with it. The default composite longbow requires a Strength modifier of +0 or higher to use with proficiency. A composite longbow can be made with a high strength rating to take advantage of an above-average Strength score; this feature allows you to add your Strength bonus to damge, up to the maximum bonus indicated for the bow. Each point of Strength bonus granted by the bow adds 100gp to the cost. If you have a penalty for low Strength, apply it to damge rolls when you use a composite longbow. For purposes of Weapon Proficiency and similar feats, a composite longbow is treated as a normal longbow.";
+
+        Item longbowComposite = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.LongbowComposite))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.LongbowComposite, longbowComposite);
+        }
+        //End Longbow, Composite
+
+        //Shortbow
+        tempType = "Weapon, Ranged";
+        tempitemName = "Shortbow";
+        tempCost = 30;
+        tempDamageS = "1d4";
+        tempDamageM = "1d6";
+        tempCritical = "x3";
+        tempRange = 60;
+        tempWeight = 2;
+        tempDamageType = "P";
+        tempDescription = "A shortbow is made out of one piece of wood about 3 feet in length. You need two hands to use a bow regardless of length. You can use a shortbow while mounted. If you have a penalty for low Strength, apply it to damage rolls when you use a shortbow. If you have a bonus for high Strength, you can apply it to damage rolls when youuse a composite shortbow, but not a regualar shortbow.";
+
+        Item shortbow = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Shortbow))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Shortbow, shortbow);
+        }
+        //End Shortbow
+
+        //Composite Shortbow
+        tempType = "Weapon, Ranged";
+        tempitemName = "Longbow, Composite";
+        tempCost = 100;
+        tempDamageS = "1d6";
+        tempDamageM = "1d8";
+        tempCritical = "x3";
+        tempRange = 110;
+        tempWeight = 3;
+        tempDamageType = "P";
+        tempDescription = "You need at least two hands to use a bow, regaurdless of size. You can use a composite shortbow while mounted. All composite bows are mae with a particular strength rating. If your Strength bonus is less than the strength rating of the composite bow, you can't effectivly use it, so you take a -2 penalty on attacks with it. The default composite shortbow requires a Strength modifier of +0 or higher to use with proficiency. A composite shortbow can be made with a high strength rating to take advantage of an above-average Strength score; this feature allows you to add your Strength bonus to damge, up to the maximum bonus indicated for the bow. Each point of Strength bonus granted by the bow adds 100gp to the cost. If you have a penalty for low Strength, apply it to damge rolls when you use a composite shortbow. For purposes of Weapon Proficiency and similar feats, a composite shortbow is treated as a normal shortbow.";
+
+        Item shortbowComposite = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ShortbowComposite))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.ShortbowComposite, shortbowComposite);
+        }
+        //End Composite Shortbow
+
+        //Arrows, Bow
+        tempType = "Weapon, Ranged";
+        tempitemName = "Arrows, Bow";
+        tempCost = 1;
+        tempDamageS = "-";
+        tempDamageM = "-";
+        tempCritical = "-";
+        tempRange = 0;
+        tempWeight = 3;
+        tempDamageType = "P";
+        tempDescription = "An arrow used as a melee weapon is treated as a light improvised weapon (-4 penalty on attack rolls) and deals damage as a dagger of its size (crit x2). Arrows come in a leather quiver that holds 20 arrows.";
+
+        Item arrowsBow = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.BowArrow))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.BowArrow, arrowsBow);
+        }
+        //Arrows, Bow
+
+
+        #endregion Martial Weapons
+        #region Exotic Weapons
+
+        //Light Melee Weapons
+        tempType = "Weapon, Light";
+        tempitemName = "Kama";
+        tempCost = 2;
+        tempDamageS = "1d4";
+        tempDamageM = "1d6";
+        tempCritical = "x2";
+        tempRange = 0;
+        tempWeight = 2;
+        tempSpecial = "Monk (A monk weapon can be used by a monk to perform a flurry of blows). Trip (You can make a trip attack with this weapon, if you are tripped during your tripp attempt you can drop this weapon to advoid being tripped.";
+        tempDamageType = "S";
+        tempDescription = "A heavy curved short blade.";
+
+        Item kama = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Kama))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Kama, kama);
+        }
+        //End Light Melee Weapons
+
+        //Nunchaku
+        tempType = "Weapon, Light";
+        tempitemName = "Nunchaku";
+        tempCost = 2;
+        tempDamageS = "1d4";
+        tempDamageM = "1d6";
+        tempCritical = "x2";
+        tempRange = 0;
+        tempWeight = 2;
+        tempSpecial = "Disarm (When you use a disarm weapon, you get a +2 bonus on Combat Maneuver Checks to disarm an enemy). Monk (A monk weapon can be used by a monk to perform a flurry of blows). ";
+        tempDamageType = "B";
+        tempDescription = "Two wooden or metal lengths of wood attached by a chain.";
+
+        Item nunchaku = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Nunchaku))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Nunchaku, nunchaku);
+        }
+        //End Nunchaku
+
+        //Sai
+        tempType = "Weapon, Light";
+        tempitemName = "Sai";
+        tempCost = 1;
+        tempDamageS = "1d3";
+        tempDamageM = "1d4";
+        tempCritical = "x2";
+        tempRange = 0;
+        tempWeight = 1;
+        tempSpecial = "Disarm (When you use a disarm weapon, you get a +2 bonus on Combat Maneuver Checks to disarm an enemy). Monk (A monk weapon can be used by a monk to perform a flurry of blows). ";
+        tempDamageType = "B";
+        tempDescription = "A sai is a metal spike flanked by a pair of prongs used to trap an enemy's weapon. With a sai, you get a +2 bonus on Combat Maneuver Checks to sunder an enemy's weapon. Though pointed, a sai is used primarily to bludgeon foes and to diarm weapons.";
+
+        Item sai = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Sai))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Sai, sai);
+        }
+        //End Sai
+
+        //Siangham
+        tempType = "Weapon, Light";
+        tempitemName = "Nunchaku";
+        tempCost = 2;
+        tempDamageS = "1d4";
+        tempDamageM = "1d6";
+        tempCritical = "x2";
+        tempRange = 0;
+        tempWeight = 2;
+        tempSpecial = "Monk (A monk weapon can be used by a monk to perform a flurry of blows). ";
+        tempDamageType = "P";
+        tempDescription = "This weapon is a handheld shaft fitted with a pointed tip for stabbing foes.";
+
+        Item siangham = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Siangham))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Siangham, siangham);
+        }
+        //End Siangham
+
+        //Sword, Bastard
+        tempType = "Weapon, One-Handed Melee Wapon";
+        tempitemName = "Sword, Bastard";
+        tempCost = 35;
+        tempDamageS = "1d8";
+        tempDamageM = "1d10";
+        tempCritical = "19-20/x2";
+        tempRange = 0;
+        tempWeight = 6;
+        tempDamageType = "S";
+        tempDescription = "A bastard sword is about 4 feet in length, making it too large to use in one hand without special trrianing; thus, it is an  exotic weapon. A character can ust a bastard sword as a two-handed weapon as a martial weapon.";
+
+        Item bastardSword = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SwordBastard))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.SwordBastard, bastardSword);
+        }
+        //End Sword, Bastard
+
+        //Waraxe, Dwarven
+        tempType = "Weapon, One-Handed Melee Wapon";
+        tempitemName = "Waraxe, Dwarven";
+        tempCost = 30;
+        tempDamageS = "1d8";
+        tempDamageM = "1d10";
+        tempCritical = "x3";
+        tempRange = 0;
+        tempWeight = 8;
+        tempDamageType = "S";
+        tempDescription = "A dwarven waraxe has a large, ornate head mounted to a thick handle, making it to large too use in one hand without special training; thus, it is an exotic weapon. A Medium chracter can use a dwarven waraxe tow-handed as a martial weapon, or a Large creature can use it one-handed in the same way. A dwarf treats a dwarven waraxe as a martial weapon even when using it in one hand.";
+
+        Item dwarvenWaraxe = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.WaraxeDwarven))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.WaraxeDwarven, dwarvenWaraxe);
+        }
+        //End Waraxe, Dwarven
+
+        //Whip
+        tempType = "Weapon, One-Handed Melee Wapon";
+        tempitemName = "Whip";
+        tempCost = 1;
+        tempDamageS = "1d2";
+        tempDamageM = "1d3";
+        tempCritical = "x2";
+        tempRange = 0;
+        tempWeight = 2;
+        tempSpecial = "Disarm (When you use a disarm weapon, you get a +2 bonus on Combat Maneuver Checks to disarm an enemy), Nonleathal (These weapons deal nonlethal damage), Trip (You can use a trip weapon to make trip attacks. If you are tripped during your own trip attempt, you can drop the weapon to avoid being tripped), Reach(You use a reach weapon to strike opponents 15 feet away).";
+        tempDamageType = "S";
+        tempDescription = "A whip deals no damage to any creature with an armor bonus of +1 or higher or a natural armor bonus of +3 or higher. The whip is treated as a melee weapon with a 15-ft reach, though you don't threaten the area into which you can make an attack. In addition, unlike most other wapons with reach, you may use it against foes anywhere within your reach (including adjacent foes). Using a whip provokes an attack of opportunity, just as if you used a ranged weapon. You can use the Weapon Finesse feat to apply you Dexterity modifier instead of your Strength modifier to attack rolls with a whip sized for you, even though it isn't a light weapon.";
+
+        Item whip = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Whip))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Whip, whip);
+        }
+        //End Whip
+
+        //Axe, orc double
+        tempType = "Weapon, Two-Handed Melee Wapon";
+        tempitemName = "Axe, Orc Double";
+        tempCost = 60;
+        tempDamageS = "1d6/1d6";
+        tempDamageM = "1d8/1d8";
+        tempCritical = "x3";
+        tempRange = 0;
+        tempWeight = 15;
+        tempSpecial = "Double (You can use a double weapon to fight as if fighting with two weapons, but if you do, you incur all the normal attack penalties associated with fighting with two weapons, just as if you were using a one-handed weapon and a light weapon. You can choose to wield one end of a double weapon two-handed, but it cannot be used as a double weapon when wielded in this way—only one end of the weapon can be used in any given round).";
+        tempDamageType = "S";
+        tempDescription = "A cruel weapon with blades placed at opposite ends of a long haft, an orc double axe is a double weapon.";
+
+        Item axeOrcDouble = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.AxeOrcDouble))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.AxeOrcDouble, axeOrcDouble);
+        }
+        //End Axe, orc double
+
+        //Chain, spiked
+        tempType = "Weapon, Two-Handed Melee Wapon";
+        tempitemName = "Chain, Spiked";
+        tempCost = 25;
+        tempDamageS = "1d6";
+        tempDamageM = "2d4";
+        tempCritical = "x2";
+        tempRange = 0;
+        tempWeight = 10;
+        tempSpecial = "Disarm (When you use a disarm weapon, you get a +2 bonus on Combat Maneuver Checks to disarm an enemy), Trip (You can use a trip weapon to make trip attacks. If you are tripped during your own trip attempt, you can drop the weapon to avoid being tripped).";
+        tempDamageType = "P";
+        tempDescription = "A spiked chain is about 4 feet in length, covered in wicked barbs. You can use the Weapon Finesse feat to apply your Dexterity modifier instead of your Strength modifier to attack rolls with a spiked chain sized for you, even though it isn't a light weapon.";
+
+        Item chainSpiked = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ChainSpiked))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.ChainSpiked, chainSpiked);
+        }
+        tempSpecial = "";
+        //End Chain, spiked
+
+        //Curve blade, elven
+        tempType = "Weapon, Two-Handed Melee Wapon";
+        tempitemName = "Curve blade, elven";
+        tempCost = 80;
+        tempDamageS = "1d8";
+        tempDamageM = "1d10";
+        tempCritical = "18-20/x2";
+        tempRange = 0;
+        tempWeight = 7;
+        tempDamageType = "S";
+        tempDescription = "Essentially a longer version of a scimitar, but with a thinner blade, the elven curve blade is exceptionally rare. You receive a +2 circumstance bonus to your Combat Maneuver Defense whenever a foe attempts to sunder your elven curve blade due to its flexible metal. You can use the Weapon Finesse feat to apply your Dexterity modifier instead of your Stength modifier to attack rolls with an elven curve blade sized for you, even though it isnt a light weapon.";
+
+        Item curveBladeElven = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.CurveBladeElven))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.CurveBladeElven, curveBladeElven);
+        }
+        //End curve blade elven
+
+        //Dire flail
+        tempType = "Weapon, Two-Handed Melee Wapon";
+        tempitemName = "Flail, Dire";
+        tempCost = 90;
+        tempDamageS = "1d6/1d6";
+        tempDamageM = "1d8/1d8";
+        tempCritical = "x2";
+        tempRange = 0;
+        tempWeight = 10;
+        tempSpecial = "Double (You can use a double weapon to fight as if fighting with two weapons, but if you do, you incur all the normal attack penalties associated with fighting with two weapons, just as if you were using a one-handed weapon and a light weapon. You can choose to wield one end of a double weapon two-handed, but it cannot be used as a double weapon when wielded in this way—only one end of the weapon can be used in any given round), Disarm (When you use a disarm weapon, you get a +2 bonus on Combat Maneuver Checks to disarm an enemy), Trip (You can use a trip weapon to make trip attacks. If you are tripped during your own trip attempt, you can drop the weapon to avoid being tripped).";
+        tempDamageType = "S";
+        tempDescription = "A dire flail consists of two spheres of spiked iron dangling form chains at opposite ends of a long haft.";
+
+        Item flailDire = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.FlailDire))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.FlailDire, flailDire);
+        }
+        //End Dire flail
+
+        //Hammer, gnome spiked
+        tempType = "Weapon, Two-Handed Melee Wapon";
+        tempitemName = "Hammer, Gnome Spiked";
+        tempCost = 20;
+        tempDamageS = "1d6/1d4";
+        tempDamageM = "1d8/1d6";
+        tempCritical = "x3/x4";
+        tempRange = 0;
+        tempWeight = 6;
+        tempSpecial = "Double (You can use a double weapon to fight as if fighting with two weapons, but if you do, you incur all the normal attack penalties associated with fighting with two weapons, just as if you were using a one-handed weapon and a light weapon. You can choose to wield one end of a double weapon two-handed, but it cannot be used as a double weapon when wielded in this way—only one end of the weapon can be used in any given round), Trip (You can use a trip weapon to make trip attacks. If you are tripped during your own trip attempt, you can drop the weapon to avoid being tripped).";
+        tempDamageType = "B or P";
+        tempDescription = "A gnome hooked hammer is a double weapon - an ingenious tool with a hammer head at one end of its haft and a long, curved pick at the other. The hammer's blunt head is a bludgeoning weapon that deasl 1d6 points of damage (x3 crit). Its hook is a piercing weapon that deals 1d4 points of damage (x4 crit). You can use either head as the primary head of the weapon. Gnomes treat hooked hammers as martial weapons.";
+
+        Item hammerGnomeHooked = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.HammerGnomeHooked))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.HammerGnomeHooked, hammerGnomeHooked);
+        }
+        //End Hamme, gnome spiked
+
+        //Sword, two-bladed
+        tempType = "Weapon, Two-Handed Melee Wapon";
+        tempitemName = "Sword, Two-Bladed";
+        tempCost = 100;
+        tempDamageS = "1d6/1d6";
+        tempDamageM = "1d8/1d8";
+        tempCritical = "19-20/x2";
+        tempRange = 0;
+        tempWeight = 10;
+        tempSpecial = "Double (You can use a double weapon to fight as if fighting with two weapons, but if you do, you incur all the normal attack penalties associated with fighting with two weapons, just as if you were using a one-handed weapon and a light weapon. You can choose to wield one end of a double weapon two-handed, but it cannot be used as a double weapon when wielded in this way—only one end of the weapon can be used in any given round).";
+        tempDamageType = "S";
+        tempDescription = "A two-bladed sword is a double wepaon - twin blades extend form either side of a central, short haft, allowing the wielder to attack with graceful but deadly flourishes.";
+
+        Item swordTwoBladed = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SwordTwoBladed))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.SwordTwoBladed, swordTwoBladed);
+        }
+        //Sword, two-bladed
+
+        //Urgrosh, dwarven
+        tempType = "Weapon, Two-Handed Melee Wapon";
+        tempitemName = "Urgrosh, Dwarven";
+        tempCost = 50;
+        tempDamageS = "1d6/1d4";
+        tempDamageM = "1d8/1d6";
+        tempCritical = "x3";
+        tempRange = 0;
+        tempWeight = 12;
+        tempSpecial = "Double (You can use a double weapon to fight as if fighting with two weapons, but if you do, you incur all the normal attack penalties associated with fighting with two weapons, just as if you were using a one-handed weapon and a light weapon. You can choose to wield one end of a double weapon two-handed, but it cannot be used as a double weapon when wielded in this way—only one end of the weapon can be used in any given round), Brace (If you use a readied action to set a brace weapon against a charge, you deal double damage on a successful hit against a charging creature).";
+        tempDamageType = "P or S";
+        tempDescription = "A dwarven urgrosh is a double weapon - an axe head and spear point on opposite ends of a long haft. The urgrosh's axe head is a slashing weapon that deals 1d8 points of damage. Its spear head is a piercing weapon that deals 1d6 points of damage. You can use either head as the primary weapon. The other becomes the off-hand weapon. If you use an urgrosh against a charging character, the spear head is the part of the weapon that does damage. Dwarves treat dwarven urgroshes as martial weapons.";
+
+        Item urgroshDwarven = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.UrgroshDwarven))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.UrgroshDwarven, urgroshDwarven);
+        }
+        //End Urgrosh, dwarven
+
+        //Bolas
+        tempType = "Weapon, Ranged";
+        tempitemName = "Bolas";
+        tempCost = 5;
+        tempDamageS = "1d3";
+        tempDamageM = "1d4";
+        tempCritical = "x2";
+        tempRange = 20;
+        tempWeight = 2;
+        tempSpecial = "Nonleathal (this weapon does nonleathal damage), Trip (You can use a trip weapon to make trip attacks. If you are tripped during your own trip attempt, you can drop the weapon to avoid being tripped).";
+        tempDamageType = "B";
+        tempDescription = "A bolas is a pair of weights, connected by a thin rope or coard. You can use this weapon to make a ranged trip attack against an opponent. You can't be tripped during your own trip attempt when using a bolas.";
+
+        Item bolas = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Bolas))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Bolas, bolas);
+        }
+        tempSpecial = "";
+        //End Bolas
+
+        //Crossbow Hand
+        tempType = "Weapon, Ranged";
+        tempitemName = "Crossbow, Hand";
+        tempCost = 100;
+        tempDamageS = "1d3";
+        tempDamageM = "1d4";
+        tempCritical = "19-20/x2";
+        tempRange = 30;
+        tempWeight = 2;
+        tempDamageType = "P";
+        tempDescription = "You can draw a hand crossbow back by hand. Loading a hand crossbow is a move action that provokes attacks of opportunity. You can shoot, but not load, a hand crossbow with one hand at no penalty. You can shoot a hand crossbow with each hand but you take a penalty on attack rolls as if attackign with two light weapons.";
+
+        Item crossbowHand = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.CrossbowHand))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.CrossbowHand, crossbowHand);
+        }
+        //End Crossbow Hand
+
+        //Crossbow Repeating heavy
+        tempType = "Weapon, Ranged";
+        tempitemName = "Crossbow, Repeating Heavy";
+        tempCost = 400;
+        tempDamageS = "1d8";
+        tempDamageM = "1d10";
+        tempCritical = "19-20/x2";
+        tempRange = 120;
+        tempWeight = 12;
+        tempDamageType = "P";
+        tempDescription = "The repeating crossbow (wether light or heavy) holds 5 crossbow bolts. As long as it hols bolts, you can reload it by pulling the reloading lever (a free action). Loading a new case of 5 bolts is a full round action that provokes attacks of opportunity. You can fire a repeating crossbow with one hand or fire a reapeating crossbow in each hand in the same manner as you would a normal crossbow of the same size. However, you must fire the wapon with two hands in order to use the reloading lever, and you must use two hands to load a new case of bolts.";
+
+        Item crossbowRepeatingHeavy = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.CrossbowRepeatingHeavy))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.CrossbowRepeatingHeavy, crossbowRepeatingHeavy);
+        }
+        //End crossbow reapeating heavy
+
+        //Crossbow repeating light
+        tempType = "Weapon, Ranged";
+        tempitemName = "Crossbow, Repeating Light";
+        tempCost = 250;
+        tempDamageS = "1d6";
+        tempDamageM = "1d8";
+        tempCritical = "19-20/x2";
+        tempRange = 80;
+        tempWeight = 6;
+        tempDamageType = "P";
+        tempDescription = "The repeating crossbow (wether light or heavy) holds 5 crossbow bolts. As long as it hols bolts, you can reload it by pulling the reloading lever (a free action). Loading a new case of 5 bolts is a full round action that provokes attacks of opportunity. You can fire a repeating crossbow with one hand or fire a reapeating crossbow in each hand in the same manner as you would a normal crossbow of the same size. However, you must fire the wapon with two hands in order to use the reloading lever, and you must use two hands to load a new case of bolts.";
+
+        Item crossbowRepeatingLight = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.CrossbowRepeatingLight))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.CrossbowRepeatingLight, crossbowRepeatingLight);
+        }
+        //End crossbow repeating light
+
+        //Net
+        tempType = "Weapon, Ranged";
+        tempitemName = "Net";
+        tempCost = 20;
+        tempDamageS = "";
+        tempDamageM = "";
+        tempCritical = "";
+        tempRange = 10;
+        tempWeight = 6;
+        tempSpecial = "An entangled creature can escape with a DC 20 Escape Artist check (a full-round action). The net has 5 hit points and can be burst with a DC 25 Strength check (also a full-round action). A net is useful only against creatures within one size category of you. A net must be folded to be thrown effectively. The first time you throw your net in a fight, you make a normal ranged touch attack roll. After the net is unfolded, you take a –4 penalty on attack rolls with it. It takes 2 rounds for a proficient user to fold a net and twice that long for a non-proficient one to do so.";
+        tempDamageType = "P";
+        tempDescription = "When you throw a net, you make a ranged touch attack against your target. A net’s maximum range is 10 feet. If you hit, the target is entangled. An entangled creature takes a –2 penalty on attack rolls and a –4 penalty on Dexterity, can move at only half speed, and cannot charge or run. If you control the trailing rope by succeeding on an opposed Strength check while holding it, the entangled creature can move only within the limits that the rope allows. If the entangled creature attempts to cast a spell, it must make a concentration check with a DC of 15 + the spell’s level or be unable to cast the spell. ";
+
+        Item net = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Net))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Net, net);
+        }
+        //End Net
+
+        //Shuriken
+        tempType = "Weapon, Ranged";
+        tempitemName = "Shuriken";
+        tempCost = 1;
+        tempDamageS = "1";
+        tempDamageM = "1d2";
+        tempCritical = "x2";
+        tempRange = 10;
+        tempWeight = 0.5f;
+        tempSpecial = "Monk (A monk weapon can be used by a monk to perform a flurry of blows).";
+        tempDamageType = "P";
+        tempDescription = "A shuriken is a small piece of metal with sharpened edges, designed for throwing. A shuriken can't be used as a melee weapon. Although they are thrown weapons, shuriken are treated as ammunition for the purposes of drawing them, crafting masterwork or tohter wize special versions of them. and what happens to them after they are thrown. The cost is for 5 of them.";
+
+        Item shuriken = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Shuriken))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Shuriken, shuriken);
+        }
+        //End Shuriken
+
+        //Sling staff, Halfling
+        tempType = "Weapon, Ranged";
+        tempitemName = "Sling Staff, Halfling";
+        tempCost = 20;
+        tempDamageS = "1d6";
+        tempDamageM = "1d8";
+        tempCritical = "x3";
+        tempRange = 80;
+        tempWeight = 3;
+        tempDamageType = "P";
+        tempDescription = "Made from a specially designed sling attached to a short club, a halfling sling staff can be use dby a proficient wielder to devastating effect. Your Strength modfier applies to damage rolls when you use a halfling sling staff, just as it does for thrown weapons. You can fire, but not load a halfling sling staff with one hand. Loading is a move action that requires two hands and provokes attacks of opportunity. You can hurl ordinary stones, but they take a -4 penalty on attack rolls, and deal damage as if the weapon were designed for a creature one size category smaller than you. A halfling sling staff can be used as a simple weapon that deals bludgeoning damge equal to that of a club of its size. Halflings treat halfling sling staves as martial weapons.";
+
+        Item slingStaffHalfling = new Item(tempType, tempitemName, tempCost, tempDamageS, tempDamageM, tempCritical, tempRange, tempWeight, tempDamageType, tempSpecialAbility, tempOther, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SlingStaffHalfling))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.SlingStaffHalfling, slingStaffHalfling);
+        }
+        //End Sling staff, halfling
+        #endregion Exotic Weapons
+        #endregion Weapons
+
+        #region Armor
+
+        #region Light Armor
+
+        #endregion Light Armor
+
+
+        #endregion Armor
+
+
+
+        #endregion ItemInitalization
+    }
 }
