@@ -8,7 +8,7 @@ public class Item  {
 
     public string type ="";
     public string itemName = "";
-    public int cost = 0;
+    public float cost = 0;
     public string damageS = "";
     public string damageM = "";
     public string critical = "";
@@ -23,12 +23,14 @@ public class Item  {
     public int arcaneSpellFailure = 0;
     public int speed20 = 0;
     public int speed30 = 0;
-    public string description;
+    public string description = "";
+    public string material = "";
+    public bool scalable = false;
 
     // end items have
 
     //Utility 
-    public Item(string typ, string name, int cst, float wgt, string spcAbil, string oth, string desc)
+    public Item(string typ, string name, float cst, float wgt, string spcAbil, string oth, bool scle, string desc)
     {
         type = typ;
         itemName = name;
@@ -36,10 +38,11 @@ public class Item  {
         weight = wgt;
         specialAbility = spcAbil;
         other = oth;
+        scalable = scle;
         description = desc;
     }
     //Weapon
-    public Item (string typ, string name, int cst, string dS, string dM, string crt, float rng, float wgt, string dmgTy, string spcAbil, string oth, string desc)
+    public Item (string typ, string name, float cst, string dS, string dM, string crt, float rng, float wgt, string dmgTy, string spcAbil, string oth, string desc)
     {
         type = typ;
         itemName = name;
@@ -56,7 +59,7 @@ public class Item  {
     }
     
     //Armor
-    public Item(string typ, string name, int cst, float wgt, string spcAbil, string oth, int aB, int mDB, int aCP, int aSF, int sp2, int sp3, string desc)
+    public Item(string typ, string name, float cst, float wgt, string spcAbil, string oth, int aB, int mDB, int aCP, int aSF, int sp3, int sp2, string mat, string desc)
     {
         type = typ;
         itemName = name;
@@ -68,13 +71,14 @@ public class Item  {
         maxDexBonus = mDB;
         armorCheckPenality = aCP;
         arcaneSpellFailure = aSF;
-        speed20 = sp2;
         speed30 = sp3;
+        speed20 = sp2;
+        material = mat;
         description = desc;
     }
 
     //Wildcard
-    public Item (string typ, string name, int cst, string dS, string dM, string crt, float rng, float wgt, string dmgTy, string spcAbil, string oth, int aB, int mDB, int aCP, int aSF, int sp2, int sp3, string desc)
+    public Item (string typ, string name, int cst, string dS, string dM, string crt, float rng, float wgt, string dmgTy, string spcAbil, string oth, int aB, int mDB, int aCP, int aSF, int sp2, int sp3,string mat, bool scle, string desc)
     {
         type = typ;
         itemName = name;
@@ -93,7 +97,10 @@ public class Item  {
         arcaneSpellFailure = aSF;
         speed20 = sp2;
         speed30 = sp3;
+        material = mat;
+        scalable = scle;
         description = desc;
+
     }
    
 }

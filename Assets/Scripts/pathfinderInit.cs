@@ -20,12 +20,12 @@ public class pathfinderInit : MonoBehaviour {
 
     string tempType = "";
     string tempitemName = "";
-    int tempCost = 0;
+    float tempCost = 0;
     string tempDamageS = "";
     string tempDamageM = "";
     string tempCritical = "";
-    float tempRange = 0.0f;
-    float tempWeight = 0.0f;
+    float tempRange = 0.0f; //string
+    float tempWeight = 0.0f; //string
     string tempDamageType = "";
     string tempSpecialAbility = "";
     string tempOther = "";
@@ -35,6 +35,8 @@ public class pathfinderInit : MonoBehaviour {
     int tempArcaneSpellFailure = 0;
     int tempSpeed20 = 0;
     int tempSpeed30 = 0;
+    string tempMat = "";
+    bool tempScale = false;
     //temp description already initialized
 
     
@@ -4180,13 +4182,837 @@ public class pathfinderInit : MonoBehaviour {
         #region Armor
 
         #region Light Armor
+        //Padded
+        tempType = "Armor, Light";
+        tempitemName = "Padded Armor";
+        tempCost = 2;
+        tempWeight = 10;
+        tempArmorBonus = 1;
+        tempMaxDexBonus = 8;
+        tempArmorCheckPenality = 0;
+        tempArcaneSpellFailure = 5;
+        tempSpeed30 = 30;
+        tempSpeed20 = 20;
+        tempDescription = "Little more than heavy, quilted cloth, this armor provides only the most basic protection.";
+
+        Item paddedArmor = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Padded))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Padded, paddedArmor);
+        }
+        //End Padded
+
+        //Leather
+        tempType = "Armor, Light";
+        tempitemName = "Leather Armor";
+        tempCost = 10;
+        tempWeight = 15;
+        tempArmorBonus = 2;
+        tempMaxDexBonus = 6;
+        tempArmorCheckPenality = 0;
+        tempArcaneSpellFailure = 10;
+        tempSpeed30 = 30;
+        tempSpeed20 = 20;
+        tempDescription = "Leather armor is made up of pieces of hard boiled lether carefully sewn togeather.";
+
+        Item leatherArmor = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Leather))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Leather, leatherArmor);
+        }
+        //End Leather
+
+        //Studded Leather
+        tempType = "Armor, Light";
+        tempitemName = "Studded Leather Armor";
+        tempCost = 25;
+        tempWeight = 20;
+        tempArmorBonus = 3;
+        tempMaxDexBonus = 5;
+        tempArmorCheckPenality = -1;
+        tempArcaneSpellFailure = 15;
+        tempSpeed30 = 30;
+        tempSpeed20 = 20;
+        tempDescription = "Similar to leather armor, this suit is rinforced with small metal studs.";
+
+        Item studdedLeatherArmor = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.StuddedLeather))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.StuddedLeather, studdedLeatherArmor);
+        }
+        //End Studded Leather
+
+        //Chain Shirt
+        tempType = "Armor, Light";
+        tempitemName = "Chain Shirt";
+        tempCost = 100;
+        tempWeight = 25;
+        tempArmorBonus = 4;
+        tempMaxDexBonus = 4;
+        tempArmorCheckPenality = -2;
+        tempArcaneSpellFailure = 20;
+        tempSpeed30 = 30;
+        tempSpeed20 = 20;
+        tempDescription = "Covering the torso, this shirt is made up of thousands of interlocking metal rings.";
+
+        Item chainShirt = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ChainShirt))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.ChainShirt, chainShirt);
+        }
+        //End Chain Shirt
 
         #endregion Light Armor
 
+        #region Medium Armor
+        //Hide
+        tempType = "Armor, Medium";
+        tempitemName = "Hide Armor";
+        tempCost = 15;
+        tempWeight = 25;
+        tempArmorBonus = 4;
+        tempMaxDexBonus = 4;
+        tempArmorCheckPenality = -3;
+        tempArcaneSpellFailure = 20;
+        tempSpeed30 = 20;
+        tempSpeed20 = 15;
+        tempDescription = "Hide armor is made up of the tanned and preserved skin of any thick-hided beast.";
 
+        Item hideArmor = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Hide))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Hide, hideArmor);
+        }
+        //Hide
+
+        //Scale Mail
+        tempType = "Armor, Medium";
+        tempitemName = "Scale Mail";
+        tempCost = 50;
+        tempWeight = 30;
+        tempArmorBonus = 5;
+        tempMaxDexBonus = 3;
+        tempArmorCheckPenality = -4;
+        tempArcaneSpellFailure = 25;
+        tempSpeed30 = 20;
+        tempSpeed20 = 15;
+        tempDescription = "Scale mail is made up of dozens of small overlapping metal plates. The suit includes gauntlets.";
+
+        Item scaleMail = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ScaleMail))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.ScaleMail, scaleMail);
+        }
+        //End Scale Mail
+
+        //Chainmail
+        tempType = "Armor, Medium";
+        tempitemName = "Chainmail";
+        tempCost = 150;
+        tempWeight = 40;
+        tempArmorBonus = 6;
+        tempMaxDexBonus = 2;
+        tempArmorCheckPenality = -5;
+        tempArcaneSpellFailure = 30;
+        tempSpeed30 = 20;
+        tempSpeed20 = 15;
+        tempDescription = "Unlike a chain shirt, chainmail covers the legs and arms of the wearer. The suit includes gauntlets Chainmail is made of thousands of interlocking metal rings.";
+
+        Item chainmail = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Chainmail))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Chainmail, chainmail);
+        }
+        //Chainmail
+
+        //Breastplate
+        tempType = "Armor, Medium";
+        tempitemName = "Breastplate";
+        tempCost = 200;
+        tempWeight = 30;
+        tempArmorBonus = 6;
+        tempMaxDexBonus = 3;
+        tempArmorCheckPenality = -4;
+        tempArcaneSpellFailure = 25;
+        tempSpeed30 = 20;
+        tempSpeed20 = 15;
+        tempDescription = "Covering only the torso, a breastplate is made up of a single piece of sculpted metal.";
+
+        Item breastplate = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Breastplate))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Breastplate, breastplate);
+        }
+        //End Brestplate
+        #endregion Medium Armor
+
+        #region Heavy Armor
+     
+        //Splint Mail
+        tempType = "Armor, Heavy";
+        tempitemName = "Splint Mail";
+        tempCost = 200;
+        tempWeight = 30;
+        tempSpecial = "When running in heavy armor, you move only triple your speed.";
+        tempArmorBonus = 7;
+        tempMaxDexBonus = 0;
+        tempArmorCheckPenality = -7;
+        tempArcaneSpellFailure = 40;
+        tempSpeed30 = 20;
+        tempSpeed20 = 15;
+        tempDescription = "Splint mail is made up of metal strips, like banded mail. The suit includes gauntlets.";
+
+        Item splintMail = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SplintMail))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.SplintMail, splintMail);
+        }
+        //End Splint Mail
+
+        //Banded Mail
+        tempType = "Armor, Heavy";
+        tempitemName = "Banded Mail";
+        tempCost = 250;
+        tempWeight = 35;
+        tempSpecial = "When running in heavy armor, you move only triple your speed.";
+        tempArmorBonus = 7;
+        tempMaxDexBonus = 1;
+        tempArmorCheckPenality = -6;
+        tempArcaneSpellFailure = 35;
+        tempSpeed30 = 20;
+        tempSpeed20 = 15;
+        tempDescription = "Banded mail is made up of overlapping strips of metal, fastened to a leather backing. The suit includes gauntlets.";
+
+        Item bandedMail = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.BandedMail))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.BandedMail, bandedMail);
+        }
+        //End Banded Mail
+
+        //Half-Plate
+        tempType = "Armor, Heavy";
+        tempitemName = "Half-Plate";
+        tempCost = 600;
+        tempWeight = 50;
+        tempSpecial = "When running in heavy armor, you move only triple your speed.";
+        tempArmorBonus = 8;
+        tempMaxDexBonus = 0;
+        tempArmorCheckPenality = -7;
+        tempArcaneSpellFailure = 40;
+        tempSpeed30 = 20;
+        tempSpeed20 = 15;
+        tempDescription = "Combining elements of full plate and chainmail, half-plate includes gauntlets and a helm.";
+
+        Item halfPlate = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.HalfPlate))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.HalfPlate, halfPlate);
+        }
+        //End Half-Plate
+
+        //Full Plate
+        tempType = "Armor, Heavy";
+        tempitemName = "Half-Plate";
+        tempCost = 1500;
+        tempWeight = 50;
+        tempSpecial = "When running in heavy armor, you move only triple your speed.";
+        tempArmorBonus = 9;
+        tempMaxDexBonus = 1;
+        tempArmorCheckPenality = -6;
+        tempArcaneSpellFailure = 35;
+        tempSpeed30 = 20;
+        tempSpeed20 = 15;
+        tempDescription = "This metal suit includes gauntlets, heavy leather boots, a visored helmet, and a thick layer of padding that is worn underneath the armor. Each suit of full plate musst be individually fitted to its owner by a master armorsmith, although a captured suit can be resized to fit a new owner at a cost of 200 to 800gp (2d4 x 100).";
+
+        Item fullPlate = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.FullPlate))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.FullPlate, fullPlate);
+        }
+        //End Full Plate
+        #endregion Heavy Armor
+
+        #region Shields
+        //Buckler
+        tempType = "Armor, Shields";
+        tempitemName = "Buckler";
+        tempCost = 5;
+        tempWeight = 5;
+        tempArmorBonus = 1;
+        tempMaxDexBonus = 0;
+        tempArmorCheckPenality = -1;
+        tempArcaneSpellFailure = 5;
+        tempSpeed30 = 0;
+        tempSpeed20 = 0;
+        tempDescription = "This small metal shield is worn strapped to your forearm. You can use a bow or crossbow without penalty while carrying it. You can also use your shield arm to wield a weapon, but take a -1 penalty to attack rolls while doing so. This penalty stacks with those that may apply for fighting with your off-hand and for fighting with two weapons. In any case, if you use a wepaon in your offhand, you lose the buckler's AC bonus until your next turn. You can cast a spell with somatic components using your shield arm, but you lose the buckler's AC bonus until your next turn. You can't make a shield bash with a buckler.";
+
+        Item buckler = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Buckler))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Buckler, buckler);
+        }
+        //End Buckler
+
+        //Shield, light wooden
+        tempType = "Armor, Shields";
+        tempitemName = "Shield, Light Wooden";
+        tempCost = 5;
+        tempWeight = 5;
+        tempArmorBonus = 1;
+        tempMaxDexBonus = 0;
+        tempArmorCheckPenality = -1;
+        tempArcaneSpellFailure = 5;
+        tempSpeed30 = 0;
+        tempSpeed20 = 0;
+        tempDescription = "You strap a shield to your forearm and grip it with your hand. A light shield's weight lets you carry other items in that hand, although you cannot use weapons with it. Wooden and steel sheilds offer the same basic protection, though they respond differently to some spells and effects. You can bash an opponent with a light shield. Used this way, a light shield is a martial bludgeoning weapon. For the purpose of penalties on attack rolls, treat a  light shield as a light weapon. If you use your shield as a wepaon, you lose its AC bonus until your next turn. An enhancement bonus on a shield does not imporove the effectiveness of a shield bash made with it, bu tthe shield can be made into a magic weapon in its own right.";
+
+        Item shieldLightWooden = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ShieldLightWooden))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.ShieldLightWooden, shieldLightWooden);
+        }
+        //Shield, light wooden
+
+        //Shield, Light steel
+        tempType = "Armor, Shields";
+        tempitemName = "Shield, Light Steel";
+        tempCost = 9;
+        tempWeight = 5;
+        tempArmorBonus = 1;
+        tempMaxDexBonus = 0;
+        tempArmorCheckPenality = -1;
+        tempArcaneSpellFailure = 5;
+        tempSpeed30 = 0;
+        tempSpeed20 = 0;
+        tempDescription = "You strap a shield to your forearm and grip it with your hand. A light shield's weight lets you carry other items in that hand, although you cannot use weapons with it. Wooden and steel sheilds offer the same basic protection, though they respond differently to some spells and effects. You can bash an opponent with a light shield. Used this way, a light shield is a martial bludgeoning weapon. For the purpose of penalties on attack rolls, treat a  light shield as a light weapon. If you use your shield as a wepaon, you lose its AC bonus until your next turn. An enhancement bonus on a shield does not imporove the effectiveness of a shield bash made with it, bu tthe shield can be made into a magic weapon in its own right.";
+
+        Item shieldLightSteel = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ShieldLightSteel))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.ShieldLightSteel, shieldLightSteel);
+        }
+        //End Shield, Light Steel
+
+        //Shield, Heavy Wooden
+        tempType = "Armor, Shields";
+        tempitemName = "Shield, Heavy Wooden";
+        tempCost = 7;
+        tempWeight = 6;
+        tempArmorBonus = 2;
+        tempMaxDexBonus = 0;
+        tempArmorCheckPenality = -2;
+        tempArcaneSpellFailure = 15;
+        tempSpeed30 = 0;
+        tempSpeed20 = 0;
+        tempDescription = "You strap a shield to your forearm and grip it with your hand. A heavy shield is so heavy that you can't use your shield hand for anything else. You can bash an opponent with a heavy shield. Used this way, a heavy shield is a martial bludgeoning weapon. For the purpose of penalties on attack rolls, treat a  heavy shield as a one-handed weapon. If you use your shield as a wepaon, you lose its AC bonus until your next turn. An enhancement bonus on a shield does not imporove the effectiveness of a shield bash made with it, bu tthe shield can be made into a magic weapon in its own right.";
+
+        Item shieldHeavyWooden = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ShieldHeavyWooden))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.ShieldHeavyWooden, shieldHeavyWooden);
+        }
+        //End Shield, Heavy Wooden
+
+        //Shield, Heavy Steel
+        tempType = "Armor, Shields";
+        tempitemName = "Shield, Heavy Steel";
+        tempCost = 20;
+        tempWeight = 10;
+        tempArmorBonus = 2;
+        tempMaxDexBonus = 0;
+        tempArmorCheckPenality = -2;
+        tempArcaneSpellFailure = 15;
+        tempSpeed30 = 0;
+        tempSpeed20 = 0;
+        tempDescription = "You strap a shield to your forearm and grip it with your hand. A heavy shield is so heavy that you can't use your shield hand for anything else. You can bash an opponent with a heavy shield. Used this way, a heavy shield is a martial bludgeoning weapon. For the purpose of penalties on attack rolls, treat a  heavy shield as a one-handed weapon. If you use your shield as a wepaon, you lose its AC bonus until your next turn. An enhancement bonus on a shield does not imporove the effectiveness of a shield bash made with it, bu tthe shield can be made into a magic weapon in its own right.";
+
+        Item shieldHeavySteel = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ShieldHeavySteel))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.ShieldHeavySteel, shieldHeavySteel);
+        }
+        //Shield, Heavy steel
+
+        //Shield Tower
+        tempType = "Armor, Shields";
+        tempitemName = "Shield, Tower";
+        tempCost = 30;
+        tempWeight = 45;
+        tempArmorBonus = 4;
+        tempMaxDexBonus = 2;
+        tempArmorCheckPenality = -10;
+        tempArcaneSpellFailure = 50;
+        tempSpeed30 = 0;
+        tempSpeed20 = 0;
+        tempDescription = "This massive wooden shield is nearly as tall as you are. In most situations, it provides the indicated shield bonus to  your AC. As a standard action, however, you can use a tower shield to grant you total cover until the beginning of your next turn. When using a tower shield in this way, you must choose one edge of your space. That edge is treated as a solid wall for attcks targeting you onlly. You gain total cover for attacks that pass through this edge and no cover for attacks that do not pass through this edge. The shield does not, however provide cover against targeted spells' a spell caster can cast a spell on you by targeting the shield you are holding. You cannot bash with a tower shield, nor can you use your shield hand for anything else. When employing a tower shield in combat, you take a -2 penalty on attack rolls because of the shield's encumbrance.";
+
+        Item shieldTower = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ShieldTower))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.ShieldTower, shieldTower);
+        }
+        //End Shield Tower
+        #endregion Shields
+
+        #region Extras
+
+        //Armor Spikes
+        tempType = "Armor, Extras";
+        tempitemName = "Armor, Spikes";
+        tempCost = 50;
+        tempSpecial = "All costs/weight are additive to the original piece of armor's cost.";
+        tempWeight = 10;
+        tempArmorBonus = 0;
+        tempMaxDexBonus = 0;
+        tempArmorCheckPenality = 0;
+        tempArcaneSpellFailure = 0;
+        tempSpeed30 = 0;
+        tempSpeed20 = 0;
+        tempDescription = "You can have spikes added to your armor, which allow you to deal extra piercing damage on a succesful grapple attack. The spikes count as a martial weapon. If you are not proficient with them, you take a -4 penalty on grapple checks when you try to use them. You can also make a regular melee attack (or off-hand attack) with the spikes, and they count as a light weapon in this case. (You can't also make an attack with armor spikes if you have already made an attack with another off-hand weapon, and vice versa). An enhancement bonus to a suit of armor does not improve the spikes' effectiveness, but the spikes can be made into magic weapons in their own right.";
+
+        Item armorSpikes = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ArmorSpikes))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.ArmorSpikes, armorSpikes);
+        }
+        //Armor Spikes
+
+        //Gauntlet, Locked
+        tempType = "Armor, Extras";
+        tempitemName = "Gauntlet, Locked";
+        tempCost = 8;
+        tempWeight = 5;
+        tempSpecial = "The weight is additive to the armors base weight. However this only applies if you're wearing a breastplate, light armor, or no armor. Otherwize, the locked gauntlet replaceds a gauntlet you already have as prart of the armor.";
+        tempArmorBonus = 0;
+        tempMaxDexBonus = 0;
+        tempArmorCheckPenality = 0;
+        tempArcaneSpellFailure = 0;
+        tempSpeed30 = 0;
+        tempSpeed20 = 0;
+        tempDescription = "This armored gauntlet has small chains and braces that allow the wearer to attach a wepaon to the gauntlet so that it cannot be dropped easily. It provides a +10 bonus to your Combat Maneuver Defense to keep from being diarmed in combat. Removing a weapon from a locked gauntlet or attaching a weapon to a locked gauntlet is a full-round action that provokes attacks of opportunity. The price given is for a single locked gauntlet. While the gauntlet is locked, you can't use the hand wearing it for casting spells or employing skills. (You can still cast spells with somatic components, provided that your other hand is free). Like a normal gauntlet, a locked gauntlet lets you deal leathal damage rather than nonleathal with an unarmed strike.";
+
+        Item gauntletLocked = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.GauntletLocked))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.GauntletLocked, gauntletLocked);
+        }
+        //End Gauntlet, Locked
+
+        //Shield Spikes
+        tempType = "Armor, Extras";
+        tempitemName = "Shield, Spikes";
+        tempCost = 10;
+        tempSpecial = "All costs/weight are additive to the original shield's cost.";
+        tempWeight = 5;
+        tempArmorBonus = 0;
+        tempMaxDexBonus = 0;
+        tempArmorCheckPenality = 0;
+        tempArcaneSpellFailure = 0;
+        tempSpeed30 = 0;
+        tempSpeed20 = 0;
+        tempDescription = "These spikes turn a shield into a martial piercing weapon and icrease the damage dealt by a shield bash as if the shield were designed for a creature one size category larger than you. You can't put spikes on a buckler or a tower shield. Otherwize, attacking with a spiked shield is like making a shield bash attack. An enhancement bonus on a spiked shield does not improve the effectiveness of a shield bash made with it, but a spiked shield can be made inot a magic weapon in its own right.";
+
+        Item shieldSpikes = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ShieldSpikes))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.ShieldSpikes, shieldSpikes);
+        }
+        //End Shield Spikes
+        #endregion Extras
         #endregion Armor
 
+        #region Utility
+       
+        //Backpack (empty)
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Backpack (empty)";
+        tempCost = 2;
+        tempWeight = 2;
+        tempScale = true;
+        tempDescription = "A rugged backpack made from cloath or leather. Weights 1/4th this ammount when made for small creatures.";
 
+        Item backpackEmpty = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Backpack))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Backpack, backpackEmpty);
+        }
+        tempScale = false;
+        //End Backpack Empty
+
+        //Barrel empty
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Barrel (empty)";
+        tempCost = 2;
+        tempWeight = 30;
+        tempDescription = "A wooden barrel, bound with iron bands.";
+
+        Item barrelEmpty = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Barrel))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Barrel, barrelEmpty);
+        }
+        //End Barrel Empty
+
+        //Basket Empty
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Basket (empty)";
+        tempCost = 0.04f;
+        tempWeight = 1;
+        tempDescription = "A small wicker basket.";
+
+        Item basketEmpty = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Basket))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Basket, basketEmpty);
+        }
+        //End Basket Empty
+
+        //Bedroll
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Bedroll";
+        tempCost = 0.01f;
+        tempWeight = 5;
+        tempScale = true;
+        tempDescription = "A warm bedroll. Weighs 1/4th this ammount when made for small creatures";
+
+        Item bedroll = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Bedroll))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Bedroll, bedroll);
+        }
+        tempScale = false;
+        //End Bedroll
+
+        //Bell
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Bell";
+        tempCost = 1;
+        tempWeight = 0;
+        tempDescription = "A small silver or gold bell.";
+
+        Item bell = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Bell))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Bell, bell);
+        }
+        //End Bell
+
+        //Blanket, Winter
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Blanket, Winter";
+        tempCost = 0.05f;
+        tempWeight = 3;
+        tempScale = true;
+        tempDescription = "A heavy winter blanket. Weights 1/4th this ammount when made for small creatures.";
+
+        Item blaketWinter = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.BlanketWinter))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.BlanketWinter, blaketWinter);
+        }
+        tempScale = false;
+        //End Blanket, Winter
+
+        //Block and Tackle
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Block and Tackle";
+        tempCost = 5;
+        tempWeight = 5;
+        tempDescription = "A system of two pulleys with a rope threaded through them. Used to lift or pull heavy loads.";
+
+        Item blockAndTackle = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.BlockAndTackle))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.BlockAndTackle, blockAndTackle);
+        }
+        //End Block and Tackle
+
+        //Bottle, Glass
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Bottle, Glass";
+        tempCost = 2;
+        tempWeight = 1;
+        tempDescription = "A glass bottle.";
+
+        Item bottleGlass = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.BottleGlass))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.BottleGlass, bottleGlass);
+        }
+        //End Bottle, Glass
+
+        //Bucket (empty)
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Bucket, Empty";
+        tempCost = .05f;
+        tempWeight = 1;
+        tempDescription = "A empty wooden bucket.";
+
+        Item bucketEmpty = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Bucket))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Bucket, bucketEmpty);
+        }
+        //End Bucket (empty)
+
+        //Caltrops
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Caltrops";
+        tempCost = 1;
+        tempWeight = 2;
+        tempDescription = "A caltrop is a four-pronged metal spike crafted so that one prong faces up no matter how the caltrop comes to rest. You scatter caltrops on the ground in the hope that your nemies step on them or are at least forced to slow down to avoid them. One 2-pound bag of caltrops covers an area 5 square feet. Each time a creature moves into an area covered by caltrops (or spends a round fighting while standing in such an area), it runs the risk of stepping on one. Make an attack roll for the caltrops (base attack bonus +0) against the creature. For this attack, the creature's shield, armor, and deflection bonuses do not count. If the creature is wearing shoes or other footwear, it gets a +2 bonus to AC. If the attack succeds, the creature has stepped on a caltrop. The caltrop deals 1 point of damage, and the creature's speed is reduced by half because its foot is wounded. This movement penalty lasts for 24 hours, until the creature is successfully treated with a DC 15 Heal check, or unitl it receives at least 1 point of magical healing. A charging or running creature must immediately stop if it steps on a caltrop. Any creature moving at half speed or slower can pick its way thorugh a bed of caltrops with no trouble.";
+
+        Item caltrop = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Caltrops))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Caltrops, caltrop);
+        }
+        //End Caltrops
+
+        //Candle
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Candle";
+        tempCost = 0;
+        tempWeight = 0;
+        tempDescription = "A small wax candle. A candle dimly illuminates a small area, increasing the light level in a 5-foot radius by one step. A candle cannot increase the light level above normal light. A candle burns for 1 hour.";
+
+        Item candle = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Candle))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Candle, candle);
+        }
+        //End Candle
+
+        //Canvas
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Canvas (sq. yd.)";
+        tempCost = .001f;
+        tempWeight = 1;
+        tempDescription = "A sturdy canvas, the price is per square yard.";
+
+        Item canvas = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Canvas))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Canvas, canvas);
+        }
+        //End Canvas
+
+        //Case Map or scroll
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Case, Map or Scroll";
+        tempCost = 1;
+        tempWeight = 0.5f;
+        tempDescription = "A small case for a map or scroll, made of wood or hide.";
+
+        Item caseMapOrScroll = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.CaseMapOrScroll))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.CaseMapOrScroll, caseMapOrScroll);
+        }
+        //End Case Map or Scroll
+
+        //Chain (10ft)
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Chain (10ft)";
+        tempCost = 30;
+        tempWeight = 2;
+        tempDescription = "A ten foot length of chain, made from steel or iron links. A chain has hardness of 10 and 5 hit points. It can be burst with a DC 26 Strength check.";
+
+        Item chain10ft = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Chain10ft))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Chain10ft, chain10ft);
+        }
+        //End Chain (10ft)
+
+        //Chalk
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Chalk (1pc)";
+        tempCost = 0.001f;
+        tempWeight = 0;
+        tempDescription = "A two inch length of chalk.";
+
+        Item chalk = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ChalkOne))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.ChalkOne, chalk);
+        }
+        //End Chalk
+
+        //Chest (empty)
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Chest (empty)";
+        tempCost = 2;
+        tempWeight = 25;
+        tempDescription = "A small sturdy chest made from wood with iron bands.";
+
+        Item chestEmpty = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Chest))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Chest, chestEmpty);
+        }
+        //End Chest (empty)
+
+        //Crowbar
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Crowbar";
+        tempCost = 2;
+        tempWeight = 5;
+        tempDescription = "A crowbar grants a +2 circumstance bonus on Strength checks made to force open a door or chest. If used in combat, treat a crowbar as a one-handed improvised weapon that deals bludgeoning damage equal to that of a club of its size.";
+
+        Item crowbar = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Crowbar))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Crowbar, crowbar);
+        }
+        //End Crowbar
+
+        //Firewood (per day)
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Firewood (per day)";
+        tempCost = 0.001f;
+        tempWeight = 20;
+        tempDescription = "A split firewood used to fuel fires.";
+
+        Item firewood = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Firewood))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Firewood, firewood);
+        }
+        //End Firewood (per day)
+
+        //Fishook
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Fishhook";
+        tempCost = 0.01f;
+        tempWeight = 0;
+        tempDescription = "A fishhook.";
+
+        Item fishhook = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Fishhook))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Fishhook, fishhook);
+        }
+        //End Fishook
+
+        //Fishing net, 25 sq. ft.
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Fishing net, 25 sq. ft.";
+        tempCost = 4;
+        tempWeight = 5;
+        tempDescription = "A fishing net 25 sq. ft. in size.";
+
+        Item fishingNet = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.FishingNet25))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.FishingNet25, fishingNet);
+        }
+        //End Fishing net, 25 sq. ft.
+
+        //Flask (empty)
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Flask (empty)";
+        tempCost = 0.003f;
+        tempWeight = 1.5f;
+        tempDescription = "A empty flask, used for holding liquids.";
+
+        Item flaskEmpty = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Flask))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Flask, flaskEmpty);
+        }
+        //End Flask (empty)
+
+        //Flint and Steel
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Flint and Steel";
+        tempCost = 1;
+        tempWeight = 0;
+        tempDescription = "Lighting a torch with a flint and steel is a full-round action, and lighting any other fire with them takes at least that long.";
+
+        Item flintAndSteel = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.FlintAndSteel))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.FlintAndSteel, flintAndSteel);
+        }
+        //End Flint and Steel
+
+        //Grappeling Hook
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Grappling Hook";
+        tempCost = 1;
+        tempWeight = 4;
+        tempDescription = "A grappeling hook is a multi-pronged hook fastend to a length of rope. Throwing a grappling hook requires a ranged attack roll, treating the hook as a thrown weapon with a range increment of 10 feet. Objects with ample places to catch the hook are AC 5.";
+
+        Item grapplingHook = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.GrappelingHook))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.GrappelingHook, grapplingHook);
+        }
+        //End Grappeling Hook
+
+        //Hammer
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Hammer";
+        tempCost = 0.05f;
+        tempWeight = 2;
+        tempDescription = "A small metal head fastened to a short shaft. If a hammer is used in combat, treat it as a one-handed improvised weapon that deals bludgeoning damge equal to that of a spiked gauntlet of its size.";
+
+        Item hammer = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Hammer))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Hammer, hammer);
+        }
+        //End Hammer
+
+        //Hourglass
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Hourglass";
+        tempCost = 25;
+        tempWeight = 1;
+        tempDescription = "A small wooden or iron hourglass, that uses sand to track time.";
+
+        Item hourglass = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Hourglass))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Hourglass, hourglass);
+        }
+        //End Hourglass
+
+        //Ink 1 oz
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Ink (1 oz, vial)";
+        tempCost = 8;
+        tempWeight = 0;
+        tempDescription = "A small vial full of ink.";
+
+        Item ink1oz = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Ink))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Ink, ink1oz);
+        }
+        //End Ink 1 oz
+
+        //Inkpen
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Inkpen";
+        tempCost = .01f;
+        tempWeight = 0;
+        tempDescription = "An inkpen.";
+
+        Item inkpen = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Inkpen))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Inkpen, inkpen);
+        }
+        //End Inkpen
+
+        //Jug, clay
+
+        //End Jug, clay
+
+        #endregion Utility
 
         #endregion ItemInitalization
     }
