@@ -4671,7 +4671,7 @@ public class pathfinderInit : MonoBehaviour {
         //Bedroll
         tempType = "Utility, Adventuring Gear";
         tempitemName = "Bedroll";
-        tempCost = 0.01f;
+        tempCost = 0.001f;
         tempWeight = 5;
         tempScale = true;
         tempDescription = "A warm bedroll. Weighs 1/4th this ammount when made for small creatures";
@@ -4701,7 +4701,7 @@ public class pathfinderInit : MonoBehaviour {
         //Blanket, Winter
         tempType = "Utility, Adventuring Gear";
         tempitemName = "Blanket, Winter";
-        tempCost = 0.05f;
+        tempCost = 0.005f;
         tempWeight = 3;
         tempScale = true;
         tempDescription = "A heavy winter blanket. Weights 1/4th this ammount when made for small creatures.";
@@ -4745,7 +4745,7 @@ public class pathfinderInit : MonoBehaviour {
         //Bucket (empty)
         tempType = "Utility, Adventuring Gear";
         tempitemName = "Bucket, Empty";
-        tempCost = .05f;
+        tempCost = .005f;
         tempWeight = 1;
         tempDescription = "A empty wooden bucket.";
 
@@ -4773,7 +4773,7 @@ public class pathfinderInit : MonoBehaviour {
         //Candle
         tempType = "Utility, Adventuring Gear";
         tempitemName = "Candle";
-        tempCost = 0;
+        tempCost = 0.00001f;
         tempWeight = 0;
         tempDescription = "A small wax candle. A candle dimly illuminates a small area, increasing the light level in a 5-foot radius by one step. A candle cannot increase the light level above normal light. A candle burns for 1 hour.";
 
@@ -4829,7 +4829,7 @@ public class pathfinderInit : MonoBehaviour {
         //Chalk
         tempType = "Utility, Adventuring Gear";
         tempitemName = "Chalk (1pc)";
-        tempCost = 0.001f;
+        tempCost = 0.0001f;
         tempWeight = 0;
         tempDescription = "A two inch length of chalk.";
 
@@ -4871,7 +4871,7 @@ public class pathfinderInit : MonoBehaviour {
         //Firewood (per day)
         tempType = "Utility, Adventuring Gear";
         tempitemName = "Firewood (per day)";
-        tempCost = 0.001f;
+        tempCost = 0.0001f;
         tempWeight = 20;
         tempDescription = "A split firewood used to fuel fires.";
 
@@ -4885,7 +4885,7 @@ public class pathfinderInit : MonoBehaviour {
         //Fishook
         tempType = "Utility, Adventuring Gear";
         tempitemName = "Fishhook";
-        tempCost = 0.01f;
+        tempCost = 0.001f;
         tempWeight = 0;
         tempDescription = "A fishhook.";
 
@@ -4913,7 +4913,7 @@ public class pathfinderInit : MonoBehaviour {
         //Flask (empty)
         tempType = "Utility, Adventuring Gear";
         tempitemName = "Flask (empty)";
-        tempCost = 0.003f;
+        tempCost = 0.0003f;
         tempWeight = 1.5f;
         tempDescription = "A empty flask, used for holding liquids.";
 
@@ -4955,7 +4955,7 @@ public class pathfinderInit : MonoBehaviour {
         //Hammer
         tempType = "Utility, Adventuring Gear";
         tempitemName = "Hammer";
-        tempCost = 0.05f;
+        tempCost = 0.005f;
         tempWeight = 2;
         tempDescription = "A small metal head fastened to a short shaft. If a hammer is used in combat, treat it as a one-handed improvised weapon that deals bludgeoning damge equal to that of a spiked gauntlet of its size.";
 
@@ -5009,9 +5009,593 @@ public class pathfinderInit : MonoBehaviour {
         //End Inkpen
 
         //Jug, clay
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Jug, Clay";
+        tempCost = 0.0003f;
+        tempWeight = 9;
+        tempDescription = "A simple clay jug.";
 
+        Item jugClay = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.JugClay))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.JugClay, jugClay);
+        }
         //End Jug, clay
 
+        //Ladder, 10ft
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Ladder, 10ft";
+        tempCost = 0.02f;
+        tempWeight = 20;
+        tempDescription = "A wooden ladder 10ft tall.";
+
+        Item ladder10ft = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Ladder10ft))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Ladder10ft, ladder10ft);
+        }
+        //End Ladder, 10ft
+
+        //Lamp, common
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Lamp, Common";
+        tempCost = 0.001f;
+        tempWeight = 20;
+        tempDescription = "A lamp illuminates a small area, providing normal lightin a 15-foot radius and increasing the light leve by one step for an additional 15 feet beyond that area. A lamp does not increase the light-level in normal light or bright light. A lamp burns for 6 hours on one pint of oil. You can carry a lamp in one hand.";
+
+        Item lampCommon = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.LampCommon))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.LampCommon, lampCommon);
+        }
+        //Lamp, common
+
+        //Lantern, bullseye
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Lantern, Bullseye";
+        tempCost = 12;
+        tempWeight = 3;
+        tempDescription = "A bullseye lantern provides normal light in a 60-foot cone and increases the light level by one step in the area beyond that. A bullseye lantern does not increase the light level in normal light or bright light. A lantern burns for 6 hours on one pint of oil.. You can carry a lantern in one hand.";
+
+        Item lanternBullseye = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.LanternBullseye))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.LanternBullseye, lanternBullseye);
+        }
+        //End Lantern, bullseye
+
+        //Lantern, Hooded
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Lantern, Hooded";
+        tempCost = 7;
+        tempWeight = 2;
+        tempDescription = "A hooded lanter sheds normal light in a 30-foot radius and increases the light level by one step for an additional 30 feet beyond that area. A hooded lantern does not increase the light level in normal light or bright light. A lantern burns for 6 hours on one pint of oil. You can carry a lantern in one hand.";
+
+        Item lanternHooded = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.LanternHodded))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.LanternHodded, lanternHooded);
+        }
+        //End Lantern, Hooded
+
+        //Lock, Simple
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Lock, Simple";
+        tempCost = 20;
+        tempWeight = 1;
+        tempDescription = "The DC to open a lock with the Disable Device skill depends on the lock's quality: simple (DC 20), average (DC 25), good (DC 30), or superior (DC 40).";
+
+        Item lockSimple = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.LockSimple))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.LockSimple, lockSimple);
+        }
+        //End Lock, Simple
+
+        //Lock, Average
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Lock, Average";
+        tempCost = 40;
+        tempWeight = 1;
+        tempDescription = "The DC to open a lock with the Disable Device skill depends on the lock's quality: simple (DC 20), average (DC 25), good (DC 30), or superior (DC 40).";
+
+        Item lockAverage = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.LockAverage))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.LockAverage, lockAverage);
+        }
+        //End Lock, Average
+
+        //Lock, Good
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Lock, Good";
+        tempCost = 80;
+        tempWeight = 1;
+        tempDescription = "The DC to open a lock with the Disable Device skill depends on the lock's quality: simple (DC 20), average (DC 25), good (DC 30), or superior (DC 40).";
+
+        Item lockGood = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.LockGood))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.LockGood, lockGood);
+        }
+        //End Lock, Good
+
+        //Lock, Superior
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Lock, Simple";
+        tempCost = 150;
+        tempWeight = 1;
+        tempDescription = "The DC to open a lock with the Disable Device skill depends on the lock's quality: simple (DC 20), average (DC 25), good (DC 30), or superior (DC 40).";
+
+        Item lockSuperior = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.LockSuperior))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.LockSuperior, lockSuperior);
+        }
+        //End Lock, Superior
+
+        //Manacles
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Manacles";
+        tempCost = 15;
+        tempWeight = 2;
+        tempDescription = "Manacles can bind a Medium creature. A manacled creatre can use the Escape Artist skill to slip free (DC 30 for simple, DC 35 for masterwork). Breaking the manacles requires a Strength check (DC 26 for simple, DC 28 for masterwork). Manacles have hardness 10 and 10 hit points. Most manacles have locks; add the cost of the lock you want to the cost of the manacles. For the same cost, you can but manacles for a Small creature. For a Large creature, manacles cost 10 times the indicated amount, and for Huge creature, 100 times the indicated ammount.";
+
+        Item manacles = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Manacles))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Manacles, manacles);
+        }
+        //End Manacles
+
+        //Masterwork Manacles
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Manacles, Masterwork";
+        tempCost = 50;
+        tempWeight = 2;
+        tempDescription = "Manacles can bind a Medium creature. A manacled creatre can use the Escape Artist skill to slip free (DC 30 for simple, DC 35 for masterwork). Breaking the manacles requires a Strength check (DC 26 for simple, DC 28 for masterwork). Manacles have hardness 10 and 10 hit points. Most manacles have locks; add the cost of the lock you want to the cost of the manacles. For the same cost, you can but manacles for a Small creature. For a Large creature, manacles cost 10 times the indicated amount, and for Huge creature, 100 times the indicated ammount.";
+
+        Item masterworkManacles = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ManaclesMasterwork))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.ManaclesMasterwork, masterworkManacles);
+        }
+        //End Masterwork Manacles
+
+        //Mirror, small steel
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Mirror, Small Steel";
+        tempCost = 10;
+        tempWeight = 0.5f;
+        tempDescription = "A small steel framed mirror.";
+
+        Item mirrorSmallSteel = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.MirrorSmallSteel))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.MirrorSmallSteel, mirrorSmallSteel);
+        }
+        //End Mirror, small steel
+
+        //Mug, Clay
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Mug, Clay";
+        tempCost = 0.0002f;
+        tempWeight = 1;
+        tempDescription = "A simple clay mug or tankard.";
+
+        Item mugClay = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.MugClay))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.MugClay, mugClay);
+        }
+        //End Mug, Clay
+
+        //Oil, 1 pt
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Oil, 1-Pint Flask";
+        tempCost = .01f;
+        tempWeight = 1;
+        tempDescription = "A pint of oil burns for 6 hours in a lantern or lamp. You can also use a flask of oil as a splash weapon. Use the rules for alchemist's fire, except that it takes a full-round action to prepare a flask with a fuse. Once it is thrown, there is an 50% chance of it ingiting sucessfully.";
+
+        Item oilOnePnt = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Oil))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Oil, oilOnePnt);
+        }
+        //End Oil, 1 pt
+
+        //Paper (Sheet)
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Paper, Sheet";
+        tempCost = .04f;
+        tempWeight = 0;
+        tempDescription = "A sheet of paper.";
+
+        Item paper = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Paper))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Paper, paper);
+        }
+        //End Paper (Sheet)
+
+        //Parchment (Sheet)
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Parchment, Sheet";
+        tempCost = .02f;
+        tempWeight = 0;
+        tempDescription = "A sheet of parchment.";
+
+        Item parchmentSheet = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Parchment))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Parchment, parchmentSheet);
+        }
+        //End Parchment (Sheet)
+
+        //Pick, miner's
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Pick, Miner's";
+        tempCost = 3;
+        tempWeight = 20;
+        tempDescription = "If a miner's pick is used in combat, treat it as a two-handed improvised weapon that deals piercing damge equal to that of a heavy pick of its size.";
+
+        Item pickMiners = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.PickMiner))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.PickMiner, pickMiners);
+        }
+        //End Pick, miner's
+
+        //Pitcher, clay
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Pitcher, Clay";
+        tempCost = 0.0002f;
+        tempWeight = 5;
+        tempDescription = "A simple clay pitcher.";
+
+        Item pitcherClay = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.PitcherClay))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.PitcherClay, pitcherClay);
+        }
+        //End Pitcher, clay
+
+        //Piton
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Piton";
+        tempCost = 0.01f;
+        tempWeight = 0.5f;
+        tempDescription = "A metal spike that is driven ito a crack or seam in a climbing surface with a hammer, and is used to ancor the climber.";
+
+        Item piton = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Piton))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Piton, piton);
+        }
+        //End Piton
+
+        //Pole, 10-foot
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Pole, 10-foot";
+        tempCost = 0.0005f;
+        tempWeight = 8;
+        tempDescription = "A 10-foot pole, made of wood.";
+
+        Item pole10foot = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Pole10Foot))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Pole10Foot, pole10foot);
+        }
+        //End Pole, 10-foot
+
+        //Pot, iron
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Pot, Iron";
+        tempCost = 0.08f;
+        tempWeight = 4;
+        tempDescription = "A iron pot, used for brewing or cooking.";
+
+        Item potIron = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.PotIron))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.PotIron, potIron);
+        }
+        //End Pot,iron
+
+        //Pouch, belt (empty)
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Pouch, Belt (empty)";
+        tempCost = 1;
+        tempWeight = 0.5f;
+        tempDescription = "A simple poutch, made of hide or leather, worn on the belt.";
+        tempScale = true;
+
+        Item pouchBelt = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.PouchBelt))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.PouchBelt, pouchBelt);
+        }
+
+        tempScale = false;
+        //End Pouch, belt (empty)
+
+        //Ram, portable
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Ram, Portable";
+        tempCost = 10;
+        tempWeight = 20;
+        tempDescription = "This iron-shod wooden beam gives you a +2 circumstance bonus on Strength checks made to break open a door and allows a second person to help, automatically increasing your bonus by 2.";
+
+        Item ramPortable = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.RamPortable))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.RamPortable, ramPortable);
+        }
+        //End Ram, portable
+
+        //Rations, Trail (per day)
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Rations, Trail (per day)";
+        tempCost = 0.05f;
+        tempWeight = 1;
+        tempDescription = "An assorment of food, all you need for a full days travel.";
+        tempScale = true;
+
+        Item rationsTrail = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.RationsTrail))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.RationsTrail, rationsTrail);
+        }
+
+        tempScale = false;
+        //End Rations, Trail (per day)
+
+        //Rope, hemp (50ft)
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Rope, Hemp (50ft)";
+        tempCost = 1;
+        tempWeight = 10;
+        tempDescription = " A sturdy rope made of hemp. This rope has 2 hit points and can be burst with a DC 23 Strength check.";
+
+        Item ropeHemp = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.RopeHemp))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.RopeHemp, ropeHemp);
+        }
+        //End Rope, hemp (50ft)
+
+        //Rope, Silk (50ft)
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Rope, Silk (50ft)";
+        tempCost = 10;
+        tempWeight = 5;
+        tempDescription = " A sturdy rope made of silk. This rope has 4 hit points and can be burst with a DC 24 Strength check.";
+
+        Item ropeSilk = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.RopeSilk))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.RopeSilk, ropeSilk);
+        }
+        //End Rope, Silk (50ft)
+
+        //Sack (empty)
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Sack (empty)";
+        tempCost = 0.01f;
+        tempWeight = 0.5f;
+        tempDescription = " A empty sack made of burlap or a similar material.";
+        tempScale = true;
+
+        Item sackEmpty = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Sack))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Sack, sackEmpty);
+        }
+
+        tempScale = false;
+        //End Sack (empty)
+
+        //Sealing wax (5 oz)
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Sealing Wax (5oz)";
+        tempCost = 1;
+        tempWeight = 1;
+        tempDescription = "Wax designed for sealing letters.";
+
+        Item sealingWax = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SealingWax))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.SealingWax, sealingWax);
+        }
+        //End Sealing wax (5 oz)
+
+        //Sewing Needle
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Sewing Needle";
+        tempCost = 0.05f;
+        tempWeight = 0;
+        tempDescription = "A simple sweing needle, made from steel.";
+
+        Item sewingNeedle = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SewingNeedle))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.SewingNeedle, sewingNeedle);
+        }
+        //End Sewing Needle
+
+        //Shovel or Spade
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Shovel or Spade";
+        tempCost = 2;
+        tempWeight = 8;
+        tempDescription = "If a shovel is used in combat, treat it as a one-handed improvised weapon that deals bludgeoning damage equal to that of a club of its size.";
+
+        Item shovel = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ShovelOrSpade))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.ShovelOrSpade, shovel);
+        }
+        //End Shovel or Spade
+
+        //Signal Whistle
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Signal Whistle";
+        tempCost = 0.08f;
+        tempWeight = 0;
+        tempDescription = "A whistle used to send signals.";
+
+        Item signalWhistle = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SignalWhistle))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.SignalWhistle, signalWhistle);
+        }
+        //End Signal Whistle
+
+        //Signet ring
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Signet Ring";
+        tempCost = 5;
+        tempWeight = 0;
+        tempDescription = "An ornate ring, usually with a crest or symbol on it. Signet rings are used to sign documents and letter by pressing the ring into wax.";
+
+        Item signetRing = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SignetRing))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.SignetRing, signetRing);
+        }
+        //End Signet ring
+
+        //Sledge
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Sledge";
+        tempCost = 1;
+        tempWeight = 10;
+        tempDescription = "A vehicle on runners for conveying loads or passengers especially over snow or ice, often pulled by draft animals.";
+
+        Item sledge = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Sledge))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Sledge, sledge);
+        }
+        //End Sledge
+
+        //Soap (per lb)
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Soap (per lb)";
+        tempCost = 0.05f;
+        tempWeight = 1;
+        tempDescription = "A bar of soap weighing one pound.";
+
+        Item soap = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Soap))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Soap, soap);
+        }
+        //End Soap (per lb)
+
+        //Spyglass
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Spyglass";
+        tempCost = 1000;
+        tempWeight = 1;
+        tempDescription = "A metal or wooden spyglass. Objeccts viewed through a spyglass are magnified to twice their size. Characters using a spyglass take a -1 penalty on Perception skill checks per 20 feet of distance to the target, if the target is visible.";
+
+        Item spyglass = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Spyglass))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Spyglass, spyglass);
+        }
+        //End Spyglass
+
+        //Tent
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Tent";
+        tempCost = 10;
+        tempWeight = 20;
+        tempDescription = "A small tent, sized to hold one person of medium size. Tents have a wooden frame with hide or leather suspended between the frame.";
+        tempScale = true;
+
+        Item tent = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Tent))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Tent, tent);
+        }
+
+        tempScale = false;
+        //End Tent
+
+        //Torch
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Torch";
+        tempCost = 0.001f;
+        tempWeight = 1;
+        tempDescription = "A length of wood, with one end wrapped in fabric and soaked in oil. A torch burns for 1 hour, shedding normal light in a 20-foot radius and increasing the light level by one step for an additional 20 feet beyond that area. A torchdoes not increase the light level in normal light or bright light. If a torch is used in combat, treat it as a one-handed improvised weapon that deals bludgeoning damage equal to that of a gauntlet of its size, pluse 1 point of fire damage.";
+
+        Item torch = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Torch))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Torch, torch);
+        }
+        //End Torch
+
+        //Vial, ink or potion
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Vial, Ink or Potion";
+        tempCost = 1;
+        tempWeight = 0;
+        tempDescription = "A vial is made out of glass or steel and holds 1 ounce of liquid.";
+
+        Item vial = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.VialInkOrPotion))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.VialInkOrPotion, vial);
+        }
+        //End Vial, ink or potion
+
+        //Water clock
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Water Clock";
+        tempCost = 1000;
+        tempWeight = 200;
+        tempDescription = "This large, bulky contrivance gives the time accurately to within half an hour per day since it was last set. It requires a source eof water, and it must be kept still because it marks the time by the regulated flow of droplets of water.";
+
+        Item waterClock = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.WaterClock))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.WaterClock, waterClock);
+        }
+        //End water clock
+
+        //Waterskin
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Waterskin";
+        tempCost = 1;
+        tempWeight = 4;
+        tempDescription = "A waterskin is a receptacle used to hold water. Normally made of sheep or cow bladder, it retains water naturally. Contains enough water to last a full day of travel.";
+        tempScale = true;
+
+        Item waterskin = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Waterskin))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Waterskin, waterskin);
+        }
+
+        tempScale = false;
+        //End waterskin
+
+        //Whetstone
+        tempType = "Utility, Adventuring Gear";
+        tempitemName = "Whetstone";
+        tempCost = 0.0002f;
+        tempWeight = 1;
+        tempDescription = "A whetstone is a fine-grained stone used for sharpening cutting tools.";
+
+        Item whetstone = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Whetstone))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Whetstone, whetstone);
+        }
+        //End Whetstone
         #endregion Utility
 
         #endregion ItemInitalization
