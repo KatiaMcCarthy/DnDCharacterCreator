@@ -1228,7 +1228,7 @@ public class pathfinderInit : MonoBehaviour {
         Feat improvedChannel = new Feat(tempName, tempFeature, tempDescription, tempSpecial);
         if (!AppLibary.featDictionary.ContainsKey(AppLibary.ImprovedChannel))
         {
-            AppLibary.featDictionary.Add(AppLibary.ImprovedChannel, greaterVitalStrike);
+            AppLibary.featDictionary.Add(AppLibary.ImprovedChannel, improvedChannel);
         }
 
         //End Improved Channel
@@ -2036,9 +2036,9 @@ public class pathfinderInit : MonoBehaviour {
         tempNormal = "When you are using a shield with which you are proficient, you take the shield's armor check penalty on attack rolls and on all skill checks that involve moving.";
 
         Feat shieldProficiency = new Feat(tempName, tempFeature, tempDescription, tempSpecial, tempNormal);
-        if (!AppLibary.featDictionary.ContainsKey(AppLibary.Manyshot))
+        if (!AppLibary.featDictionary.ContainsKey(AppLibary.ShieldProficiency))
         {
-            AppLibary.featDictionary.Add(AppLibary.Manyshot, manyshot);
+            AppLibary.featDictionary.Add(AppLibary.ShieldProficiency, shieldProficiency);
         }
 
         //End Shield Proficiency
@@ -2065,9 +2065,9 @@ public class pathfinderInit : MonoBehaviour {
         tempSpecial = "You cannot move before and after an attack with a ranged weapon.";
            
         Feat shotOnTheRun = new Feat(tempName, tempFeature, tempDescription, tempSpecial);
-        if (!AppLibary.featDictionary.ContainsKey(AppLibary.Manyshot))
+        if (!AppLibary.featDictionary.ContainsKey(AppLibary.ShotOnTheRun))
         {
-            AppLibary.featDictionary.Add(AppLibary.Manyshot, manyshot);
+            AppLibary.featDictionary.Add(AppLibary.ShotOnTheRun, shotOnTheRun);
         }
 
         tempSpecial = "";
@@ -5596,6 +5596,413 @@ public class pathfinderInit : MonoBehaviour {
             AppLibary.itemDictionary.Add(AppLibary.Whetstone, whetstone);
         }
         //End Whetstone
+
+        //Special substances and items
+
+        //Acid (flask)
+        tempType = "Utility, Special Substances and Items";
+        tempitemName = "Acid (flask)";
+        tempCost = 10;
+        tempWeight = 1;
+        tempDescription = "A small flask of acid. You can throw a flask of acid as a splash weapon. Treat this attack as a ranged touch attack with a range increment of 10 feet. A direct hit deals 1d6 points of acid damage. Every creature within 5 feet of the point were the acid hits takes 1 point of acid damage from the splash.";
+
+        Item acidFlask = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.AcidFlask))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.AcidFlask, acidFlask);
+        }
+        //End Acid (flask)
+
+        //Alchemist's fire (flask)
+        tempType = "Utility, Special Substances and Items";
+        tempitemName = "Alchemist's Fire (flask)";
+        tempCost = 20;
+        tempWeight = 1;
+        tempDescription = "A small flask of alchemist's fire. You can throw a flask of alchemist's fire as a splash weapon. Treat this attack as a ranged touch attack with a range increment of 10 feet. A direct hit deals 1d6 points of fire damage. Every creature within 5 feet of the point where the flask hits takes 1 point of fire damage from the splash. On the round following a direct hit, the target takes an additional 1d6 points of damage. If desired, the target can use a full round action to attempt to extinguish the flames before taking this additional damage. Extinguishingthe flames requires a DC 15 Reflex save. Rolling on the ground provides the target a +2 bonus on the save. Leaping into a lake or magically extinguishing the flames automatically smothers the fire.";
+
+        Item alchemistsFire = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.AlchemistFire))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.AlchemistFire, alchemistsFire);
+        }
+        //End Alchemist's fire (flask)
+
+        //Antitoxin (vial)
+        tempType = "Utility, Special Substances and Items";
+        tempitemName = "Antitoxin (vial)";
+        tempCost = 50;
+        tempWeight = 0;
+        tempDescription = "A small vial of antitoxin. If you drink a vial of antitoxin, you get a +5 alchemical bonus on Fortitude saving throws against poison for 1 hour.";
+
+        Item antitoxin = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Antitoxin))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Antitoxin, antitoxin);
+        }
+        //End Antitoxin (vial)
+
+        //Everburning Torch
+        tempType = "Utility, Special Substances and Items";
+        tempitemName = "Everburning Torch";
+        tempCost = 110;
+        tempWeight = 1;
+        tempDescription = "This otherwize normal torch has a continual flame spell cast on it. This causes it to shed light like an ordinary torch, but it does not emit heat or deal fire damage if used as a weapon.";
+
+        Item everburningTorch = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.EverburningTorch))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.EverburningTorch, everburningTorch);
+        }
+        //End Everburing Torch
+
+        //Holy Water (flask)
+        tempType = "Utility, Special Substances and Items";
+        tempitemName = "Holy Water (flask)";
+        tempCost = 25;
+        tempWeight = 1;
+        tempDescription = "A small flask of holy water. Holy water damages undead creatures and evil outsiders almost as if it were acid. A flask of holy water can be thrown as a splash weapon. Treat this attack as a ranged touch attack with a range increment of 10 feet. A flask breaks if thrwn against the body of a corporeal creature, but to use it against an incoporeal ccreature, you must open the flask and pour the holy water out onto the target. Thus,  you can douse an incoperal creature with holy water only ifyou are adjacent to it. Doing so is a ranged touch attack that does not provoke attacks of opportunity. A direct hit by a flask of holy water deals 2d4 points of damage to an undead creature or an evil outsider. Each such creature within 5 feet of the point where the flask hits takes 1 point of damage from the splash. Temples to good deities sellll holy water at cost (making no profit). Holy water is made using the bless water spell.";
+
+        Item holyWater = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.HolyWaterFlask))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.HolyWaterFlask, holyWater);
+        }
+        //End Holy Water (flask)
+
+        //Smokestick
+        tempType = "Utility, Special Substances and Items";
+        tempitemName = "Smokestick";
+        tempCost = 25;
+        tempWeight = 0.5f;
+        tempDescription = "This alchemically treated wooden stick instantly creates thick, opaque smoke when burned. The smoke fills a 10-foot cube (treat the effect as a fog cloud spell, except that a moderate or stronger wind dissipates the smoke in 1 round). The stick is consumed after 1 round, and the smoke dissipates naturally after 1 minute.";
+
+        Item smokestick = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Smokestick))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Smokestick, smokestick);
+        }
+        //End Smokestick
+
+        //Sunrod
+        tempType = "Utility, Special Substances and Items";
+        tempitemName = "Sunrod";
+        tempCost = 2;
+        tempWeight = 1;
+        tempDescription = "This 1-foot long, gold-tipped, iron rod glows brightly when struck as a standard action. It sheds normal light in a 30-foot radius and increases the light level by one step for an additional 30 feet beyond that area. A sunrod does not increase the light level in normal light or bright light. It glows for 6 hours, after which the gold tip is burned out and worthless.";
+
+        Item sunrod = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Sunrod))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Sunrod, sunrod);
+        }
+        //End Sunrod
+
+        //Tanglefoot bag
+        tempType = "Utility, Special Substances and Items";
+        tempitemName = "Tanglefoot Bag";
+        tempCost = 50;
+        tempWeight = 4;
+        tempDescription = "A tanglefoot bag is a small sack filled with tar, resin, and other sticky substances. When you throw a tanglefoot bag at a creature (as a ranged touch attack with a range increment of 10 feet), the bag comes apart and goo bursts out, entangling the target and then becoming toough adn resilient upon exposure to air. An entangled creature takes a -2 penalty on attack rolls and a -4 penalty to Dexterity and must make a DC 15 Reflex save or be glued to the floor, unable to move. Even on a successful save, it can move only at half speed. Huge or larger creatures are unaffected by a tanglefoot bag. A flying creature is not stuck to the floor, but it must make a DC 15 Reflex save or be unable to fly(assuming it uses its wings to fly) and fall to the ground. A tanglefoot bag does not function underwater. A creature that is glued to the floor (or unable to fly) can break free by makeing a DC 17 Strength check or by dealing 15 points of damage to the goo with a slashing weapon. A creature trying to scrape goo off itself, or another creature assisting, does not need to make an attack roll; hitting the goo is automatic, after which the creature that hits makes a damage roll to see how much of the goo was scraped off. Once free, the creature can move (including flying) at half speed. If the entangled creature attempts to cast a sepll, it must make concentration ccheck with a DC of 15 + the spell's level or be unable to cast the spell. The goo becomes brittle and fragile after 2d4 rounds, cracking apart and losing its effectiveness. An apllicaiton of univeral solvent to a stuck creature dissolves the alchemical goo immediantly.";
+
+        Item tanglefootBag = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.TanglefootBag))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.TanglefootBag, tanglefootBag);
+        }
+
+        //End Tanglefoot bag
+
+        //Thunderstone
+        tempType = "Utility, Special Substances and Items";
+        tempitemName = "Thunderstone";
+        tempCost = 30;
+        tempWeight = 1;
+        tempDescription = "You can throw this stone as a ranged attack with a range increment of 20 feet. When it strikes a hard surface (or is struck hard, it creates a deafening bang that is treated as a sonic attack. Each creature within a 10-foot radius spread must make a DC 15 Fortitude save or be deafened for 1 hour. A deafened creature, in addition to the obvious effects, takes a -4 penalty on initiative and has a 20% chance to miscast and lose any spell with a verbal component that it tries to cast. Since you don't need to hit a specific target, you can simplly aim at a particular 5-foot square. Treat the target square as AC 5.";
+
+        Item thunderstone = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Thunderstone))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Thunderstone, thunderstone);
+        }
+        //End Thunderstone
+
+        //Tindertwig
+        tempType = "Utility, Special Substances and Items";
+        tempitemName = "Tindertwig";
+        tempCost = 10;
+        tempWeight = 1;
+        tempDescription = "The alchemical substance on the end of this small, wooden stick ignites when struck against a rough surface. Creating a flame with a tindertwig is much faster than creating a flame with flint and steel (or magnifying glass) and tinder. Lighting a torch with a tindertwig is a standard action (rather than a full-round action), and lighting any other fire with one is at least a standard action.";
+
+        Item tindertwig = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Tinderwig))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Tinderwig, tindertwig);
+        }
+        //End Tindertwig
+
+        //Alchemist's Lab
+        tempType = "Utility, Tools and Skill Kits";
+        tempitemName = "Alchemist's Lab";
+        tempCost = 200;
+        tempWeight = 40;
+        tempDescription = "This lab is used for making alchemical items, and provides a +2 circumstance bonus on Craft(alchemy) checks. It has no berring on the costs related to this skill. Without this lab, a character with the Craft(alchemy) skill is assumed to have enough tools to use the skill but not enough to get the +2 bonus the lab provides.";
+
+        Item alchemistsLab = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.AlchemistLab))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.AlchemistLab, alchemistsLab);
+        }
+        //End Alchemist's Lab
+
+        //Artisan's Tools
+        tempType = "Utility, Tools and Skill Kits";
+        tempitemName = "Artisan's Tools";
+        tempCost = 5;
+        tempWeight = 5;
+        tempDescription = "These special tools include the items needed to pursue any craft. Without them, you have to use improvised tools (=2 penalty on Craft checks), if you can do the job at all.";
+
+        Item artisansTools = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ArtisansTools))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.ArtisansTools, artisansTools);
+        }
+        //End Artisan's Tools
+
+        //Artisan's Tools, Masterwork
+        tempType = "Utility, Tools and Skill Kits";
+        tempitemName = "Artisan's Tools, Masterwork";
+        tempCost = 55;
+        tempWeight = 5;
+        tempDescription = "These tools serve the same purpose as artisan's tools, but masterwork artisan's tools are the perfect tools for the job, so you get a +2 circumstance bonus on Craft checks made with them.";
+
+        Item artisansToolsMasterwork = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ArtisansToolsMasterwork))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.ArtisansToolsMasterwork, artisansToolsMasterwork);
+        }
+        //End Artisan's Tools, Masterwork
+
+        //Climber's Kit
+        tempType = "Utility, Tools and Skill Kits";
+        tempitemName = "Climber's Kit";
+        tempCost = 80;
+        tempWeight = 5;
+        tempDescription = "These crampons, pitons, ropes, and tools give you a +2 circumstance bonuse on Climb checks.";
+        tempScale = true;
+
+        Item climbersKit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ClimbersKit))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.ClimbersKit, climbersKit);
+        }
+
+        tempScale = false;
+        //End Climber's Kit
+
+        //Disguise Kit
+        tempType = "Utility, Tools and Skill Kits";
+        tempitemName = "Disguise Kit";
+        tempCost = 50;
+        tempWeight = 8;
+        tempDescription = "The kit is the perfect tool for disguise and provides a +2 circumstance bonus on Disguise checks. A disguise kit is exhausted after 10 uses.";
+        tempScale = true;
+
+        Item disguiseKit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.DisguiseKit))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.DisguiseKit, disguiseKit);
+        }
+
+        tempScale = false;
+        //End Disguise Kit
+
+        //Healer's Kit
+        tempType = "Utility, Tools and Skill Kits";
+        tempitemName = "Healer's Kit";
+        tempCost = 50;
+        tempWeight = 1;
+        tempDescription = "This collection of bandages and herbs provides a +2 circumstance bonus on Heal checks. A healer'skit is exhausted after 10 uses.";
+
+        Item healersKit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.HealersKit))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.HealersKit, healersKit);
+        }
+        //End Healer's Kit
+
+        //Holly and Mistletoe
+        tempType = "Utility, Tools and Skill Kits";
+        tempitemName = "Holly and Mistletoe";
+        tempCost = 0;
+        tempWeight = 0;
+        tempDescription = "Druids commonly use these plants as divine focuses when casting spells.";
+
+        Item hollyAndMistletoe = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.HollyAndMistletoe))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.HollyAndMistletoe, hollyAndMistletoe);
+        }
+        //End Holly and Mistletoe
+
+        //Holy Symbol, Silver
+        tempType = "Utility, Tools and Skill Kits";
+        tempitemName = "Holy Symbol, Silver";
+        tempCost = 25;
+        tempWeight = 1;
+        tempDescription = "A holy symbol focuses positive energy and is used by good clerics and paladins (or by neutral clerics who want to cast good spells or channel positive energy). Each religion has its own holy symbol. An unholy symbol is like a holy symbol except that it focuses negative energy and is used by evil clerics (or by neutral clerics who want to cast evil spells or channel negative energy). These symbols are made of silver.";
+
+        Item holySymbolSilver = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.HolySymbolSilver))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.HolySymbolSilver, holySymbolSilver);
+        }
+        //ENd Holy Symbol, Silver
+
+        //Holy Symbol, Wooden
+        tempType = "Utility, Tools and Skill Kits";
+        tempitemName = "Holy Symbol, Wooden";
+        tempCost = 1;
+        tempWeight = 0;
+        tempDescription = "A holy symbol focuses positive energy and is used by good clerics and paladins (or by neutral clerics who want to cast good spells or channel positive energy). Each religion has its own holy symbol. An unholy symbol is like a holy symbol except that it focuses negative energy and is used by evil clerics (or by neutral clerics who want to cast evil spells or channel negative energy). These symbols are carved from wood.";
+
+        Item holySymbolWood = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.HolySymbolWooden))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.HolySymbolWooden, holySymbolWood);
+        }
+        //Holy Symbol, Wooden
+
+        //Magnifying Glass
+        tempType = "Utility, Tools and Skill Kits";
+        tempitemName = "Magnifying Glass";
+        tempCost = 100;
+        tempWeight = 0;
+        tempDescription = "This simple lens allows a closer look at small objects. It is also useful as a substitute for flint and steel when starting fires. Lighting a fire with a magnifying glass requires bright light, such as sunlight to focus, tinder to ignite, and at least a full-round action. A magnifying glass grants a +2 circumstance bonus on Appraise checks involving any item that is small or highly detailed.";
+
+        Item magnifyingGlass = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.MagnifyingGlass))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.MagnifyingGlass, magnifyingGlass);
+        }
+        //End Magnifying Glass
+
+        //Musical Instrument, Common
+        tempType = "Utility, Tools and Skill Kits";
+        tempitemName = "Musical Instrument, Common";
+        tempCost = 5;
+        tempWeight = 3;
+        tempDescription = "A common instrument is a well made, and serviceable version of the instrument.";
+        tempScale = true;
+
+        Item musicalInstrumentCommon = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.MusicalInstrimentCommon))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.MusicalInstrimentCommon, musicalInstrumentCommon);
+        }
+
+        tempScale = false;
+        //End Musical Instrument, Common
+
+        //Musical Instrument, Masterwork
+        tempType = "Utility, Tools and Skill Kits";
+        tempitemName = "Musical Instrument, Masterwork";
+        tempCost = 100;
+        tempWeight = 3;
+        tempDescription = "A masterwork instrument is an exquisitely crafted version of the instrument's more common varients. A masterwork instrument grants a +2 circumstance bonus on Perform checks involving its use.";
+        tempScale = true;
+
+        Item musicalInstrumentMasterwork = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.MusicalInstrumentMasterwork))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.MusicalInstrumentMasterwork, musicalInstrumentMasterwork);
+        }
+
+        tempScale = false;
+        //End, Musical Instrument, Masterwork
+
+        //Scale, Merchant's
+        tempType = "Utility, Tools and Skill Kits";
+        tempitemName = "Scale, Merchant's";
+        tempCost = 2;
+        tempWeight = 1;
+        tempDescription = "A merchant's scale grants a +2 circumstance bonus on Appraise checks involving items that are valued by weight, including anything made of precious metals.";
+
+        Item scaleMerchants = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ScaleMerchants))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.ScaleMerchants, scaleMerchants);
+        }
+        //End Scale, Merchant's
+
+        //Spell Component Pouch
+        tempType = "Utility, Tools and Skill Kits";
+        tempitemName = "Spell Component Pouch";
+        tempCost = 5;
+        tempWeight = 2;
+        tempDescription = "A spellcaster with a spelll component pouch is assumed to have all the material components and focuses needed for spellcasting, except for those components that have a specific cost, divine focuses, and focuses that wouldn't fit in a pouch.";
+
+        Item spellComponentPouch = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SpellComponentPouch))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.SpellComponentPouch, spellComponentPouch);
+        }
+        //End Spell Component Pouch
+
+        //Spellbook, Wizards
+        tempType = "Utility, Tools and Skill Kits";
+        tempitemName = "Spellbook, Blank (Wizards)";
+        tempCost = 15;
+        tempWeight = 3;
+        tempDescription = "A spellbook has 100 pages of parchment, and each spell takes up one page per spell level (one page each for 0-level spells).";
+
+        Item spellbookWizardsBlank = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SpellbookBlank))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.SpellbookBlank, spellbookWizardsBlank);
+        }
+        //End Spellbook, Wizards
+
+        //Thieves' Tools
+        tempType = "Utility, Tools and Skill Kits";
+        tempitemName = "Thieves' Tools";
+        tempCost = 30;
+        tempWeight = 1;
+        tempDescription = "This kit contains lockpicks and other tools you need to use the Disable Device skill. Without these tools, you must use improvised tools, and you take a -2 circumstance bonus on Disable Device checks.";
+
+        Item thievesTools = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ThievesTools))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.ThievesTools, thievesTools);
+        }
+        //End Thieves' Tools
+
+        //Thieves' Tools, Masterwork
+        tempType = "Utility, Tools and Skill Kits";
+        tempitemName = "Thieves' Tools, Masterwork";
+        tempCost = 100;
+        tempWeight = 2;
+        tempDescription = "This kit contains extra tools and tools of better make, which grant a +2 circumstance bonus on Disable Device checks.";
+
+        Item thievesToolsMasterwork = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ThievesToolsMasterwork))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.ThievesToolsMasterwork, thievesToolsMasterwork);
+        }
+        //Thieves' Tools, Masterwork
+
+        //Tool, Masterwork
+        tempType = "Utility, Tools and Skill Kits";
+        tempitemName = "Tool, Masterwork";
+        tempCost = 50;
+        tempWeight = 1;
+        tempDescription = "This well-made item is the perfect tool for the job. It grants a +2 circumstance bonus on a related skill check (if any). Bonuses provided by multiple masterwork items do not stack.";
+
+        Item toolMasterwork = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ToolMasterwork))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.ToolMasterwork, toolMasterwork);
+        }
+        //End Tool, Masterwork
         #endregion Utility
 
         #endregion ItemInitalization

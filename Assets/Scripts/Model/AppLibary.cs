@@ -390,7 +390,7 @@ public static class AppLibary{
 
     //Tools and Skill Kits
 
-    public const string AlcemistLab = "Alchemist's Lab";
+    public const string AlchemistLab = "Alchemist's Lab";
     public const string ArtisansTools = "Artisan's Tools";
     public const string ArtisansToolsMasterwork = "Artisan's Tools, masterwork";
     public const string ClimbersKit = "Climber's Kit";
