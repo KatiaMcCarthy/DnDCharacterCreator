@@ -6003,6 +6003,918 @@ public class pathfinderInit : MonoBehaviour {
             AppLibary.itemDictionary.Add(AppLibary.ToolMasterwork, toolMasterwork);
         }
         //End Tool, Masterwork
+
+        //Artisan's outfit
+        tempType = "Utility, Clothing";
+        tempitemName = "Artisan's, Outfit";
+        tempCost = 1;
+        tempWeight = 4;
+        tempDescription = "This outfit includes a shirt with buttons, a skirt or pants with a drawstring, shoes, and perhapse a cap or hat. It may also include a belt or a leather or cloth apron for carrying tools.";
+        tempScale = true;
+
+        Item artisansOutfit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ArtisansOutfit))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.ArtisansOutfit, artisansOutfit);
+        }
+        //End Artisan's Outfit
+
+        //Cleric's Vestments
+        tempType = "Utility, Clothing";
+        tempitemName = "Cleric's, Vestment";
+        tempCost = 5;
+        tempWeight = 6;
+        tempDescription = "These clothes are for performing priestly functions, not for adventuring. Cleric's vestments typically include a cassock, stole, and surplice.";
+        tempScale = true;
+
+        Item clericsVestment = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ClericsVestments))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.ClericsVestments, clericsVestment);
+        }
+        //End Cleric's Vestments
+
+        //Cold-Weather Outfit
+        tempType = "Utility, Clothing";
+        tempitemName = "Cold-Weather Outfit";
+        tempCost = 8;
+        tempWeight = 7;
+        tempDescription = "This outfit includes a wool coat, linen shirt, wool cap, heavy cloak, thick pants or skirt, and boots. This outfit grants a +5 circumstance bonus on Fortitude saving throws against exposure to cold weather.";
+        tempScale = true;
+
+        Item coldWeatherOutfit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ColdWeatherOutfit))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.ColdWeatherOutfit, coldWeatherOutfit);
+        }
+        //End Cold-Weather Outfit
+
+        //Courtier's Outfit
+        tempType = "Utility, Clothing";
+        tempitemName = "Courtier's Outfit";
+        tempCost = 30;
+        tempWeight = 6;
+        tempDescription = "This outfit includes fancy, tailored clothes in whatever fashion happens to be the current style in the courts of the nobles. Anyone trying to influence nobles or courtiers while wearing street dress will have a hard time of it(-2 penalty on Charisma-based skill checks to influence such individuals). If you wear this outfit without jewelry (costing an additional 50gp), you look like an out-of-place commoner.";
+        tempScale = true;
+
+        Item courtiersOutfit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.CourtiersOutfit))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.CourtiersOutfit, courtiersOutfit);
+        }
+        //End Courtier's Outfit
+
+        //Entertainer's Outfit
+        tempType = "Utility, Clothing";
+        tempitemName = "Entertainer's Outfit";
+        tempCost = 3;
+        tempWeight = 4;
+        tempDescription = "This set of flashy-perhaps even gaudy- clothes is for entertaining. While the outfit looks whimsical, its practical design lets you tumble, dance, walk a tightrope, or just run(if the audience turns ugly).";
+        tempScale = true;
+
+        Item entertainersOutfit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.EntertainersOutfit))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.EntertainersOutfit, entertainersOutfit);
+        }
+        //End Entertainer's Outfit
+
+        //Explorer's Outfit
+        tempType = "Utility, Clothing";
+        tempitemName = "Explorer's Outfit";
+        tempCost = 10;
+        tempWeight = 8;
+        tempDescription = "This set of clothes is for someone whoe never knows what to expect. It includes sturdy boots, leather breeches or a skirt, a belt, a shirt (perhapse with a vest or jacket), gloves, and a cloak. Rather than a leather skirt, a leather overtunic may be worn over a cloth skirt. The clothes have plenty of pockets (especially the cloak). The outfit also includes any extra accessories you might need, such as a scarf or a wide-brimmed hat.";
+        tempScale = true;
+
+        Item explorersOutfit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ExplorersOutfit))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.ExplorersOutfit, explorersOutfit);
+        }
+        //End Explorer's Outfit
+
+        //Monk's Outfit
+        tempType = "Utility, Clothing";
+        tempitemName = "Explorer's Outfit";
+        tempCost = 5;
+        tempWeight = 2;
+        tempDescription = "This simple outfit includes sandals, loose breeches, and a loose shirt, and is bound togeather with sashes. The outfit is designed to give you maximum mobility, and it's made of high-quality fabric. You can conceal small weapons in pockets hidden in the folds, and the sashes are strong enough to serve as short ropes.";
+        tempScale = true;
+
+        Item monksOutfit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.MonksOutfit))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.MonksOutfit, monksOutfit);
+        }
+        //End Monk's Outfit
+
+        //Nobles Outfit
+        tempType = "Utility, Clothing";
+        tempitemName = "Noble's Outfit";
+        tempCost = 75;
+        tempWeight = 10;
+        tempDescription = "These clothes are designed specifically to be expensive and gaudy. Precious metals and gems are worked into the cloathing. A would-be noble also needs a signet ring and jewelry (worth at least 100gp) to accessorize this outfit.";
+        tempScale = true;
+
+        Item noblesOutfit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.NoblesOutfit))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.NoblesOutfit, noblesOutfit);
+        }
+        //End Nobles Outfit
+
+        //Peasant's Outfit
+        tempType = "Utility, Clothing";
+        tempitemName = "Peasant's Outfit";
+        tempCost = 0.01f;
+        tempWeight = 2;
+        tempDescription = "This set of clothes consits of a loose shirt and baggy breeches, or a loose shirt and skirt or overdress. Cloth wrappings are used for shoes.";
+        tempScale = true;
+
+        Item peasantsOutfit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.PesantsOutfit))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.PesantsOutfit, peasantsOutfit);
+        }
+        //End Peasant's Outfit
+
+        //Royal Outfit
+        tempType = "Utility, Clothing";
+        tempitemName = "Royal Outfit";
+        tempCost = 200;
+        tempWeight = 15;
+        tempDescription = "This is just the clothing, not the royal scepter, crown, ring, and other accoutrements. Royal clothes are ostentatious, with gems, gold, silk, and fur in abundance.";
+        tempScale = true;
+
+        Item royalOutfit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.RoyalOutfit))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.RoyalOutfit, royalOutfit);
+        }
+        //End Royal Outfit
+
+        //Scholar's Outfit
+        tempType = "Utility, Clothing";
+        tempitemName = "Scholar's Outfit";
+        tempCost = 5;
+        tempWeight = 6;
+        tempDescription = "Perfect for a scholar, this outfit includes a robe, a belt, a cap, soft shoes, and possibly a cloak.";
+        tempScale = true;
+
+        Item scholarsOutfit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ScholarsOutift))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.ScholarsOutift, scholarsOutfit);
+        }
+        //End Scholar's Outfit
+
+        //Traveler's Outfit
+        tempType = "Utility, Clothing";
+        tempitemName = "Traveler's Outfit";
+        tempCost = 1;
+        tempWeight = 5;
+        tempDescription = "This set of clothes consists of boots, a wool skirt or breeches, a sturdy belt, a shirt (perhapse with a vest or jacket), and an ample cloak with a hood.";
+        tempScale = true;
+
+        Item travelersOutfit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.TravlersOutfit))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.TravlersOutfit, travelersOutfit);
+        }
+        tempScale = false;
+        //End Traveler's Outfit
+
+        //Ale, Gallon
+        tempType = "Utility, Food, Drink, and Lodging";
+        tempitemName = "Ale, Gallon";
+        tempCost = 0.02f;
+        tempWeight = 8;
+        tempDescription = "A gallon of ale.";
+
+        Item aleGallon = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.AleGallon))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.AleGallon, aleGallon);
+        }
+        //End Ale, Gallon
+
+        //Ale, Mug
+        tempType = "Utility, Food, Drink, and Lodging";
+        tempitemName = "Ale, Mug";
+        tempCost = 0.0004f;
+        tempWeight = 1;
+        tempDescription = "A mug of ale.";
+
+        Item aleMug = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.AleMug))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.AleMug, aleMug);
+        }
+        //End Ale, Mug
+
+        //Banquet (per person)
+        tempType = "Utility, Food, Drink, and Lodging";
+        tempitemName = "Banquet (Per Person)";
+        tempCost = 10;
+        tempWeight = 0;
+        tempDescription = "Cost of attending a nice banquet.";
+
+        Item banquet = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Banquet))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Banquet, banquet);
+        }
+        //End Banquet (per person)
+
+        //Bread, loaf of
+        tempType = "Utility, Food, Drink, and Lodging";
+        tempitemName = "Bread, Loaf Of";
+        tempCost = 0.0002f;
+        tempWeight = 0.5f;
+        tempDescription = "A loaf of bread.";
+
+        Item breadLoaf = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.BreadLoaf))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.BreadLoaf, breadLoaf);
+        }
+        //End Bread, loaf of 
+
+        //Cheese, Hunk of
+        tempType = "Utility, Food, Drink, and Lodging";
+        tempitemName = "Cheese, Hunk Of";
+        tempCost = 0.01f;
+        tempWeight = 0.5f;
+        tempDescription = "A hunk of cheese.";
+
+        Item cheeseHunk = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.CheeseHunk))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.CheeseHunk, cheeseHunk);
+        }
+        //End Cheese, Hunk of
+
+        //Inn Stay (per day), Good
+        tempType = "Utility, Food, Drink, and Lodging";
+        tempitemName = "Inn Stay (per day), Good";
+        tempCost = 2;
+        tempWeight = 0;
+        tempDescription = "A night stay at a good inn.";
+
+        Item innStayGood = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.InnStayGood))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.InnStayGood, innStayGood);
+        }
+        //End Inn Stay (per day), Good
+
+        //Inn Stay (per day), Common
+        tempType = "Utility, Food, Drink, and Lodging";
+        tempitemName = "Inn Stay (per day), Common";
+        tempCost = 0.05f;
+        tempWeight = 0;
+        tempDescription = "A night stay at a common inn.";
+
+        Item innStayCommon = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.InnStayCommon))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.InnStayCommon, innStayCommon);
+        }
+        //End Inn Stay (per day), Common
+
+        //Inn Stay (per day), Poor
+        tempType = "Utility, Food, Drink, and Lodging";
+        tempitemName = "Inn Stay (per day), Poor";
+        tempCost = 0.02f;
+        tempWeight = 0;
+        tempDescription = "A night stay at a poor inn.";
+
+        Item innStayPoor = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.InnStayPoor))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.InnStayPoor, innStayPoor);
+        }
+        //End Inn Stay (per day), Poor
+
+        //Meals (per day), Good
+        tempType = "Utility, Food, Drink, and Lodging";
+        tempitemName = "Meals (per day), Good";
+        tempCost = 0.05f;
+        tempWeight = 0;
+        tempDescription = "Three good meals.";
+
+        Item mealsGood = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.MealsGood))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.MealsGood, mealsGood);
+        }
+        //End Meals (per day),Good
+
+        //Meals (per day), Common
+        tempType = "Utility, Food, Drink, and Lodging";
+        tempitemName = "Meals (per day), Common";
+        tempCost = 0.03f;
+        tempWeight = 0;
+        tempDescription = "Three common meals.";
+
+        Item mealsCommon = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.MealsCommon))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.MealsCommon, mealsCommon);
+        }
+        //End Meals (per day),Good
+
+        //Meals (per day), Poor
+        tempType = "Utility, Food, Drink, and Lodging";
+        tempitemName = "Meals (per day), Poor";
+        tempCost = 0.01f;
+        tempWeight = 0;
+        tempDescription = "Three poor meals.";
+
+        Item mealsPoor = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.MealsPoor))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.MealsPoor, mealsPoor);
+        }
+        //End Meals (per day), Poor
+
+        //Meat, chunk of
+        tempType = "Utility, Food, Drink, and Lodging";
+        tempitemName = "Meat, Chunk Of";
+        tempCost = 0.03f;
+        tempWeight = 0.5f;
+        tempDescription = "Half a pound of meat.";
+
+        Item meatChunkOf = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.MeatChunk))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.MeatChunk, meatChunkOf);
+        }
+        //End Meat, chunk of
+
+        //Wine, Common (pitcher)
+        tempType = "Utility, Food, Drink, and Lodging";
+        tempitemName = "Wine, Common (Pitcher)";
+        tempCost = 0.02f;
+        tempWeight = 6;
+        tempDescription = "Common wine, served by the pitcher.";
+
+        Item wineCommon = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.WineCommon))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.WineCommon, wineCommon);
+        }
+        //End Wine, Common (pitcher)
+
+        //Wine, Fine (bottle)
+        tempType = "Utility, Food, Drink, and Lodging";
+        tempitemName = "Wine, Fine (Bottle)";
+        tempCost = 6;
+        tempWeight = 1.5f;
+        tempDescription = "Fine wine, served by the bottle.";
+
+        Item wineFine = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.WineFine))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.WineFine, wineFine);
+        }
+        //End Wine, Fine (bottle)
+
+        //Barding, Medium Creature
+        tempType = "Utility, Mounts and Related Gear";
+        tempitemName = "Barding, Medium Creature";
+        tempCost = 2;
+        tempWeight = 1;
+        tempOther = "Cost and Weight are realitive to similar armor for a Medium humanoid. (2x cost, 1x weight).";
+        tempSpecial = "In Medium barding, a creature with base speed of 40ft moves at 30ft, at 50ft moves at 35ft, and at 60ft moves at 40ft. In Heavy barding, a creature with base speed of 40ft moves at 30ft, at 50ft moves at 35ft, and at 60ft moves at 40ft.";
+        tempDescription = "Barding is a type of armor that covers the head, neck, chest, body, and possibly legs of a horse or other mount. Barding made of medium or heavy armor provides better protection than light barding, but at the expense of speed. barding can be made of any of the basic armor types. Armor for a horse costs four times as much as human armor and also weighs twice as much. If the armor is for a pony or other Medium mount, the cost is only double, and the weight is the same as for Medium armor word by a humaniod. Medium or heavy barding slows a mout that wears it. A mount wearing heavy armor moves at only triple its normal speed when running instead of quadruple. Flying mounts can't fly in medium or heavy barding. Removing and fitting barding takes five times as long as it does for a human. A barded animal cannot be used to carry any load other than a rider and normal saddlebags.";
+
+        Item bardingMedium = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.BardingMedium))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.BardingMedium, bardingMedium);
+        }
+        //End Barding, Medium Creature
+
+        //Barding, Large Creature
+        tempType = "Utility, Mounts and Related Gear";
+        tempitemName = "Barding, Large Creature";
+        tempCost = 4;
+        tempWeight = 2;
+        tempOther = "Cost and Weight are relative to similar armor for a Medium humanoid. (4x cost, 2x weight).";
+        tempSpecial = "In Medium barding, a creature with base speed of 40ft moves at 30ft, at 50ft moves at 35ft, and at 60ft moves at 40ft. In Heavy barding, a creature with base speed of 40ft moves at 30ft, at 50ft moves at 35ft, and at 60ft moves at 40ft.";
+        tempDescription = "Barding is a type of armor that covers the head, neck, chest, body, and possibly legs of a horse or other mount. Barding made of medium or heavy armor provides better protection than light barding, but at the expense of speed. barding can be made of any of the basic armor types. Armor for a horse costs four times as much as human armor and also weighs twice as much. If the armor is for a pony or other Medium mount, the cost is only double, and the weight is the same as for Medium armor word by a humaniod. Medium or heavy barding slows a mout that wears it. A mount wearing heavy armor moves at only triple its normal speed when running instead of quadruple. Flying mounts can't fly in medium or heavy barding. Removing and fitting barding takes five times as long as it does for a human. A barded animal cannot be used to carry any load other than a rider and normal saddlebags.";
+
+        Item bardingLarge = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.BardingLarge))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.BardingLarge, bardingLarge);
+        }
+
+        tempOther = "";
+        tempSpecial = "";
+        //End Barding, Medium Creature
+
+        //Bit and Bridle
+        tempType = "Utility, Mounts and Related Gear";
+        tempitemName = "Bit and Bridle";
+        tempCost = 2;
+        tempWeight = 1;
+        tempDescription = "A bit and bridle for a mount.";
+
+        Item bitAndBridle = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.BitAndBridle))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.BitAndBridle, bitAndBridle);
+        }
+        //End Bit and Bridle
+
+        //Dog, Guard
+        tempType = "Utility, Mounts and Related Gear";
+        tempitemName = "Dog, Guard";
+        tempCost = 25;
+        tempWeight = 0;
+        tempDescription = "This dog is trained to guard an area.";
+
+        Item dogGuard = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.DogGaurd))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.DogGaurd, dogGuard);
+        }
+        //End Dog, Guard
+
+        //Dog, Riding
+        tempType = "Utility, Mounts and Related Gear";
+        tempitemName = "Dog, Riding";
+        tempCost = 150;
+        tempWeight = 0;
+        tempDescription = "This Medium dog is specially trained to carry a Small humanoid rider. It is brave in combat like a war-trained horse. Due to its smaller stature, you take no damage when you fall from a riding dog.";
+
+        Item dogRiding = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.DogRiding))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.DogRiding, dogRiding);
+        }
+        //End Dog, Riding
+
+        //Donkey, or Mule
+        tempType = "Utility, Mounts and Related Gear";
+        tempitemName = "Donkey Or Mule";
+        tempCost = 8;
+        tempWeight = 0;
+        tempDescription = "Donkeys and mules are stolid in the face of danger, hardy, surefooted, and capable of carrying heavy loads over vast distances. Unlike a horse, a donkey or mule is willing (though not eager) to enter dungeons and other strange or threatening places.";
+
+        Item donkeyOrMule = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.DonkeyMule))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.DonkeyMule, donkeyOrMule);
+        }
+        //End Donkey, or Mule
+
+        //Feed (per day)
+        tempType = "Utility, Mounts and Related Gear";
+        tempitemName = "Feed (Per Day)";
+        tempCost = 0.0005f;
+        tempWeight = 10;
+        tempDescription = "Horses, donkeys, mules, and ponies can graze to sustain themselves but providing feed for them is better. If you have a riding dog, you have to feed it meat.";
+
+        Item feedPerDay = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Feed))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Feed, feedPerDay);
+        }
+        //End Feed (per day)
+
+        //Horse, Heavy
+        tempType = "Utility, Mounts and Related Gear";
+        tempitemName = "Horse, Heavy";
+        tempCost = 200;
+        tempWeight = 0;
+        tempDescription = "A horse is suitable as a mount for a human, dwarf, elf, half-elf, or half, orc. A pony is maller than a horse and is a suitable mount for a gnome or halfling. A war-trained horse can be ridden into combat without danger. See the Handle Animal skill for a list of tricks known by horses and ponies with combat training.";
+
+        Item horseHeavy = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.HorseHeavy))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.HorseHeavy, horseHeavy);
+        }
+        //Horse, Heavy
+
+        //Horse, Heavy (Combat Trianed)
+        tempType = "Utility, Mounts and Related Gear";
+        tempitemName = "Horse, Heavy (Combat Trained)";
+        tempCost = 300;
+        tempWeight = 0;
+        tempDescription = "A horse is suitable as a mount for a human, dwarf, elf, half-elf, or half, orc. A pony is maller than a horse and is a suitable mount for a gnome or halfling. A war-trained horse can be ridden into combat without danger. See the Handle Animal skill for a list of tricks known by horses and ponies with combat training.";
+
+        Item horseHeavyCombat = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.HorseHeavyCombat))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.HorseHeavyCombat, horseHeavyCombat);
+        }
+        //End Horse, Heavy (Combat Trained)
+
+        //Horse, light
+        tempType = "Utility, Mounts and Related Gear";
+        tempitemName = "Horse, Light";
+        tempCost = 75;
+        tempWeight = 0;
+        tempDescription = "A horse is suitable as a mount for a human, dwarf, elf, half-elf, or half, orc. A pony is maller than a horse and is a suitable mount for a gnome or halfling. A war-trained horse can be ridden into combat without danger. See the Handle Animal skill for a list of tricks known by horses and ponies with combat training.";
+
+        Item horseLight = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.HorseLight))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.HorseLight, horseLight);
+        }
+        //End Horse, Light
+
+        //Horse, Light (Combat Trained)
+        tempType = "Utility, Mounts and Related Gear";
+        tempitemName = "Horse, Light (Combat Trained)";
+        tempCost = 110;
+        tempWeight = 0;
+        tempDescription = "A horse is suitable as a mount for a human, dwarf, elf, half-elf, or half, orc. A pony is maller than a horse and is a suitable mount for a gnome or halfling. A war-trained horse can be ridden into combat without danger. See the Handle Animal skill for a list of tricks known by horses and ponies with combat training.";
+
+        Item horseLightCombat = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.HorseLightCombat))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.HorseLightCombat, horseLightCombat);
+        }
+        //End Horse, Light (Combat Trained)
+
+        //Pony
+        tempType = "Utility, Mounts and Related Gear";
+        tempitemName = "Pony";
+        tempCost = 30;
+        tempWeight = 0;
+        tempDescription = "A horse is suitable as a mount for a human, dwarf, elf, half-elf, or half, orc. A pony is maller than a horse and is a suitable mount for a gnome or halfling. A war-trained horse can be ridden into combat without danger. See the Handle Animal skill for a list of tricks known by horses and ponies with combat training.";
+
+        Item pony = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Pony))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Pony, pony);
+        }
+        //End Pony
+
+        //Pony Combat
+        tempType = "Utility, Mounts and Related Gear";
+        tempitemName = "Pony (Combat Trained)";
+        tempCost = 45;
+        tempWeight = 0;
+        tempDescription = "A horse is suitable as a mount for a human, dwarf, elf, half-elf, or half, orc. A pony is maller than a horse and is a suitable mount for a gnome or halfling. A war-trained horse can be ridden into combat without danger. See the Handle Animal skill for a list of tricks known by horses and ponies with combat training.";
+
+        Item ponyCombat = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.PonyCombat))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.PonyCombat, ponyCombat);
+        }
+        //End Pony Combat
+
+        //Saddle, Military
+        tempType = "Utility, Mounts and Related Gear";
+        tempitemName = "Saddle, Military";
+        tempCost = 20;
+        tempWeight = 30;
+        tempDescription = "This saddle braces the rider, providing a +2 circumstance bonus on Ride checks related to staying in the saddle. If you're knocked unconscious while in a military saddle, you have a 75% chance to stay in the saddle.";
+
+        Item saddleMilitary = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SaddleMilitary))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.SaddleMilitary, saddleMilitary);
+        }
+        //End Saddle, Military
+
+        //Saddle, Pack
+        tempType = "Utility, Mounts and Related Gear";
+        tempitemName = "Saddle, Pack";
+        tempCost = 5;
+        tempWeight = 15;
+        tempDescription = "A pack saddle holds gear and supplies, but not a rider. It holds as much gear as the mount can carry.";
+
+        Item saddlePack = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SaddlePack))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.SaddlePack, saddlePack);
+        }
+        //End Saddle, Pack
+
+        //Saddle, Riding
+        tempType = "Utility, Mounts and Related Gear";
+        tempitemName = "Saddle, Riding";
+        tempCost = 10;
+        tempWeight = 25;
+        tempDescription = "If you are knocked unconscious while in a riding saddle, you have a 50% chance to stay in the saddle.";
+
+        Item saddleRiding = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SaddleRiding))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.SaddleRiding, saddleRiding);
+        }
+        //End Saddle, Riding
+
+        //Saddle, Exotic (Military)
+        tempType = "Utility, Mounts and Related Gear";
+        tempitemName = "Saddle, Exotc (Military)";
+        tempCost = 60;
+        tempWeight = 40;
+        tempDescription = "This saddle braces the rider, providing a +2 circumstance bonus on Ride checks related to staying in the saddle. If you're knocked unconscious while in a military saddle, you have a 75% chance to stay in the saddle.";
+
+        Item saddleExoticMilitary = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SaddleExoticMilitary))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.SaddleExoticMilitary, saddleExoticMilitary);
+        }
+        //End Saddle, Exotic Military
+
+        //Saddle, Exotic Pack
+        tempType = "Utility, Mounts and Related Gear";
+        tempitemName = "Saddle, Exotic (Pack)";
+        tempCost = 15;
+        tempWeight = 20;
+        tempDescription = "A pack saddle holds gear and supplies, but not a rider. It holds as much gear as the mount can carry.";
+
+        Item saddleExoticPack = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SaddleExoticPack))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.SaddleExoticPack, saddleExoticPack);
+        }
+        //End Saddle, Pack
+
+        //Saddle, Exotic (Riding)
+        tempType = "Utility, Mounts and Related Gear";
+        tempitemName = "Saddle, Exotic (Riding)";
+        tempCost = 30;
+        tempWeight = 30;
+        tempDescription = "If you are knocked unconscious while in a riding saddle, you have a 50% chance to stay in the saddle.";
+
+        Item saddleExoticRiding = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SaddleExoticRiding))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.SaddleExoticRiding, saddleExoticRiding);
+        }
+        //End Saddle, Exotic (Riding)
+
+        //Carriage
+        tempType = "Utility, Transport";
+        tempitemName = "Carriage";
+        tempCost = 100;
+        tempWeight = 600;
+        tempDescription = "This four-wheeled vehicle can transport as many as four people within enclosed cab, plus two drivers. In gneral, two horses (or other beasts of burden) draw it. A carriage comes with the harnesses need to pull it.";
+
+        Item carriage = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Carriage))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Carriage, carriage);
+        }
+        //End Carriage
+
+        //Cart
+        tempType = "Utility, Transport";
+        tempitemName = "Cart";
+        tempCost = 15;
+        tempWeight = 200;
+        tempDescription = "This two-wheeled vehicle can be drawn by a single horse (or other beast of burden). It comes with a harness.";
+
+        Item cart = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Cart))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Cart, cart);
+        }
+        //End Cart
+
+        //Galley
+        tempType = "Utility, Transport";
+        tempitemName = "Galley";
+        tempCost = 30000;
+        tempWeight = 0;
+        tempDescription = "This three-masted ship has 70 oars on either side and requires a total crew of 200. A galley is 130 feet long and 20 feet wide, and can carry 150 tons of cargo or 250 soldiers. For 8,000gp more, it can be fitted with a ram and castles with firing platforms fore, aft, and admidships. This ship cannot make sea voyages and sticks to the coast. It moves about 4 miles per hour when being rowed or under sail.";
+
+        Item galley = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Galley))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Galley, galley);
+        }
+        //End Galley
+
+        //Keelboat
+        tempType = "Utility, Transport";
+        tempitemName = "Keelboat";
+        tempCost = 3000;
+        tempWeight = 0;
+        tempDescription = "This 50- to 70-foot-long ship is about 15 to 20 feet wide and has a few oars to supplement its single mast with a square sail. It has a crew of 8 to 15 and can carry 40 to 50 tons of cargo or 100 soldiers. It can make sea voyages, as well as sail down rivers (thanks to its flat bottom). It moves about 1 mile per hour.";
+
+        Item keelboat = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Keelboat))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Keelboat, keelboat);
+        }
+        //End Keelboat
+
+        //Longship
+        tempType = "Utility, Transport";
+        tempitemName = "Longship";
+        tempCost = 10000;
+        tempWeight = 0;
+        tempDescription = "This 75-foot long ship with 40 oars requires a total crew of 50. It has a single mast and a square sail, and it can cary 50 tons of cargo or 120 soldiers. A longship can make sea voyages. It moves about 3 miles per hour when being rowed or under sail.";
+
+        Item longship = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Longship))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Longship, longship);
+        }
+        //End Longship
+
+        //Rowboat
+        tempType = "Utility, Transport";
+        tempitemName = "Rowboat";
+        tempCost = 50;
+        tempWeight = 100;
+        tempDescription = "This 8- to 12-foot boat with two oars holds two or three Medium passengers. It moves about 1.5 miles per hour.";
+
+        Item rowboat = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Rowboat))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Rowboat, rowboat);
+        }
+        //End Rowboat
+
+        //Oar
+        tempType = "Utility, Transport";
+        tempitemName = "Oar";
+        tempCost = 2;
+        tempWeight = 10;
+        tempDescription = "A oar is a long shaft of wood with a flat paddle afixed to one end. If used as a weapon, treat it as a improvised weapon that deals damage as a club of its size.";
+
+        Item oar = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Oar))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Oar, oar);
+        }
+        //End Oar
+
+        //Sailing Ship
+        tempType = "Utility, Transport";
+        tempitemName = "Sailing Ship";
+        tempCost = 10000;
+        tempWeight = 0;
+        tempDescription = "This large, seaworthy ship is 75 to 90 feet long and 20 feet wide, and has a crew of 20. It can carry 150 tons of cargo. It has square sails on its two masts and can make sea voyages. It moves about 2 miles per hour.";
+
+        Item sailingShip = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SalingShip))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.SalingShip, sailingShip);
+        }
+        //End Sailing Ship
+
+        //Sled
+        tempType = "Utility, Transport";
+        tempitemName = "Sled";
+        tempCost = 20;
+        tempWeight = 300;
+        tempDescription = "This is a wagon on runners for snow and ice travel. In general, two horses (or other beasts of burden) draw it. A sled comes with the harness needed to pull it.";
+
+        Item sled = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Sled))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Sled, sled);
+        }
+        //End Sled
+
+        //Wagon
+        tempType = "Utility, Transport";
+        tempitemName = "Wagon";
+        tempCost = 35;
+        tempWeight = 400;
+        tempDescription = "A four-wheeled, open vehicle for transporting heavy loads. Two horses (or other beasts of burden) must draw it. A wagon comes with the harness needed to pull it.";
+
+        Item wagon = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Wagon))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Wagon, wagon);
+        }
+        //End Wagon
+
+        //Warship
+        tempType = "Utility, Transport";
+        tempitemName = "Warship";
+        tempCost = 25000;
+        tempWeight = 0;
+        tempDescription = "This 100-foot-long ship has a single mast, although oars can also propel it. It has a crew of 60 to 80 rowers. This ship can carry 160 soldiers, but not for long distances, since there isn't room for supplies to support that many people. The warship cannot make sea voyages and sticks to the coast. It is not used for cargo. It moves about 2.5 miles per hour when being rowed or under sail.";
+
+        Item warship = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Warship))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Warship, warship);
+        }
+
+        //End Warship
+
+        //Coach Cab
+        tempType = "Utility, Spellcasting and Services";
+        tempitemName = "Coach Cab";
+        tempCost = 0.0003f;
+        tempWeight = 0;
+        tempSpecial = "Cost is per mile.";
+        tempDescription = "The price given is for a ride ina coach that transports people (and cargo) between towns. For a ride in a cab that transports passengers within a city, 1 copper piece usually takes you anywhere you need to go.";
+
+        Item coachCab = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.CoachCab))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.CoachCab, coachCab);
+        }
+        //Coach Cab
+
+        //Hireling, Trained
+        tempType = "Utility, Spellcasting and Services";
+        tempitemName = "Hireling, Trained";
+        tempCost = 0.03f;
+        tempWeight = 0;
+        tempSpecial = "Cost is per day.";
+        tempDescription = "The amount given is the typical daily wage for mercenary warriors, masons, craftsmen, cooks, scribes, teamsters, and other trianed hirelings. this value represents a minimum wage; many such hirelings require significantly higher pay.";
+
+        Item hirelingTrained = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.HirelingTrained))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.HirelingTrained, hirelingTrained);
+        }
+        //End Hireling, Trained
+
+        //Hiring Untrinaed
+        tempType = "Utility, Spellcasting and Services";
+        tempitemName = "Hireling, Untrained";
+        tempCost = 0.01f;
+        tempWeight = 0;
+        tempSpecial = "Cost is per day.";
+        tempDescription = "The amount shown is the typical daily wage for laborers, maids, and other menial workers.";
+
+        Item hirelingUntrianed = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.HirelingUntrained))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.HirelingUntrained, hirelingUntrianed);
+        }
+        //End hireling Untrained
+
+        //Messenger
+        tempType = "Utility, Spellcasting and Services";
+        tempitemName = "Messenger";
+        tempCost = 0.0002f;
+        tempWeight = 0;
+        tempSpecial = "Cost is per mile.";
+        tempDescription = "This includes horse-riding messengers and runners. Those willing to carry a message to a place they were going to anywyas may ask for only half the indicated amount.";
+
+        Item messenger = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Messenger))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.Messenger, messenger);
+        }
+        tempSpecial = "";
+        //End Messenger
+
+        //road or Gate Toll
+        tempType = "Utility, Spellcasting and Services";
+        tempitemName = "Road or Gate Toll";
+        tempCost = 0.0001f;
+        tempWeight = 0;
+        tempDescription = "A toll is sometimes charged to cross a well-kept and well-guarded roat to pay for patrols on it and for its upkeep. Occasionally, a large walled city charges a toll to enter or exit (sometimes just to enter).";
+
+        Item roadOrGateToll = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.RoadOrGateToll))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.RoadOrGateToll, roadOrGateToll);
+        }
+        //End Road or Gate Toll
+
+        //Ships Passage
+        tempType = "Utility, Spellcasting and Services";
+        tempitemName = "Ships Passage";
+        tempCost = 0.01f;
+        tempWeight = 0;
+        tempSpecial = "Cost is per mile.";
+        tempDescription = "Most ships do not specialize in passengers, but many have the capability to take a few along when transporting cargo. Double the given cost for creatures larger than Medium or otherwize difficult to bring aboard a ship.";
+
+        Item shipsPassage = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ShipsPassage))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.ShipsPassage, shipsPassage);
+        }
+        //End Ships Passage
+
+        //Spellcasting
+        tempType = "Utility, Spellcasting and Services";
+        tempitemName = "Spellcasting";
+        tempCost = 0;
+        tempWeight = 0;
+        tempSpecial = "Cost is Caster Level x spell level x 10 gp.";
+        tempDescription = "The indicated ammount is how much it costs to get a spellcaster to cast a spell for you. This cost assumes that you can go to the spellcaster and have the spell cast at his or hers convenience (generally at least 24 hours later, so they can prepare). If you want to bring the spellcaster somewhere to cast a spell you need to negotiate with him, and the default answer is no. The cost given is for any spell that does not require a costly material component. If the spell includes a material component, add the cost of that component to the cost of the spell. If the spell has a focus component (other than a divine focus), add 1/10th the cost of that focus to the cost of the spell. Furthermore if the spell has dangerous consequences, the spellcaster will certainly require proof that you can and will pay for dealing with any such consequences. In the case of spells that transport the aster and characters over a distance, you will likely have to pay for two castings of the spell, even if you arn't returing with the caster. In addition, not every town or village has a spellcaster of sufficient level to cast any spell. In general, you must tavel to a small town or bigger to be reasonably assured of finding a spellcaster capable of casting 1st-level spells, or a large town for 2nd-level spells, a small city for 3rd- or 4th-level spells, a large city for 5th- or 6th- level spells, and a metropolis for 7th- or 8th-level spells. Even a metropolis isn't guaranteed to have a local spellcaster able to cast 9th-level spells.";
+
+        Item spellcasting = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ShipsPassage))
+        {
+            AppLibary.itemDictionary.Add(AppLibary.ShipsPassage, shipsPassage);
+        }
+
+        tempSpecial = "";
+        //End Spellcasting
         #endregion Utility
 
         #endregion ItemInitalization
