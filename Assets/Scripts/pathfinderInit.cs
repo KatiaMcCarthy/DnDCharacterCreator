@@ -8,6 +8,30 @@ using UnityEngine.UI;
 
 public class pathfinderInit : MonoBehaviour {
 
+    //for classes
+    public CharacterClass fighter = null;
+    string tempClassName = "";
+    string tempRole = "";
+    string tempAlignment = "";
+    string tempHitDie = "";
+    string tempClassSkills = "";
+    string tempSkillRanksLevel = "";
+    Image tempMainTable = null;
+
+    Dictionary<string, ClassAbility> tempFighterClassAbilites = new Dictionary<string, ClassAbility>();
+
+
+
+    //description already initalized
+    //feature already initalized
+
+    //for class abilities
+    string tempAbilityName = "";
+    //description already initalized
+    //feature already initalized
+    //table 1 -3 already initalized
+
+
     //For feats
     string tempName = "";
     string tempFeature = "";
@@ -37,17 +61,48 @@ public class pathfinderInit : MonoBehaviour {
     int tempSpeed30 = 0;
     string tempMat = "";
     bool tempScale = false;
+    //temp feature already initialized
     //temp description already initialized
 
-    
+    //For Skills
+    //temp name already initialized
+    string tempAbilityMod = "";
+    string tempAbilityType = "";
+    string tempCheckDescription = "";
+    string tempActionDescription = "";
+    string tempTryAgainDescription = "";
+    int tempTotal = 0;
+    int tempRanks = 0;
+    int tempAbilityModifier = 0;
+    int tempTrained = 0;
+    int tempMiscMod = 0;
+    Image tempTableOne = null;
+    Image tempTableTwo = null;
+    Image tempTableThree = null;
+    Image tempTableFour = null;
+    Image tempTableFive = null;
+    //temp other already initialized
+    //temp special already initialized
+    //temp feature already initialized
 
 
-	// Use this for initialization
-	void Start () {
+    //Temp description = visual description of the thing
+    //Temp Feature = what it does
+    //Stats, varie depending on what thing is being entered
+
+    //Temp Description is what is used on tooltips in shop inteface/selection interface
+
+    //Temp  Feature is what is used in detail page
 
 
+    // Use this for initialization
+    void Start () {
+        
         InitalizeFeats();
-
+        InitalizeItems();
+        InitalizeSkills();
+        //Abilits HAVE to be initalized before class
+        InitalizeClassAbilitiesAndClass();
     }
 
     void InitalizeFeats()
@@ -2556,7 +2611,7 @@ public class pathfinderInit : MonoBehaviour {
     void InitalizeItems()
     {
         #region ItemInitalization
-        
+        //may have to update weapons from tempDescription into tempFeature and tempDescription
         #region Weapons
         #region SimpleWeapons
 
@@ -4193,9 +4248,10 @@ public class pathfinderInit : MonoBehaviour {
         tempArcaneSpellFailure = 5;
         tempSpeed30 = 30;
         tempSpeed20 = 20;
+        tempFeature = "";
         tempDescription = "Little more than heavy, quilted cloth, this armor provides only the most basic protection.";
 
-        Item paddedArmor = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        Item paddedArmor = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Padded))
         {
             AppLibary.itemDictionary.Add(AppLibary.Padded, paddedArmor);
@@ -4215,7 +4271,7 @@ public class pathfinderInit : MonoBehaviour {
         tempSpeed20 = 20;
         tempDescription = "Leather armor is made up of pieces of hard boiled lether carefully sewn togeather.";
 
-        Item leatherArmor = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        Item leatherArmor = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Leather))
         {
             AppLibary.itemDictionary.Add(AppLibary.Leather, leatherArmor);
@@ -4235,7 +4291,7 @@ public class pathfinderInit : MonoBehaviour {
         tempSpeed20 = 20;
         tempDescription = "Similar to leather armor, this suit is rinforced with small metal studs.";
 
-        Item studdedLeatherArmor = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        Item studdedLeatherArmor = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.StuddedLeather))
         {
             AppLibary.itemDictionary.Add(AppLibary.StuddedLeather, studdedLeatherArmor);
@@ -4255,7 +4311,7 @@ public class pathfinderInit : MonoBehaviour {
         tempSpeed20 = 20;
         tempDescription = "Covering the torso, this shirt is made up of thousands of interlocking metal rings.";
 
-        Item chainShirt = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        Item chainShirt = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ChainShirt))
         {
             AppLibary.itemDictionary.Add(AppLibary.ChainShirt, chainShirt);
@@ -4278,7 +4334,7 @@ public class pathfinderInit : MonoBehaviour {
         tempSpeed20 = 15;
         tempDescription = "Hide armor is made up of the tanned and preserved skin of any thick-hided beast.";
 
-        Item hideArmor = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        Item hideArmor = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Hide))
         {
             AppLibary.itemDictionary.Add(AppLibary.Hide, hideArmor);
@@ -4298,7 +4354,7 @@ public class pathfinderInit : MonoBehaviour {
         tempSpeed20 = 15;
         tempDescription = "Scale mail is made up of dozens of small overlapping metal plates. The suit includes gauntlets.";
 
-        Item scaleMail = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        Item scaleMail = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ScaleMail))
         {
             AppLibary.itemDictionary.Add(AppLibary.ScaleMail, scaleMail);
@@ -4318,7 +4374,7 @@ public class pathfinderInit : MonoBehaviour {
         tempSpeed20 = 15;
         tempDescription = "Unlike a chain shirt, chainmail covers the legs and arms of the wearer. The suit includes gauntlets Chainmail is made of thousands of interlocking metal rings.";
 
-        Item chainmail = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        Item chainmail = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Chainmail))
         {
             AppLibary.itemDictionary.Add(AppLibary.Chainmail, chainmail);
@@ -4338,7 +4394,7 @@ public class pathfinderInit : MonoBehaviour {
         tempSpeed20 = 15;
         tempDescription = "Covering only the torso, a breastplate is made up of a single piece of sculpted metal.";
 
-        Item breastplate = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        Item breastplate = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Breastplate))
         {
             AppLibary.itemDictionary.Add(AppLibary.Breastplate, breastplate);
@@ -4362,7 +4418,7 @@ public class pathfinderInit : MonoBehaviour {
         tempSpeed20 = 15;
         tempDescription = "Splint mail is made up of metal strips, like banded mail. The suit includes gauntlets.";
 
-        Item splintMail = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        Item splintMail = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SplintMail))
         {
             AppLibary.itemDictionary.Add(AppLibary.SplintMail, splintMail);
@@ -4383,7 +4439,7 @@ public class pathfinderInit : MonoBehaviour {
         tempSpeed20 = 15;
         tempDescription = "Banded mail is made up of overlapping strips of metal, fastened to a leather backing. The suit includes gauntlets.";
 
-        Item bandedMail = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        Item bandedMail = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.BandedMail))
         {
             AppLibary.itemDictionary.Add(AppLibary.BandedMail, bandedMail);
@@ -4404,7 +4460,7 @@ public class pathfinderInit : MonoBehaviour {
         tempSpeed20 = 15;
         tempDescription = "Combining elements of full plate and chainmail, half-plate includes gauntlets and a helm.";
 
-        Item halfPlate = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        Item halfPlate = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.HalfPlate))
         {
             AppLibary.itemDictionary.Add(AppLibary.HalfPlate, halfPlate);
@@ -4425,7 +4481,7 @@ public class pathfinderInit : MonoBehaviour {
         tempSpeed20 = 15;
         tempDescription = "This metal suit includes gauntlets, heavy leather boots, a visored helmet, and a thick layer of padding that is worn underneath the armor. Each suit of full plate musst be individually fitted to its owner by a master armorsmith, although a captured suit can be resized to fit a new owner at a cost of 200 to 800gp (2d4 x 100).";
 
-        Item fullPlate = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        Item fullPlate = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.FullPlate))
         {
             AppLibary.itemDictionary.Add(AppLibary.FullPlate, fullPlate);
@@ -4445,9 +4501,10 @@ public class pathfinderInit : MonoBehaviour {
         tempArcaneSpellFailure = 5;
         tempSpeed30 = 0;
         tempSpeed20 = 0;
-        tempDescription = "This small metal shield is worn strapped to your forearm. You can use a bow or crossbow without penalty while carrying it. You can also use your shield arm to wield a weapon, but take a -1 penalty to attack rolls while doing so. This penalty stacks with those that may apply for fighting with your off-hand and for fighting with two weapons. In any case, if you use a wepaon in your offhand, you lose the buckler's AC bonus until your next turn. You can cast a spell with somatic components using your shield arm, but you lose the buckler's AC bonus until your next turn. You can't make a shield bash with a buckler.";
+        tempFeature = "You can use a bow or crossbow without penalty while carrying it. You can also use your shield arm to wield a weapon, but take a -1 penalty to attack rolls while doing so. This penalty stacks with those that may apply for fighting with your off-hand and for fighting with two weapons. In any case, if you use a wepaon in your offhand, you lose the buckler's AC bonus until your next turn. You can cast a spell with somatic components using your shield arm, but you lose the buckler's AC bonus until your next turn. You can't make a shield bash with a buckler.";
+        tempDescription = "This small metal shield is worn strapped to your forearm. ";
 
-        Item buckler = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        Item buckler = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Buckler))
         {
             AppLibary.itemDictionary.Add(AppLibary.Buckler, buckler);
@@ -4465,9 +4522,10 @@ public class pathfinderInit : MonoBehaviour {
         tempArcaneSpellFailure = 5;
         tempSpeed30 = 0;
         tempSpeed20 = 0;
-        tempDescription = "You strap a shield to your forearm and grip it with your hand. A light shield's weight lets you carry other items in that hand, although you cannot use weapons with it. Wooden and steel sheilds offer the same basic protection, though they respond differently to some spells and effects. You can bash an opponent with a light shield. Used this way, a light shield is a martial bludgeoning weapon. For the purpose of penalties on attack rolls, treat a  light shield as a light weapon. If you use your shield as a wepaon, you lose its AC bonus until your next turn. An enhancement bonus on a shield does not imporove the effectiveness of a shield bash made with it, bu tthe shield can be made into a magic weapon in its own right.";
+        tempFeature = " A light shield's weight lets you carry other items in that hand, although you cannot use weapons with it. Wooden and steel sheilds offer the same basic protection, though they respond differently to some spells and effects. You can bash an opponent with a light shield. Used this way, a light shield is a martial bludgeoning weapon. For the purpose of penalties on attack rolls, treat a  light shield as a light weapon. If you use your shield as a wepaon, you lose its AC bonus until your next turn. An enhancement bonus on a shield does not imporove the effectiveness of a shield bash made with it, bu tthe shield can be made into a magic weapon in its own right.";
+        tempDescription = "A medium sized wooden shield.";
 
-        Item shieldLightWooden = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        Item shieldLightWooden = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ShieldLightWooden))
         {
             AppLibary.itemDictionary.Add(AppLibary.ShieldLightWooden, shieldLightWooden);
@@ -4485,9 +4543,10 @@ public class pathfinderInit : MonoBehaviour {
         tempArcaneSpellFailure = 5;
         tempSpeed30 = 0;
         tempSpeed20 = 0;
-        tempDescription = "You strap a shield to your forearm and grip it with your hand. A light shield's weight lets you carry other items in that hand, although you cannot use weapons with it. Wooden and steel sheilds offer the same basic protection, though they respond differently to some spells and effects. You can bash an opponent with a light shield. Used this way, a light shield is a martial bludgeoning weapon. For the purpose of penalties on attack rolls, treat a  light shield as a light weapon. If you use your shield as a wepaon, you lose its AC bonus until your next turn. An enhancement bonus on a shield does not imporove the effectiveness of a shield bash made with it, bu tthe shield can be made into a magic weapon in its own right.";
+        tempFeature = "You strap a shield to your forearm and grip it with your hand. A light shield's weight lets you carry other items in that hand, although you cannot use weapons with it. Wooden and steel sheilds offer the same basic protection, though they respond differently to some spells and effects. You can bash an opponent with a light shield. Used this way, a light shield is a martial bludgeoning weapon. For the purpose of penalties on attack rolls, treat a  light shield as a light weapon. If you use your shield as a wepaon, you lose its AC bonus until your next turn. An enhancement bonus on a shield does not imporove the effectiveness of a shield bash made with it, bu tthe shield can be made into a magic weapon in its own right.";
+        tempDescription = "A medium sized steel shield.";
 
-        Item shieldLightSteel = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        Item shieldLightSteel = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ShieldLightSteel))
         {
             AppLibary.itemDictionary.Add(AppLibary.ShieldLightSteel, shieldLightSteel);
@@ -4505,9 +4564,10 @@ public class pathfinderInit : MonoBehaviour {
         tempArcaneSpellFailure = 15;
         tempSpeed30 = 0;
         tempSpeed20 = 0;
-        tempDescription = "You strap a shield to your forearm and grip it with your hand. A heavy shield is so heavy that you can't use your shield hand for anything else. You can bash an opponent with a heavy shield. Used this way, a heavy shield is a martial bludgeoning weapon. For the purpose of penalties on attack rolls, treat a  heavy shield as a one-handed weapon. If you use your shield as a wepaon, you lose its AC bonus until your next turn. An enhancement bonus on a shield does not imporove the effectiveness of a shield bash made with it, bu tthe shield can be made into a magic weapon in its own right.";
+        tempFeature = "You strap a shield to your forearm and grip it with your hand. A heavy shield is so heavy that you can't use your shield hand for anything else. You can bash an opponent with a heavy shield. Used this way, a heavy shield is a martial bludgeoning weapon. For the purpose of penalties on attack rolls, treat a  heavy shield as a one-handed weapon. If you use your shield as a wepaon, you lose its AC bonus until your next turn. An enhancement bonus on a shield does not imporove the effectiveness of a shield bash made with it, bu tthe shield can be made into a magic weapon in its own right.";
+        tempDescription = "A large heavy wooden shield, that covers most of one side of your body.";
 
-        Item shieldHeavyWooden = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        Item shieldHeavyWooden = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ShieldHeavyWooden))
         {
             AppLibary.itemDictionary.Add(AppLibary.ShieldHeavyWooden, shieldHeavyWooden);
@@ -4525,9 +4585,10 @@ public class pathfinderInit : MonoBehaviour {
         tempArcaneSpellFailure = 15;
         tempSpeed30 = 0;
         tempSpeed20 = 0;
-        tempDescription = "You strap a shield to your forearm and grip it with your hand. A heavy shield is so heavy that you can't use your shield hand for anything else. You can bash an opponent with a heavy shield. Used this way, a heavy shield is a martial bludgeoning weapon. For the purpose of penalties on attack rolls, treat a  heavy shield as a one-handed weapon. If you use your shield as a wepaon, you lose its AC bonus until your next turn. An enhancement bonus on a shield does not imporove the effectiveness of a shield bash made with it, bu tthe shield can be made into a magic weapon in its own right.";
+        tempFeature = "You strap a shield to your forearm and grip it with your hand. A heavy shield is so heavy that you can't use your shield hand for anything else. You can bash an opponent with a heavy shield. Used this way, a heavy shield is a martial bludgeoning weapon. For the purpose of penalties on attack rolls, treat a  heavy shield as a one-handed weapon. If you use your shield as a wepaon, you lose its AC bonus until your next turn. An enhancement bonus on a shield does not imporove the effectiveness of a shield bash made with it, bu tthe shield can be made into a magic weapon in its own right.";
+        tempDescription = "A large metal shield, it protectshalf of your body.";
 
-        Item shieldHeavySteel = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        Item shieldHeavySteel = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ShieldHeavySteel))
         {
             AppLibary.itemDictionary.Add(AppLibary.ShieldHeavySteel, shieldHeavySteel);
@@ -4545,9 +4606,10 @@ public class pathfinderInit : MonoBehaviour {
         tempArcaneSpellFailure = 50;
         tempSpeed30 = 0;
         tempSpeed20 = 0;
-        tempDescription = "This massive wooden shield is nearly as tall as you are. In most situations, it provides the indicated shield bonus to  your AC. As a standard action, however, you can use a tower shield to grant you total cover until the beginning of your next turn. When using a tower shield in this way, you must choose one edge of your space. That edge is treated as a solid wall for attcks targeting you onlly. You gain total cover for attacks that pass through this edge and no cover for attacks that do not pass through this edge. The shield does not, however provide cover against targeted spells' a spell caster can cast a spell on you by targeting the shield you are holding. You cannot bash with a tower shield, nor can you use your shield hand for anything else. When employing a tower shield in combat, you take a -2 penalty on attack rolls because of the shield's encumbrance.";
+        tempFeature = "This massive wooden shield is nearly as tall as you are. In most situations, it provides the indicated shield bonus to  your AC. As a standard action, however, you can use a tower shield to grant you total cover until the beginning of your next turn. When using a tower shield in this way, you must choose one edge of your space. That edge is treated as a solid wall for attcks targeting you onlly. You gain total cover for attacks that pass through this edge and no cover for attacks that do not pass through this edge. The shield does not, however provide cover against targeted spells' a spell caster can cast a spell on you by targeting the shield you are holding. You cannot bash with a tower shield, nor can you use your shield hand for anything else. When employing a tower shield in combat, you take a -2 penalty on attack rolls because of the shield's encumbrance.";
+        tempDescription = "A massive body-height metal shield. It can protect your entire body.";
 
-        Item shieldTower = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        Item shieldTower = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ShieldTower))
         {
             AppLibary.itemDictionary.Add(AppLibary.ShieldTower, shieldTower);
@@ -4569,9 +4631,10 @@ public class pathfinderInit : MonoBehaviour {
         tempArcaneSpellFailure = 0;
         tempSpeed30 = 0;
         tempSpeed20 = 0;
-        tempDescription = "You can have spikes added to your armor, which allow you to deal extra piercing damage on a succesful grapple attack. The spikes count as a martial weapon. If you are not proficient with them, you take a -4 penalty on grapple checks when you try to use them. You can also make a regular melee attack (or off-hand attack) with the spikes, and they count as a light weapon in this case. (You can't also make an attack with armor spikes if you have already made an attack with another off-hand weapon, and vice versa). An enhancement bonus to a suit of armor does not improve the spikes' effectiveness, but the spikes can be made into magic weapons in their own right.";
+        tempFeature = "You can have spikes added to your armor, which allow you to deal extra piercing damage on a succesful grapple attack. The spikes count as a martial weapon. If you are not proficient with them, you take a -4 penalty on grapple checks when you try to use them. You can also make a regular melee attack (or off-hand attack) with the spikes, and they count as a light weapon in this case. (You can't also make an attack with armor spikes if you have already made an attack with another off-hand weapon, and vice versa). An enhancement bonus to a suit of armor does not improve the spikes' effectiveness, but the spikes can be made into magic weapons in their own right.";
+        tempDescription = "Long crule spikes extrude from the surface of your armor.";
 
-        Item armorSpikes = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        Item armorSpikes = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ArmorSpikes))
         {
             AppLibary.itemDictionary.Add(AppLibary.ArmorSpikes, armorSpikes);
@@ -4590,9 +4653,10 @@ public class pathfinderInit : MonoBehaviour {
         tempArcaneSpellFailure = 0;
         tempSpeed30 = 0;
         tempSpeed20 = 0;
-        tempDescription = "This armored gauntlet has small chains and braces that allow the wearer to attach a wepaon to the gauntlet so that it cannot be dropped easily. It provides a +10 bonus to your Combat Maneuver Defense to keep from being diarmed in combat. Removing a weapon from a locked gauntlet or attaching a weapon to a locked gauntlet is a full-round action that provokes attacks of opportunity. The price given is for a single locked gauntlet. While the gauntlet is locked, you can't use the hand wearing it for casting spells or employing skills. (You can still cast spells with somatic components, provided that your other hand is free). Like a normal gauntlet, a locked gauntlet lets you deal leathal damage rather than nonleathal with an unarmed strike.";
+        tempFeature = "This armored gauntlet has small chains and braces that allow the wearer to attach a wepaon to the gauntlet so that it cannot be dropped easily. It provides a +10 bonus to your Combat Maneuver Defense to keep from being diarmed in combat. Removing a weapon from a locked gauntlet or attaching a weapon to a locked gauntlet is a full-round action that provokes attacks of opportunity. The price given is for a single locked gauntlet. While the gauntlet is locked, you can't use the hand wearing it for casting spells or employing skills. (You can still cast spells with somatic components, provided that your other hand is free). Like a normal gauntlet, a locked gauntlet lets you deal leathal damage rather than nonleathal with an unarmed strike.";
+        tempDescription = "This gauntlet has a chain or simular locking device designed to hold the gripped object in place.";
 
-        Item gauntletLocked = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        Item gauntletLocked = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.GauntletLocked))
         {
             AppLibary.itemDictionary.Add(AppLibary.GauntletLocked, gauntletLocked);
@@ -4611,9 +4675,10 @@ public class pathfinderInit : MonoBehaviour {
         tempArcaneSpellFailure = 0;
         tempSpeed30 = 0;
         tempSpeed20 = 0;
-        tempDescription = "These spikes turn a shield into a martial piercing weapon and icrease the damage dealt by a shield bash as if the shield were designed for a creature one size category larger than you. You can't put spikes on a buckler or a tower shield. Otherwize, attacking with a spiked shield is like making a shield bash attack. An enhancement bonus on a spiked shield does not improve the effectiveness of a shield bash made with it, but a spiked shield can be made inot a magic weapon in its own right.";
+        tempFeature = "These spikes turn a shield into a martial piercing weapon and icrease the damage dealt by a shield bash as if the shield were designed for a creature one size category larger than you. You can't put spikes on a buckler or a tower shield. Otherwize, attacking with a spiked shield is like making a shield bash attack. An enhancement bonus on a spiked shield does not improve the effectiveness of a shield bash made with it, but a spiked shield can be made inot a magic weapon in its own right.";
+        tempDescription = "Long crule spikes extrude from your shield.";
 
-        Item shieldSpikes = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempDescription);
+        Item shieldSpikes = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempArmorBonus, tempMaxDexBonus, tempArmorCheckPenality, tempArcaneSpellFailure, tempSpeed30, tempSpeed20, tempMat, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ShieldSpikes))
         {
             AppLibary.itemDictionary.Add(AppLibary.ShieldSpikes, shieldSpikes);
@@ -4632,7 +4697,7 @@ public class pathfinderInit : MonoBehaviour {
         tempScale = true;
         tempDescription = "A rugged backpack made from cloath or leather. Weights 1/4th this ammount when made for small creatures.";
 
-        Item backpackEmpty = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempDescription);
+        Item backpackEmpty = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Backpack))
         {
             AppLibary.itemDictionary.Add(AppLibary.Backpack, backpackEmpty);
@@ -4647,7 +4712,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 30;
         tempDescription = "A wooden barrel, bound with iron bands.";
 
-        Item barrelEmpty = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item barrelEmpty = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Barrel))
         {
             AppLibary.itemDictionary.Add(AppLibary.Barrel, barrelEmpty);
@@ -4661,7 +4726,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 1;
         tempDescription = "A small wicker basket.";
 
-        Item basketEmpty = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item basketEmpty = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Basket))
         {
             AppLibary.itemDictionary.Add(AppLibary.Basket, basketEmpty);
@@ -4676,7 +4741,7 @@ public class pathfinderInit : MonoBehaviour {
         tempScale = true;
         tempDescription = "A warm bedroll. Weighs 1/4th this ammount when made for small creatures";
 
-        Item bedroll = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item bedroll = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Bedroll))
         {
             AppLibary.itemDictionary.Add(AppLibary.Bedroll, bedroll);
@@ -4691,7 +4756,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "A small silver or gold bell.";
 
-        Item bell = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item bell = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Bell))
         {
             AppLibary.itemDictionary.Add(AppLibary.Bell, bell);
@@ -4706,7 +4771,7 @@ public class pathfinderInit : MonoBehaviour {
         tempScale = true;
         tempDescription = "A heavy winter blanket. Weights 1/4th this ammount when made for small creatures.";
 
-        Item blaketWinter = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item blaketWinter = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.BlanketWinter))
         {
             AppLibary.itemDictionary.Add(AppLibary.BlanketWinter, blaketWinter);
@@ -4721,7 +4786,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 5;
         tempDescription = "A system of two pulleys with a rope threaded through them. Used to lift or pull heavy loads.";
 
-        Item blockAndTackle = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item blockAndTackle = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.BlockAndTackle))
         {
             AppLibary.itemDictionary.Add(AppLibary.BlockAndTackle, blockAndTackle);
@@ -4735,7 +4800,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 1;
         tempDescription = "A glass bottle.";
 
-        Item bottleGlass = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item bottleGlass = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.BottleGlass))
         {
             AppLibary.itemDictionary.Add(AppLibary.BottleGlass, bottleGlass);
@@ -4749,7 +4814,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 1;
         tempDescription = "A empty wooden bucket.";
 
-        Item bucketEmpty = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item bucketEmpty = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Bucket))
         {
             AppLibary.itemDictionary.Add(AppLibary.Bucket, bucketEmpty);
@@ -4761,13 +4826,15 @@ public class pathfinderInit : MonoBehaviour {
         tempitemName = "Caltrops";
         tempCost = 1;
         tempWeight = 2;
-        tempDescription = "A caltrop is a four-pronged metal spike crafted so that one prong faces up no matter how the caltrop comes to rest. You scatter caltrops on the ground in the hope that your nemies step on them or are at least forced to slow down to avoid them. One 2-pound bag of caltrops covers an area 5 square feet. Each time a creature moves into an area covered by caltrops (or spends a round fighting while standing in such an area), it runs the risk of stepping on one. Make an attack roll for the caltrops (base attack bonus +0) against the creature. For this attack, the creature's shield, armor, and deflection bonuses do not count. If the creature is wearing shoes or other footwear, it gets a +2 bonus to AC. If the attack succeds, the creature has stepped on a caltrop. The caltrop deals 1 point of damage, and the creature's speed is reduced by half because its foot is wounded. This movement penalty lasts for 24 hours, until the creature is successfully treated with a DC 15 Heal check, or unitl it receives at least 1 point of magical healing. A charging or running creature must immediately stop if it steps on a caltrop. Any creature moving at half speed or slower can pick its way thorugh a bed of caltrops with no trouble.";
+        tempFeature = "You scatter caltrops on the ground in the hope that your nemies step on them or are at least forced to slow down to avoid them. One 2-pound bag of caltrops covers an area 5 square feet. Each time a creature moves into an area covered by caltrops (or spends a round fighting while standing in such an area), it runs the risk of stepping on one. Make an attack roll for the caltrops (base attack bonus +0) against the creature. For this attack, the creature's shield, armor, and deflection bonuses do not count. If the creature is wearing shoes or other footwear, it gets a +2 bonus to AC. If the attack succeds, the creature has stepped on a caltrop. The caltrop deals 1 point of damage, and the creature's speed is reduced by half because its foot is wounded. This movement penalty lasts for 24 hours, until the creature is successfully treated with a DC 15 Heal check, or unitl it receives at least 1 point of magical healing. A charging or running creature must immediately stop if it steps on a caltrop. Any creature moving at half speed or slower can pick its way thorugh a bed of caltrops with no trouble.";
+        tempDescription = "A caltrop is a four-pronged metal spike crafted so that one prong faces up no matter how the caltrop comes to rest.";
 
-        Item caltrop = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item caltrop = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Caltrops))
         {
             AppLibary.itemDictionary.Add(AppLibary.Caltrops, caltrop);
         }
+
         //End Caltrops
 
         //Candle
@@ -4775,13 +4842,16 @@ public class pathfinderInit : MonoBehaviour {
         tempitemName = "Candle";
         tempCost = 0.00001f;
         tempWeight = 0;
-        tempDescription = "A small wax candle. A candle dimly illuminates a small area, increasing the light level in a 5-foot radius by one step. A candle cannot increase the light level above normal light. A candle burns for 1 hour.";
+        tempFeature = "A candle dimly illuminates a small area, increasing the light level in a 5-foot radius by one step. A candle cannot increase the light level above normal light. A candle burns for 1 hour.";
+        tempDescription = "A small wax candle.";
 
-        Item candle = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item candle = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Candle))
         {
             AppLibary.itemDictionary.Add(AppLibary.Candle, candle);
         }
+
+        tempFeature = "";
         //End Candle
 
         //Canvas
@@ -4791,7 +4861,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 1;
         tempDescription = "A sturdy canvas, the price is per square yard.";
 
-        Item canvas = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item canvas = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Canvas))
         {
             AppLibary.itemDictionary.Add(AppLibary.Canvas, canvas);
@@ -4805,7 +4875,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0.5f;
         tempDescription = "A small case for a map or scroll, made of wood or hide.";
 
-        Item caseMapOrScroll = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item caseMapOrScroll = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.CaseMapOrScroll))
         {
             AppLibary.itemDictionary.Add(AppLibary.CaseMapOrScroll, caseMapOrScroll);
@@ -4819,7 +4889,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 2;
         tempDescription = "A ten foot length of chain, made from steel or iron links. A chain has hardness of 10 and 5 hit points. It can be burst with a DC 26 Strength check.";
 
-        Item chain10ft = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item chain10ft = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Chain10ft))
         {
             AppLibary.itemDictionary.Add(AppLibary.Chain10ft, chain10ft);
@@ -4833,7 +4903,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "A two inch length of chalk.";
 
-        Item chalk = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item chalk = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ChalkOne))
         {
             AppLibary.itemDictionary.Add(AppLibary.ChalkOne, chalk);
@@ -4847,7 +4917,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 25;
         tempDescription = "A small sturdy chest made from wood with iron bands.";
 
-        Item chestEmpty = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item chestEmpty = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Chest))
         {
             AppLibary.itemDictionary.Add(AppLibary.Chest, chestEmpty);
@@ -4859,13 +4929,15 @@ public class pathfinderInit : MonoBehaviour {
         tempitemName = "Crowbar";
         tempCost = 2;
         tempWeight = 5;
-        tempDescription = "A crowbar grants a +2 circumstance bonus on Strength checks made to force open a door or chest. If used in combat, treat a crowbar as a one-handed improvised weapon that deals bludgeoning damage equal to that of a club of its size.";
+        tempFeature = "A crowbar grants a +2 circumstance bonus on Strength checks made to force open a door or chest. If used in combat, treat a crowbar as a one-handed improvised weapon that deals bludgeoning damage equal to that of a club of its size.";
+        tempDescription = "A length of metal that is curved on one end.";
 
-        Item crowbar = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item crowbar = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Crowbar))
         {
             AppLibary.itemDictionary.Add(AppLibary.Crowbar, crowbar);
         }
+        tempFeature = "";
         //End Crowbar
 
         //Firewood (per day)
@@ -4875,7 +4947,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 20;
         tempDescription = "A split firewood used to fuel fires.";
 
-        Item firewood = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item firewood = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Firewood))
         {
             AppLibary.itemDictionary.Add(AppLibary.Firewood, firewood);
@@ -4889,7 +4961,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "A fishhook.";
 
-        Item fishhook = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item fishhook = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Fishhook))
         {
             AppLibary.itemDictionary.Add(AppLibary.Fishhook, fishhook);
@@ -4903,7 +4975,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 5;
         tempDescription = "A fishing net 25 sq. ft. in size.";
 
-        Item fishingNet = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item fishingNet = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.FishingNet25))
         {
             AppLibary.itemDictionary.Add(AppLibary.FishingNet25, fishingNet);
@@ -4917,7 +4989,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 1.5f;
         tempDescription = "A empty flask, used for holding liquids.";
 
-        Item flaskEmpty = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item flaskEmpty = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Flask))
         {
             AppLibary.itemDictionary.Add(AppLibary.Flask, flaskEmpty);
@@ -4931,7 +5003,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "Lighting a torch with a flint and steel is a full-round action, and lighting any other fire with them takes at least that long.";
 
-        Item flintAndSteel = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item flintAndSteel = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.FlintAndSteel))
         {
             AppLibary.itemDictionary.Add(AppLibary.FlintAndSteel, flintAndSteel);
@@ -4943,9 +5015,10 @@ public class pathfinderInit : MonoBehaviour {
         tempitemName = "Grappling Hook";
         tempCost = 1;
         tempWeight = 4;
-        tempDescription = "A grappeling hook is a multi-pronged hook fastend to a length of rope. Throwing a grappling hook requires a ranged attack roll, treating the hook as a thrown weapon with a range increment of 10 feet. Objects with ample places to catch the hook are AC 5.";
+        tempFeature = "Throwing a grappling hook requires a ranged attack roll, treating the hook as a thrown weapon with a range increment of 10 feet.Objects with ample places to catch the hook are AC 5.";
+       tempDescription = "A grappeling hook is a multi-pronged hook fastend to a length of rope.";
 
-        Item grapplingHook = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item grapplingHook = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.GrappelingHook))
         {
             AppLibary.itemDictionary.Add(AppLibary.GrappelingHook, grapplingHook);
@@ -4957,13 +5030,16 @@ public class pathfinderInit : MonoBehaviour {
         tempitemName = "Hammer";
         tempCost = 0.005f;
         tempWeight = 2;
-        tempDescription = "A small metal head fastened to a short shaft. If a hammer is used in combat, treat it as a one-handed improvised weapon that deals bludgeoning damge equal to that of a spiked gauntlet of its size.";
+        tempFeature = "A small metal head fastened to a short shaft.";
+        tempDescription = "If a hammer is used in combat, treat it as a one-handed improvised weapon that deals bludgeoning damge equal to that of a spiked gauntlet of its size.";
 
-        Item hammer = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item hammer = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Hammer))
         {
             AppLibary.itemDictionary.Add(AppLibary.Hammer, hammer);
         }
+
+        tempFeature = "";
         //End Hammer
 
         //Hourglass
@@ -4973,7 +5049,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 1;
         tempDescription = "A small wooden or iron hourglass, that uses sand to track time.";
 
-        Item hourglass = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item hourglass = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Hourglass))
         {
             AppLibary.itemDictionary.Add(AppLibary.Hourglass, hourglass);
@@ -4987,7 +5063,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "A small vial full of ink.";
 
-        Item ink1oz = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item ink1oz = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Ink))
         {
             AppLibary.itemDictionary.Add(AppLibary.Ink, ink1oz);
@@ -5001,7 +5077,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "An inkpen.";
 
-        Item inkpen = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item inkpen = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Inkpen))
         {
             AppLibary.itemDictionary.Add(AppLibary.Inkpen, inkpen);
@@ -5015,7 +5091,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 9;
         tempDescription = "A simple clay jug.";
 
-        Item jugClay = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item jugClay = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.JugClay))
         {
             AppLibary.itemDictionary.Add(AppLibary.JugClay, jugClay);
@@ -5029,7 +5105,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 20;
         tempDescription = "A wooden ladder 10ft tall.";
 
-        Item ladder10ft = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item ladder10ft = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Ladder10ft))
         {
             AppLibary.itemDictionary.Add(AppLibary.Ladder10ft, ladder10ft);
@@ -5041,9 +5117,10 @@ public class pathfinderInit : MonoBehaviour {
         tempitemName = "Lamp, Common";
         tempCost = 0.001f;
         tempWeight = 20;
-        tempDescription = "A lamp illuminates a small area, providing normal lightin a 15-foot radius and increasing the light leve by one step for an additional 15 feet beyond that area. A lamp does not increase the light-level in normal light or bright light. A lamp burns for 6 hours on one pint of oil. You can carry a lamp in one hand.";
+        tempFeature = "A lamp illuminates a small area, providing normal lightin a 15-foot radius and increasing the light leve by one step for an additional 15 feet beyond that area. A lamp does not increase the light-level in normal light or bright light. A lamp burns for 6 hours on one pint of oil. You can carry a lamp in one hand.";
+        tempDescription = "A small hand held lamp.";
 
-        Item lampCommon = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item lampCommon = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.LampCommon))
         {
             AppLibary.itemDictionary.Add(AppLibary.LampCommon, lampCommon);
@@ -5055,9 +5132,10 @@ public class pathfinderInit : MonoBehaviour {
         tempitemName = "Lantern, Bullseye";
         tempCost = 12;
         tempWeight = 3;
-        tempDescription = "A bullseye lantern provides normal light in a 60-foot cone and increases the light level by one step in the area beyond that. A bullseye lantern does not increase the light level in normal light or bright light. A lantern burns for 6 hours on one pint of oil.. You can carry a lantern in one hand.";
+        tempFeature = "A bullseye lantern provides normal light in a 60-foot cone and increases the light level by one step in the area beyond that. A bullseye lantern does not increase the light level in normal light or bright light. A lantern burns for 6 hours on one pint of oil.. You can carry a lantern in one hand.";
+        tempDescription = "A metal shrouded lantern, with a small hole to let out light.";
 
-        Item lanternBullseye = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item lanternBullseye = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.LanternBullseye))
         {
             AppLibary.itemDictionary.Add(AppLibary.LanternBullseye, lanternBullseye);
@@ -5069,9 +5147,10 @@ public class pathfinderInit : MonoBehaviour {
         tempitemName = "Lantern, Hooded";
         tempCost = 7;
         tempWeight = 2;
-        tempDescription = "A hooded lanter sheds normal light in a 30-foot radius and increases the light level by one step for an additional 30 feet beyond that area. A hooded lantern does not increase the light level in normal light or bright light. A lantern burns for 6 hours on one pint of oil. You can carry a lantern in one hand.";
+        tempFeature = "A hooded lanter sheds normal light in a 30-foot radius and increases the light level by one step for an additional 30 feet beyond that area. A hooded lantern does not increase the light level in normal light or bright light. A lantern burns for 6 hours on one pint of oil. You can carry a lantern in one hand.";
+        tempDescription = "A small lantern shrouded in a metal case, protecting the flame from the elements.";
 
-        Item lanternHooded = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item lanternHooded = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.LanternHodded))
         {
             AppLibary.itemDictionary.Add(AppLibary.LanternHodded, lanternHooded);
@@ -5083,9 +5162,10 @@ public class pathfinderInit : MonoBehaviour {
         tempitemName = "Lock, Simple";
         tempCost = 20;
         tempWeight = 1;
-        tempDescription = "The DC to open a lock with the Disable Device skill depends on the lock's quality: simple (DC 20), average (DC 25), good (DC 30), or superior (DC 40).";
+        tempFeature = "The DC to open a lock with the Disable Device skill depends on the lock's quality: simple (DC 20), average (DC 25), good (DC 30), or superior (DC 40).";
+        tempDescription = "A simple lock.";
 
-        Item lockSimple = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item lockSimple = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.LockSimple))
         {
             AppLibary.itemDictionary.Add(AppLibary.LockSimple, lockSimple);
@@ -5098,8 +5178,9 @@ public class pathfinderInit : MonoBehaviour {
         tempCost = 40;
         tempWeight = 1;
         tempDescription = "The DC to open a lock with the Disable Device skill depends on the lock's quality: simple (DC 20), average (DC 25), good (DC 30), or superior (DC 40).";
+        tempDescription = "A simple lock.";
 
-        Item lockAverage = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item lockAverage = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.LockAverage))
         {
             AppLibary.itemDictionary.Add(AppLibary.LockAverage, lockAverage);
@@ -5112,8 +5193,9 @@ public class pathfinderInit : MonoBehaviour {
         tempCost = 80;
         tempWeight = 1;
         tempDescription = "The DC to open a lock with the Disable Device skill depends on the lock's quality: simple (DC 20), average (DC 25), good (DC 30), or superior (DC 40).";
+        tempDescription = "A simple lock.";
 
-        Item lockGood = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item lockGood = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.LockGood))
         {
             AppLibary.itemDictionary.Add(AppLibary.LockGood, lockGood);
@@ -5126,8 +5208,9 @@ public class pathfinderInit : MonoBehaviour {
         tempCost = 150;
         tempWeight = 1;
         tempDescription = "The DC to open a lock with the Disable Device skill depends on the lock's quality: simple (DC 20), average (DC 25), good (DC 30), or superior (DC 40).";
+        tempDescription = "A simple lock.";
 
-        Item lockSuperior = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item lockSuperior = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.LockSuperior))
         {
             AppLibary.itemDictionary.Add(AppLibary.LockSuperior, lockSuperior);
@@ -5139,9 +5222,10 @@ public class pathfinderInit : MonoBehaviour {
         tempitemName = "Manacles";
         tempCost = 15;
         tempWeight = 2;
-        tempDescription = "Manacles can bind a Medium creature. A manacled creatre can use the Escape Artist skill to slip free (DC 30 for simple, DC 35 for masterwork). Breaking the manacles requires a Strength check (DC 26 for simple, DC 28 for masterwork). Manacles have hardness 10 and 10 hit points. Most manacles have locks; add the cost of the lock you want to the cost of the manacles. For the same cost, you can but manacles for a Small creature. For a Large creature, manacles cost 10 times the indicated amount, and for Huge creature, 100 times the indicated ammount.";
+        tempFeature = "Manacles can bind a Medium creature. A manacled creatre can use the Escape Artist skill to slip free (DC 30 for simple, DC 35 for masterwork). Breaking the manacles requires a Strength check (DC 26 for simple, DC 28 for masterwork). Manacles have hardness 10 and 10 hit points. Most manacles have locks; add the cost of the lock you want to the cost of the manacles. For the same cost, you can but manacles for a Small creature. For a Large creature, manacles cost 10 times the indicated amount, and for Huge creature, 100 times the indicated ammount.";
+        tempDescription = "Sturdy iron manacles.";
 
-        Item manacles = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item manacles = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Manacles))
         {
             AppLibary.itemDictionary.Add(AppLibary.Manacles, manacles);
@@ -5153,13 +5237,15 @@ public class pathfinderInit : MonoBehaviour {
         tempitemName = "Manacles, Masterwork";
         tempCost = 50;
         tempWeight = 2;
-        tempDescription = "Manacles can bind a Medium creature. A manacled creatre can use the Escape Artist skill to slip free (DC 30 for simple, DC 35 for masterwork). Breaking the manacles requires a Strength check (DC 26 for simple, DC 28 for masterwork). Manacles have hardness 10 and 10 hit points. Most manacles have locks; add the cost of the lock you want to the cost of the manacles. For the same cost, you can but manacles for a Small creature. For a Large creature, manacles cost 10 times the indicated amount, and for Huge creature, 100 times the indicated ammount.";
+        tempFeature = "Manacles can bind a Medium creature. A manacled creatre can use the Escape Artist skill to slip free (DC 30 for simple, DC 35 for masterwork). Breaking the manacles requires a Strength check (DC 26 for simple, DC 28 for masterwork). Manacles have hardness 10 and 10 hit points. Most manacles have locks; add the cost of the lock you want to the cost of the manacles. For the same cost, you can but manacles for a Small creature. For a Large creature, manacles cost 10 times the indicated amount, and for Huge creature, 100 times the indicated ammount.";
+        tempDescription = "Well made steel manacles.";
 
-        Item masterworkManacles = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item masterworkManacles = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ManaclesMasterwork))
         {
             AppLibary.itemDictionary.Add(AppLibary.ManaclesMasterwork, masterworkManacles);
         }
+        tempFeature = "";
         //End Masterwork Manacles
 
         //Mirror, small steel
@@ -5169,7 +5255,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0.5f;
         tempDescription = "A small steel framed mirror.";
 
-        Item mirrorSmallSteel = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item mirrorSmallSteel = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.MirrorSmallSteel))
         {
             AppLibary.itemDictionary.Add(AppLibary.MirrorSmallSteel, mirrorSmallSteel);
@@ -5183,7 +5269,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 1;
         tempDescription = "A simple clay mug or tankard.";
 
-        Item mugClay = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item mugClay = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.MugClay))
         {
             AppLibary.itemDictionary.Add(AppLibary.MugClay, mugClay);
@@ -5195,13 +5281,15 @@ public class pathfinderInit : MonoBehaviour {
         tempitemName = "Oil, 1-Pint Flask";
         tempCost = .01f;
         tempWeight = 1;
-        tempDescription = "A pint of oil burns for 6 hours in a lantern or lamp. You can also use a flask of oil as a splash weapon. Use the rules for alchemist's fire, except that it takes a full-round action to prepare a flask with a fuse. Once it is thrown, there is an 50% chance of it ingiting sucessfully.";
+        tempFeature = "A pint of oil burns for 6 hours in a lantern or lamp. You can also use a flask of oil as a splash weapon. Use the rules for alchemist's fire, except that it takes a full-round action to prepare a flask with a fuse. Once it is thrown, there is an 50% chance of it ingiting sucessfully.";
+        tempDescription = "A pint of oil in a small container.";
 
-        Item oilOnePnt = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item oilOnePnt = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Oil))
         {
             AppLibary.itemDictionary.Add(AppLibary.Oil, oilOnePnt);
         }
+        tempFeature = "";
         //End Oil, 1 pt
 
         //Paper (Sheet)
@@ -5211,7 +5299,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "A sheet of paper.";
 
-        Item paper = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item paper = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Paper))
         {
             AppLibary.itemDictionary.Add(AppLibary.Paper, paper);
@@ -5225,7 +5313,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "A sheet of parchment.";
 
-        Item parchmentSheet = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item parchmentSheet = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Parchment))
         {
             AppLibary.itemDictionary.Add(AppLibary.Parchment, parchmentSheet);
@@ -5237,13 +5325,15 @@ public class pathfinderInit : MonoBehaviour {
         tempitemName = "Pick, Miner's";
         tempCost = 3;
         tempWeight = 20;
-        tempDescription = "If a miner's pick is used in combat, treat it as a two-handed improvised weapon that deals piercing damge equal to that of a heavy pick of its size.";
+        tempFeature = "If a miner's pick is used in combat, treat it as a two-handed improvised weapon that deals piercing damge equal to that of a heavy pick of its size.";
+        tempDescription = "A pick is a tool consisting of a spiked metal head attacked to a long haft.";
 
-        Item pickMiners = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item pickMiners = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.PickMiner))
         {
             AppLibary.itemDictionary.Add(AppLibary.PickMiner, pickMiners);
         }
+        tempFeature = "";
         //End Pick, miner's
 
         //Pitcher, clay
@@ -5253,7 +5343,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 5;
         tempDescription = "A simple clay pitcher.";
 
-        Item pitcherClay = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item pitcherClay = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.PitcherClay))
         {
             AppLibary.itemDictionary.Add(AppLibary.PitcherClay, pitcherClay);
@@ -5267,7 +5357,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0.5f;
         tempDescription = "A metal spike that is driven ito a crack or seam in a climbing surface with a hammer, and is used to ancor the climber.";
 
-        Item piton = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item piton = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Piton))
         {
             AppLibary.itemDictionary.Add(AppLibary.Piton, piton);
@@ -5281,7 +5371,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 8;
         tempDescription = "A 10-foot pole, made of wood.";
 
-        Item pole10foot = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item pole10foot = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Pole10Foot))
         {
             AppLibary.itemDictionary.Add(AppLibary.Pole10Foot, pole10foot);
@@ -5295,7 +5385,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 4;
         tempDescription = "A iron pot, used for brewing or cooking.";
 
-        Item potIron = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item potIron = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.PotIron))
         {
             AppLibary.itemDictionary.Add(AppLibary.PotIron, potIron);
@@ -5310,7 +5400,7 @@ public class pathfinderInit : MonoBehaviour {
         tempDescription = "A simple poutch, made of hide or leather, worn on the belt.";
         tempScale = true;
 
-        Item pouchBelt = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item pouchBelt = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.PouchBelt))
         {
             AppLibary.itemDictionary.Add(AppLibary.PouchBelt, pouchBelt);
@@ -5326,7 +5416,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 20;
         tempDescription = "This iron-shod wooden beam gives you a +2 circumstance bonus on Strength checks made to break open a door and allows a second person to help, automatically increasing your bonus by 2.";
 
-        Item ramPortable = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item ramPortable = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.RamPortable))
         {
             AppLibary.itemDictionary.Add(AppLibary.RamPortable, ramPortable);
@@ -5341,7 +5431,7 @@ public class pathfinderInit : MonoBehaviour {
         tempDescription = "An assorment of food, all you need for a full days travel.";
         tempScale = true;
 
-        Item rationsTrail = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item rationsTrail = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.RationsTrail))
         {
             AppLibary.itemDictionary.Add(AppLibary.RationsTrail, rationsTrail);
@@ -5357,7 +5447,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 10;
         tempDescription = " A sturdy rope made of hemp. This rope has 2 hit points and can be burst with a DC 23 Strength check.";
 
-        Item ropeHemp = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item ropeHemp = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.RopeHemp))
         {
             AppLibary.itemDictionary.Add(AppLibary.RopeHemp, ropeHemp);
@@ -5371,7 +5461,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 5;
         tempDescription = " A sturdy rope made of silk. This rope has 4 hit points and can be burst with a DC 24 Strength check.";
 
-        Item ropeSilk = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item ropeSilk = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.RopeSilk))
         {
             AppLibary.itemDictionary.Add(AppLibary.RopeSilk, ropeSilk);
@@ -5386,7 +5476,7 @@ public class pathfinderInit : MonoBehaviour {
         tempDescription = " A empty sack made of burlap or a similar material.";
         tempScale = true;
 
-        Item sackEmpty = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item sackEmpty = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Sack))
         {
             AppLibary.itemDictionary.Add(AppLibary.Sack, sackEmpty);
@@ -5402,7 +5492,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 1;
         tempDescription = "Wax designed for sealing letters.";
 
-        Item sealingWax = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item sealingWax = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SealingWax))
         {
             AppLibary.itemDictionary.Add(AppLibary.SealingWax, sealingWax);
@@ -5416,7 +5506,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "A simple sweing needle, made from steel.";
 
-        Item sewingNeedle = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item sewingNeedle = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SewingNeedle))
         {
             AppLibary.itemDictionary.Add(AppLibary.SewingNeedle, sewingNeedle);
@@ -5430,7 +5520,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 8;
         tempDescription = "If a shovel is used in combat, treat it as a one-handed improvised weapon that deals bludgeoning damage equal to that of a club of its size.";
 
-        Item shovel = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item shovel = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ShovelOrSpade))
         {
             AppLibary.itemDictionary.Add(AppLibary.ShovelOrSpade, shovel);
@@ -5444,7 +5534,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "A whistle used to send signals.";
 
-        Item signalWhistle = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item signalWhistle = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SignalWhistle))
         {
             AppLibary.itemDictionary.Add(AppLibary.SignalWhistle, signalWhistle);
@@ -5458,7 +5548,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "An ornate ring, usually with a crest or symbol on it. Signet rings are used to sign documents and letter by pressing the ring into wax.";
 
-        Item signetRing = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item signetRing = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SignetRing))
         {
             AppLibary.itemDictionary.Add(AppLibary.SignetRing, signetRing);
@@ -5472,7 +5562,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 10;
         tempDescription = "A vehicle on runners for conveying loads or passengers especially over snow or ice, often pulled by draft animals.";
 
-        Item sledge = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item sledge = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Sledge))
         {
             AppLibary.itemDictionary.Add(AppLibary.Sledge, sledge);
@@ -5486,7 +5576,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 1;
         tempDescription = "A bar of soap weighing one pound.";
 
-        Item soap = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item soap = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Soap))
         {
             AppLibary.itemDictionary.Add(AppLibary.Soap, soap);
@@ -5498,9 +5588,10 @@ public class pathfinderInit : MonoBehaviour {
         tempitemName = "Spyglass";
         tempCost = 1000;
         tempWeight = 1;
-        tempDescription = "A metal or wooden spyglass. Objeccts viewed through a spyglass are magnified to twice their size. Characters using a spyglass take a -1 penalty on Perception skill checks per 20 feet of distance to the target, if the target is visible.";
+        tempFeature = "A metal or wooden spyglass. Objeccts viewed through a spyglass are magnified to twice their size. Characters using a spyglass take a -1 penalty on Perception skill checks per 20 feet of distance to the target, if the target is visible.";
+        tempDescription = "A metal or wooden spyglass.";
 
-        Item spyglass = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item spyglass = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Spyglass))
         {
             AppLibary.itemDictionary.Add(AppLibary.Spyglass, spyglass);
@@ -5515,7 +5606,7 @@ public class pathfinderInit : MonoBehaviour {
         tempDescription = "A small tent, sized to hold one person of medium size. Tents have a wooden frame with hide or leather suspended between the frame.";
         tempScale = true;
 
-        Item tent = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item tent = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Tent))
         {
             AppLibary.itemDictionary.Add(AppLibary.Tent, tent);
@@ -5529,9 +5620,10 @@ public class pathfinderInit : MonoBehaviour {
         tempitemName = "Torch";
         tempCost = 0.001f;
         tempWeight = 1;
-        tempDescription = "A length of wood, with one end wrapped in fabric and soaked in oil. A torch burns for 1 hour, shedding normal light in a 20-foot radius and increasing the light level by one step for an additional 20 feet beyond that area. A torchdoes not increase the light level in normal light or bright light. If a torch is used in combat, treat it as a one-handed improvised weapon that deals bludgeoning damage equal to that of a gauntlet of its size, pluse 1 point of fire damage.";
+        tempFeature = "A torch burns for 1 hour, shedding normal light in a 20-foot radius and increasing the light level by one step for an additional 20 feet beyond that area. A torchdoes not increase the light level in normal light or bright light. If a torch is used in combat, treat it as a one-handed improvised weapon that deals bludgeoning damage equal to that of a gauntlet of its size, pluse 1 point of fire damage.";
+        tempDescription = "A length of wood, with one end wrapped in fabric and soaked in oil.";
 
-        Item torch = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item torch = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Torch))
         {
             AppLibary.itemDictionary.Add(AppLibary.Torch, torch);
@@ -5545,7 +5637,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "A vial is made out of glass or steel and holds 1 ounce of liquid.";
 
-        Item vial = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item vial = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.VialInkOrPotion))
         {
             AppLibary.itemDictionary.Add(AppLibary.VialInkOrPotion, vial);
@@ -5559,7 +5651,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 200;
         tempDescription = "This large, bulky contrivance gives the time accurately to within half an hour per day since it was last set. It requires a source eof water, and it must be kept still because it marks the time by the regulated flow of droplets of water.";
 
-        Item waterClock = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item waterClock = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.WaterClock))
         {
             AppLibary.itemDictionary.Add(AppLibary.WaterClock, waterClock);
@@ -5574,7 +5666,7 @@ public class pathfinderInit : MonoBehaviour {
         tempDescription = "A waterskin is a receptacle used to hold water. Normally made of sheep or cow bladder, it retains water naturally. Contains enough water to last a full day of travel.";
         tempScale = true;
 
-        Item waterskin = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item waterskin = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Waterskin))
         {
             AppLibary.itemDictionary.Add(AppLibary.Waterskin, waterskin);
@@ -5590,7 +5682,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 1;
         tempDescription = "A whetstone is a fine-grained stone used for sharpening cutting tools.";
 
-        Item whetstone = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item whetstone = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Whetstone))
         {
             AppLibary.itemDictionary.Add(AppLibary.Whetstone, whetstone);
@@ -5604,9 +5696,10 @@ public class pathfinderInit : MonoBehaviour {
         tempitemName = "Acid (flask)";
         tempCost = 10;
         tempWeight = 1;
-        tempDescription = "A small flask of acid. You can throw a flask of acid as a splash weapon. Treat this attack as a ranged touch attack with a range increment of 10 feet. A direct hit deals 1d6 points of acid damage. Every creature within 5 feet of the point were the acid hits takes 1 point of acid damage from the splash.";
+        tempFeature = "A small flask of acid. You can throw a flask of acid as a splash weapon. Treat this attack as a ranged touch attack with a range increment of 10 feet. A direct hit deals 1d6 points of acid damage. Every creature within 5 feet of the point were the acid hits takes 1 point of acid damage from the splash.";
+        tempDescription = "A small flask of acid.";
 
-        Item acidFlask = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item acidFlask = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.AcidFlask))
         {
             AppLibary.itemDictionary.Add(AppLibary.AcidFlask, acidFlask);
@@ -5618,9 +5711,10 @@ public class pathfinderInit : MonoBehaviour {
         tempitemName = "Alchemist's Fire (flask)";
         tempCost = 20;
         tempWeight = 1;
-        tempDescription = "A small flask of alchemist's fire. You can throw a flask of alchemist's fire as a splash weapon. Treat this attack as a ranged touch attack with a range increment of 10 feet. A direct hit deals 1d6 points of fire damage. Every creature within 5 feet of the point where the flask hits takes 1 point of fire damage from the splash. On the round following a direct hit, the target takes an additional 1d6 points of damage. If desired, the target can use a full round action to attempt to extinguish the flames before taking this additional damage. Extinguishingthe flames requires a DC 15 Reflex save. Rolling on the ground provides the target a +2 bonus on the save. Leaping into a lake or magically extinguishing the flames automatically smothers the fire.";
+        tempFeature = "A small flask of alchemist's fire. You can throw a flask of alchemist's fire as a splash weapon. Treat this attack as a ranged touch attack with a range increment of 10 feet. A direct hit deals 1d6 points of fire damage. Every creature within 5 feet of the point where the flask hits takes 1 point of fire damage from the splash. On the round following a direct hit, the target takes an additional 1d6 points of damage. If desired, the target can use a full round action to attempt to extinguish the flames before taking this additional damage. Extinguishingthe flames requires a DC 15 Reflex save. Rolling on the ground provides the target a +2 bonus on the save. Leaping into a lake or magically extinguishing the flames automatically smothers the fire.";
+        tempDescription = "A small flask of alchemist's fire.";
 
-        Item alchemistsFire = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item alchemistsFire = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.AlchemistFire))
         {
             AppLibary.itemDictionary.Add(AppLibary.AlchemistFire, alchemistsFire);
@@ -5632,9 +5726,10 @@ public class pathfinderInit : MonoBehaviour {
         tempitemName = "Antitoxin (vial)";
         tempCost = 50;
         tempWeight = 0;
-        tempDescription = "A small vial of antitoxin. If you drink a vial of antitoxin, you get a +5 alchemical bonus on Fortitude saving throws against poison for 1 hour.";
+        tempFeature = "A small vial of antitoxin. If you drink a vial of antitoxin, you get a +5 alchemical bonus on Fortitude saving throws against poison for 1 hour.";
+        tempDescription = "A small vial of antitoxin.";
 
-        Item antitoxin = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item antitoxin = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Antitoxin))
         {
             AppLibary.itemDictionary.Add(AppLibary.Antitoxin, antitoxin);
@@ -5646,9 +5741,10 @@ public class pathfinderInit : MonoBehaviour {
         tempitemName = "Everburning Torch";
         tempCost = 110;
         tempWeight = 1;
-        tempDescription = "This otherwize normal torch has a continual flame spell cast on it. This causes it to shed light like an ordinary torch, but it does not emit heat or deal fire damage if used as a weapon.";
+        tempFeature = "This otherwize normal torch has a continual flame spell cast on it. This causes it to shed light like an ordinary torch, but it does not emit heat or deal fire damage if used as a weapon.";
+        tempDescription = "This looks like a normal torch.";
 
-        Item everburningTorch = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item everburningTorch = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.EverburningTorch))
         {
             AppLibary.itemDictionary.Add(AppLibary.EverburningTorch, everburningTorch);
@@ -5660,9 +5756,10 @@ public class pathfinderInit : MonoBehaviour {
         tempitemName = "Holy Water (flask)";
         tempCost = 25;
         tempWeight = 1;
-        tempDescription = "A small flask of holy water. Holy water damages undead creatures and evil outsiders almost as if it were acid. A flask of holy water can be thrown as a splash weapon. Treat this attack as a ranged touch attack with a range increment of 10 feet. A flask breaks if thrwn against the body of a corporeal creature, but to use it against an incoporeal ccreature, you must open the flask and pour the holy water out onto the target. Thus,  you can douse an incoperal creature with holy water only ifyou are adjacent to it. Doing so is a ranged touch attack that does not provoke attacks of opportunity. A direct hit by a flask of holy water deals 2d4 points of damage to an undead creature or an evil outsider. Each such creature within 5 feet of the point where the flask hits takes 1 point of damage from the splash. Temples to good deities sellll holy water at cost (making no profit). Holy water is made using the bless water spell.";
+        tempFeature = "A small flask of holy water. Holy water damages undead creatures and evil outsiders almost as if it were acid. A flask of holy water can be thrown as a splash weapon. Treat this attack as a ranged touch attack with a range increment of 10 feet. A flask breaks if thrwn against the body of a corporeal creature, but to use it against an incoporeal ccreature, you must open the flask and pour the holy water out onto the target. Thus,  you can douse an incoperal creature with holy water only ifyou are adjacent to it. Doing so is a ranged touch attack that does not provoke attacks of opportunity. A direct hit by a flask of holy water deals 2d4 points of damage to an undead creature or an evil outsider. Each such creature within 5 feet of the point where the flask hits takes 1 point of damage from the splash. Temples to good deities sellll holy water at cost (making no profit). Holy water is made using the bless water spell.";
+        tempDescription = "A small flask of holy water.";
 
-        Item holyWater = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item holyWater = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.HolyWaterFlask))
         {
             AppLibary.itemDictionary.Add(AppLibary.HolyWaterFlask, holyWater);
@@ -5674,9 +5771,10 @@ public class pathfinderInit : MonoBehaviour {
         tempitemName = "Smokestick";
         tempCost = 25;
         tempWeight = 0.5f;
-        tempDescription = "This alchemically treated wooden stick instantly creates thick, opaque smoke when burned. The smoke fills a 10-foot cube (treat the effect as a fog cloud spell, except that a moderate or stronger wind dissipates the smoke in 1 round). The stick is consumed after 1 round, and the smoke dissipates naturally after 1 minute.";
+        tempFeature = "This alchemically treated wooden stick instantly creates thick, opaque smoke when burned. The smoke fills a 10-foot cube (treat the effect as a fog cloud spell, except that a moderate or stronger wind dissipates the smoke in 1 round). The stick is consumed after 1 round, and the smoke dissipates naturally after 1 minute.";
+        tempDescription = "An alchemically treated wooden stick.";
 
-        Item smokestick = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item smokestick = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Smokestick))
         {
             AppLibary.itemDictionary.Add(AppLibary.Smokestick, smokestick);
@@ -5688,9 +5786,10 @@ public class pathfinderInit : MonoBehaviour {
         tempitemName = "Sunrod";
         tempCost = 2;
         tempWeight = 1;
-        tempDescription = "This 1-foot long, gold-tipped, iron rod glows brightly when struck as a standard action. It sheds normal light in a 30-foot radius and increases the light level by one step for an additional 30 feet beyond that area. A sunrod does not increase the light level in normal light or bright light. It glows for 6 hours, after which the gold tip is burned out and worthless.";
+        tempFeature = "This 1-foot long, gold-tipped, iron rod glows brightly when struck as a standard action. It sheds normal light in a 30-foot radius and increases the light level by one step for an additional 30 feet beyond that area. A sunrod does not increase the light level in normal light or bright light. It glows for 6 hours, after which the gold tip is burned out and worthless.";
+        tempDescription = "A short foot-long iron rod.";
 
-        Item sunrod = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item sunrod = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Sunrod))
         {
             AppLibary.itemDictionary.Add(AppLibary.Sunrod, sunrod);
@@ -5702,9 +5801,10 @@ public class pathfinderInit : MonoBehaviour {
         tempitemName = "Tanglefoot Bag";
         tempCost = 50;
         tempWeight = 4;
-        tempDescription = "A tanglefoot bag is a small sack filled with tar, resin, and other sticky substances. When you throw a tanglefoot bag at a creature (as a ranged touch attack with a range increment of 10 feet), the bag comes apart and goo bursts out, entangling the target and then becoming toough adn resilient upon exposure to air. An entangled creature takes a -2 penalty on attack rolls and a -4 penalty to Dexterity and must make a DC 15 Reflex save or be glued to the floor, unable to move. Even on a successful save, it can move only at half speed. Huge or larger creatures are unaffected by a tanglefoot bag. A flying creature is not stuck to the floor, but it must make a DC 15 Reflex save or be unable to fly(assuming it uses its wings to fly) and fall to the ground. A tanglefoot bag does not function underwater. A creature that is glued to the floor (or unable to fly) can break free by makeing a DC 17 Strength check or by dealing 15 points of damage to the goo with a slashing weapon. A creature trying to scrape goo off itself, or another creature assisting, does not need to make an attack roll; hitting the goo is automatic, after which the creature that hits makes a damage roll to see how much of the goo was scraped off. Once free, the creature can move (including flying) at half speed. If the entangled creature attempts to cast a sepll, it must make concentration ccheck with a DC of 15 + the spell's level or be unable to cast the spell. The goo becomes brittle and fragile after 2d4 rounds, cracking apart and losing its effectiveness. An apllicaiton of univeral solvent to a stuck creature dissolves the alchemical goo immediantly.";
+        tempFeature = "A tanglefoot bag is a small sack filled with tar, resin, and other sticky substances. When you throw a tanglefoot bag at a creature (as a ranged touch attack with a range increment of 10 feet), the bag comes apart and goo bursts out, entangling the target and then becoming toough adn resilient upon exposure to air. An entangled creature takes a -2 penalty on attack rolls and a -4 penalty to Dexterity and must make a DC 15 Reflex save or be glued to the floor, unable to move. Even on a successful save, it can move only at half speed. Huge or larger creatures are unaffected by a tanglefoot bag. A flying creature is not stuck to the floor, but it must make a DC 15 Reflex save or be unable to fly(assuming it uses its wings to fly) and fall to the ground. A tanglefoot bag does not function underwater. A creature that is glued to the floor (or unable to fly) can break free by makeing a DC 17 Strength check or by dealing 15 points of damage to the goo with a slashing weapon. A creature trying to scrape goo off itself, or another creature assisting, does not need to make an attack roll; hitting the goo is automatic, after which the creature that hits makes a damage roll to see how much of the goo was scraped off. Once free, the creature can move (including flying) at half speed. If the entangled creature attempts to cast a sepll, it must make concentration ccheck with a DC of 15 + the spell's level or be unable to cast the spell. The goo becomes brittle and fragile after 2d4 rounds, cracking apart and losing its effectiveness. An apllicaiton of univeral solvent to a stuck creature dissolves the alchemical goo immediantly.";
+        tempDescription = "A small sack filled with unknown contents.";
 
-        Item tanglefootBag = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item tanglefootBag = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.TanglefootBag))
         {
             AppLibary.itemDictionary.Add(AppLibary.TanglefootBag, tanglefootBag);
@@ -5717,9 +5817,10 @@ public class pathfinderInit : MonoBehaviour {
         tempitemName = "Thunderstone";
         tempCost = 30;
         tempWeight = 1;
-        tempDescription = "You can throw this stone as a ranged attack with a range increment of 20 feet. When it strikes a hard surface (or is struck hard, it creates a deafening bang that is treated as a sonic attack. Each creature within a 10-foot radius spread must make a DC 15 Fortitude save or be deafened for 1 hour. A deafened creature, in addition to the obvious effects, takes a -4 penalty on initiative and has a 20% chance to miscast and lose any spell with a verbal component that it tries to cast. Since you don't need to hit a specific target, you can simplly aim at a particular 5-foot square. Treat the target square as AC 5.";
+        tempFeature = "You can throw this stone as a ranged attack with a range increment of 20 feet. When it strikes a hard surface (or is struck hard, it creates a deafening bang that is treated as a sonic attack. Each creature within a 10-foot radius spread must make a DC 15 Fortitude save or be deafened for 1 hour. A deafened creature, in addition to the obvious effects, takes a -4 penalty on initiative and has a 20% chance to miscast and lose any spell with a verbal component that it tries to cast. Since you don't need to hit a specific target, you can simplly aim at a particular 5-foot square. Treat the target square as AC 5.";
+        tempDescription = "A small stone carved with magical runes.";
 
-        Item thunderstone = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item thunderstone = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Thunderstone))
         {
             AppLibary.itemDictionary.Add(AppLibary.Thunderstone, thunderstone);
@@ -5731,9 +5832,10 @@ public class pathfinderInit : MonoBehaviour {
         tempitemName = "Tindertwig";
         tempCost = 10;
         tempWeight = 1;
-        tempDescription = "The alchemical substance on the end of this small, wooden stick ignites when struck against a rough surface. Creating a flame with a tindertwig is much faster than creating a flame with flint and steel (or magnifying glass) and tinder. Lighting a torch with a tindertwig is a standard action (rather than a full-round action), and lighting any other fire with one is at least a standard action.";
+        tempFeature = "The alchemical substance on the end of this small, wooden stick ignites when struck against a rough surface. Creating a flame with a tindertwig is much faster than creating a flame with flint and steel (or magnifying glass) and tinder. Lighting a torch with a tindertwig is a standard action (rather than a full-round action), and lighting any other fire with one is at least a standard action.";
+        tempDescription = "A short wooden stick, with a charged and blackend end.";
 
-        Item tindertwig = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item tindertwig = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Tinderwig))
         {
             AppLibary.itemDictionary.Add(AppLibary.Tinderwig, tindertwig);
@@ -5745,9 +5847,10 @@ public class pathfinderInit : MonoBehaviour {
         tempitemName = "Alchemist's Lab";
         tempCost = 200;
         tempWeight = 40;
-        tempDescription = "This lab is used for making alchemical items, and provides a +2 circumstance bonus on Craft(alchemy) checks. It has no berring on the costs related to this skill. Without this lab, a character with the Craft(alchemy) skill is assumed to have enough tools to use the skill but not enough to get the +2 bonus the lab provides.";
+        tempFeature = "This lab is used for making alchemical items, and provides a +2 circumstance bonus on Craft(alchemy) checks. It has no berring on the costs related to this skill. Without this lab, a character with the Craft(alchemy) skill is assumed to have enough tools to use the skill but not enough to get the +2 bonus the lab provides.";
+        tempDescription = "This lab is made up of various instruments and equipment.";
 
-        Item alchemistsLab = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item alchemistsLab = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.AlchemistLab))
         {
             AppLibary.itemDictionary.Add(AppLibary.AlchemistLab, alchemistsLab);
@@ -5759,9 +5862,10 @@ public class pathfinderInit : MonoBehaviour {
         tempitemName = "Artisan's Tools";
         tempCost = 5;
         tempWeight = 5;
-        tempDescription = "These special tools include the items needed to pursue any craft. Without them, you have to use improvised tools (=2 penalty on Craft checks), if you can do the job at all.";
+        tempFeature = "These special tools include the items needed to pursue any craft. Without them, you have to use improvised tools (=2 penalty on Craft checks), if you can do the job at all.";
+        tempDescription = "An assortment of tools used to pursue any given craft.";
 
-        Item artisansTools = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item artisansTools = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ArtisansTools))
         {
             AppLibary.itemDictionary.Add(AppLibary.ArtisansTools, artisansTools);
@@ -5773,13 +5877,15 @@ public class pathfinderInit : MonoBehaviour {
         tempitemName = "Artisan's Tools, Masterwork";
         tempCost = 55;
         tempWeight = 5;
-        tempDescription = "These tools serve the same purpose as artisan's tools, but masterwork artisan's tools are the perfect tools for the job, so you get a +2 circumstance bonus on Craft checks made with them.";
+        tempFeature = "These tools serve the same purpose as artisan's tools, but masterwork artisan's tools are the perfect tools for the job, so you get a +2 circumstance bonus on Craft checks made with them.";
+        tempDescription = "An assortment of finely crafted tools used to pursue any given craft.";
 
-        Item artisansToolsMasterwork = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item artisansToolsMasterwork = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ArtisansToolsMasterwork))
         {
             AppLibary.itemDictionary.Add(AppLibary.ArtisansToolsMasterwork, artisansToolsMasterwork);
         }
+        tempFeature = "";
         //End Artisan's Tools, Masterwork
 
         //Climber's Kit
@@ -5790,7 +5896,7 @@ public class pathfinderInit : MonoBehaviour {
         tempDescription = "These crampons, pitons, ropes, and tools give you a +2 circumstance bonuse on Climb checks.";
         tempScale = true;
 
-        Item climbersKit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item climbersKit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ClimbersKit))
         {
             AppLibary.itemDictionary.Add(AppLibary.ClimbersKit, climbersKit);
@@ -5807,7 +5913,7 @@ public class pathfinderInit : MonoBehaviour {
         tempDescription = "The kit is the perfect tool for disguise and provides a +2 circumstance bonus on Disguise checks. A disguise kit is exhausted after 10 uses.";
         tempScale = true;
 
-        Item disguiseKit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item disguiseKit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.DisguiseKit))
         {
             AppLibary.itemDictionary.Add(AppLibary.DisguiseKit, disguiseKit);
@@ -5823,7 +5929,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 1;
         tempDescription = "This collection of bandages and herbs provides a +2 circumstance bonus on Heal checks. A healer'skit is exhausted after 10 uses.";
 
-        Item healersKit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item healersKit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.HealersKit))
         {
             AppLibary.itemDictionary.Add(AppLibary.HealersKit, healersKit);
@@ -5837,7 +5943,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "Druids commonly use these plants as divine focuses when casting spells.";
 
-        Item hollyAndMistletoe = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item hollyAndMistletoe = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.HollyAndMistletoe))
         {
             AppLibary.itemDictionary.Add(AppLibary.HollyAndMistletoe, hollyAndMistletoe);
@@ -5849,9 +5955,10 @@ public class pathfinderInit : MonoBehaviour {
         tempitemName = "Holy Symbol, Silver";
         tempCost = 25;
         tempWeight = 1;
-        tempDescription = "A holy symbol focuses positive energy and is used by good clerics and paladins (or by neutral clerics who want to cast good spells or channel positive energy). Each religion has its own holy symbol. An unholy symbol is like a holy symbol except that it focuses negative energy and is used by evil clerics (or by neutral clerics who want to cast evil spells or channel negative energy). These symbols are made of silver.";
+        tempFeature = "A holy symbol focuses positive energy and is used by good clerics and paladins (or by neutral clerics who want to cast good spells or channel positive energy). Each religion has its own holy symbol. An unholy symbol is like a holy symbol except that it focuses negative energy and is used by evil clerics (or by neutral clerics who want to cast evil spells or channel negative energy). These symbols are made of silver.";
+        tempDescription = "A holy symbol crafted from silver.";
 
-        Item holySymbolSilver = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item holySymbolSilver = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.HolySymbolSilver))
         {
             AppLibary.itemDictionary.Add(AppLibary.HolySymbolSilver, holySymbolSilver);
@@ -5863,9 +5970,10 @@ public class pathfinderInit : MonoBehaviour {
         tempitemName = "Holy Symbol, Wooden";
         tempCost = 1;
         tempWeight = 0;
-        tempDescription = "A holy symbol focuses positive energy and is used by good clerics and paladins (or by neutral clerics who want to cast good spells or channel positive energy). Each religion has its own holy symbol. An unholy symbol is like a holy symbol except that it focuses negative energy and is used by evil clerics (or by neutral clerics who want to cast evil spells or channel negative energy). These symbols are carved from wood.";
+        tempFeature = "A holy symbol focuses positive energy and is used by good clerics and paladins (or by neutral clerics who want to cast good spells or channel positive energy). Each religion has its own holy symbol. An unholy symbol is like a holy symbol except that it focuses negative energy and is used by evil clerics (or by neutral clerics who want to cast evil spells or channel negative energy). These symbols are carved from wood.";
+        tempDescription = "A holy symbol made from wood.";
 
-        Item holySymbolWood = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item holySymbolWood = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.HolySymbolWooden))
         {
             AppLibary.itemDictionary.Add(AppLibary.HolySymbolWooden, holySymbolWood);
@@ -5877,13 +5985,15 @@ public class pathfinderInit : MonoBehaviour {
         tempitemName = "Magnifying Glass";
         tempCost = 100;
         tempWeight = 0;
-        tempDescription = "This simple lens allows a closer look at small objects. It is also useful as a substitute for flint and steel when starting fires. Lighting a fire with a magnifying glass requires bright light, such as sunlight to focus, tinder to ignite, and at least a full-round action. A magnifying glass grants a +2 circumstance bonus on Appraise checks involving any item that is small or highly detailed.";
+        tempFeature = "This simple lens allows a closer look at small objects. It is also useful as a substitute for flint and steel when starting fires. Lighting a fire with a magnifying glass requires bright light, such as sunlight to focus, tinder to ignite, and at least a full-round action. A magnifying glass grants a +2 circumstance bonus on Appraise checks involving any item that is small or highly detailed.";
+        tempDescription = "A small lense held by a simple iron frame.";
 
-        Item magnifyingGlass = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item magnifyingGlass = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.MagnifyingGlass))
         {
             AppLibary.itemDictionary.Add(AppLibary.MagnifyingGlass, magnifyingGlass);
         }
+        tempFeature = "";
         //End Magnifying Glass
 
         //Musical Instrument, Common
@@ -5894,7 +6004,7 @@ public class pathfinderInit : MonoBehaviour {
         tempDescription = "A common instrument is a well made, and serviceable version of the instrument.";
         tempScale = true;
 
-        Item musicalInstrumentCommon = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item musicalInstrumentCommon = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.MusicalInstrimentCommon))
         {
             AppLibary.itemDictionary.Add(AppLibary.MusicalInstrimentCommon, musicalInstrumentCommon);
@@ -5911,7 +6021,7 @@ public class pathfinderInit : MonoBehaviour {
         tempDescription = "A masterwork instrument is an exquisitely crafted version of the instrument's more common varients. A masterwork instrument grants a +2 circumstance bonus on Perform checks involving its use.";
         tempScale = true;
 
-        Item musicalInstrumentMasterwork = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item musicalInstrumentMasterwork = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.MusicalInstrumentMasterwork))
         {
             AppLibary.itemDictionary.Add(AppLibary.MusicalInstrumentMasterwork, musicalInstrumentMasterwork);
@@ -5927,7 +6037,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 1;
         tempDescription = "A merchant's scale grants a +2 circumstance bonus on Appraise checks involving items that are valued by weight, including anything made of precious metals.";
 
-        Item scaleMerchants = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item scaleMerchants = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ScaleMerchants))
         {
             AppLibary.itemDictionary.Add(AppLibary.ScaleMerchants, scaleMerchants);
@@ -5941,7 +6051,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 2;
         tempDescription = "A spellcaster with a spelll component pouch is assumed to have all the material components and focuses needed for spellcasting, except for those components that have a specific cost, divine focuses, and focuses that wouldn't fit in a pouch.";
 
-        Item spellComponentPouch = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item spellComponentPouch = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SpellComponentPouch))
         {
             AppLibary.itemDictionary.Add(AppLibary.SpellComponentPouch, spellComponentPouch);
@@ -5955,7 +6065,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 3;
         tempDescription = "A spellbook has 100 pages of parchment, and each spell takes up one page per spell level (one page each for 0-level spells).";
 
-        Item spellbookWizardsBlank = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item spellbookWizardsBlank = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SpellbookBlank))
         {
             AppLibary.itemDictionary.Add(AppLibary.SpellbookBlank, spellbookWizardsBlank);
@@ -5969,7 +6079,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 1;
         tempDescription = "This kit contains lockpicks and other tools you need to use the Disable Device skill. Without these tools, you must use improvised tools, and you take a -2 circumstance bonus on Disable Device checks.";
 
-        Item thievesTools = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item thievesTools = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ThievesTools))
         {
             AppLibary.itemDictionary.Add(AppLibary.ThievesTools, thievesTools);
@@ -5983,7 +6093,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 2;
         tempDescription = "This kit contains extra tools and tools of better make, which grant a +2 circumstance bonus on Disable Device checks.";
 
-        Item thievesToolsMasterwork = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item thievesToolsMasterwork = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ThievesToolsMasterwork))
         {
             AppLibary.itemDictionary.Add(AppLibary.ThievesToolsMasterwork, thievesToolsMasterwork);
@@ -5997,7 +6107,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 1;
         tempDescription = "This well-made item is the perfect tool for the job. It grants a +2 circumstance bonus on a related skill check (if any). Bonuses provided by multiple masterwork items do not stack.";
 
-        Item toolMasterwork = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item toolMasterwork = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ToolMasterwork))
         {
             AppLibary.itemDictionary.Add(AppLibary.ToolMasterwork, toolMasterwork);
@@ -6012,7 +6122,7 @@ public class pathfinderInit : MonoBehaviour {
         tempDescription = "This outfit includes a shirt with buttons, a skirt or pants with a drawstring, shoes, and perhapse a cap or hat. It may also include a belt or a leather or cloth apron for carrying tools.";
         tempScale = true;
 
-        Item artisansOutfit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item artisansOutfit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ArtisansOutfit))
         {
             AppLibary.itemDictionary.Add(AppLibary.ArtisansOutfit, artisansOutfit);
@@ -6027,7 +6137,7 @@ public class pathfinderInit : MonoBehaviour {
         tempDescription = "These clothes are for performing priestly functions, not for adventuring. Cleric's vestments typically include a cassock, stole, and surplice.";
         tempScale = true;
 
-        Item clericsVestment = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item clericsVestment = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ClericsVestments))
         {
             AppLibary.itemDictionary.Add(AppLibary.ClericsVestments, clericsVestment);
@@ -6042,7 +6152,7 @@ public class pathfinderInit : MonoBehaviour {
         tempDescription = "This outfit includes a wool coat, linen shirt, wool cap, heavy cloak, thick pants or skirt, and boots. This outfit grants a +5 circumstance bonus on Fortitude saving throws against exposure to cold weather.";
         tempScale = true;
 
-        Item coldWeatherOutfit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item coldWeatherOutfit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ColdWeatherOutfit))
         {
             AppLibary.itemDictionary.Add(AppLibary.ColdWeatherOutfit, coldWeatherOutfit);
@@ -6054,14 +6164,16 @@ public class pathfinderInit : MonoBehaviour {
         tempitemName = "Courtier's Outfit";
         tempCost = 30;
         tempWeight = 6;
-        tempDescription = "This outfit includes fancy, tailored clothes in whatever fashion happens to be the current style in the courts of the nobles. Anyone trying to influence nobles or courtiers while wearing street dress will have a hard time of it(-2 penalty on Charisma-based skill checks to influence such individuals). If you wear this outfit without jewelry (costing an additional 50gp), you look like an out-of-place commoner.";
+        tempFeature = "Anyone trying to influence nobles or courtiers while wearing street dress will have a hard time of it(-2 penalty on Charisma-based skill checks to influence such individuals). If you wear this outfit without jewelry (costing an additional 50gp), you look like an out-of-place commoner.";
+        tempDescription = "This outfit includes fancy, tailored clothes in whatever fashion happens to be the current style in the courts of the nobles.";
         tempScale = true;
 
-        Item courtiersOutfit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item courtiersOutfit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.CourtiersOutfit))
         {
             AppLibary.itemDictionary.Add(AppLibary.CourtiersOutfit, courtiersOutfit);
         }
+        tempDescription = "";
         //End Courtier's Outfit
 
         //Entertainer's Outfit
@@ -6072,7 +6184,7 @@ public class pathfinderInit : MonoBehaviour {
         tempDescription = "This set of flashy-perhaps even gaudy- clothes is for entertaining. While the outfit looks whimsical, its practical design lets you tumble, dance, walk a tightrope, or just run(if the audience turns ugly).";
         tempScale = true;
 
-        Item entertainersOutfit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item entertainersOutfit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.EntertainersOutfit))
         {
             AppLibary.itemDictionary.Add(AppLibary.EntertainersOutfit, entertainersOutfit);
@@ -6087,7 +6199,7 @@ public class pathfinderInit : MonoBehaviour {
         tempDescription = "This set of clothes is for someone whoe never knows what to expect. It includes sturdy boots, leather breeches or a skirt, a belt, a shirt (perhapse with a vest or jacket), gloves, and a cloak. Rather than a leather skirt, a leather overtunic may be worn over a cloth skirt. The clothes have plenty of pockets (especially the cloak). The outfit also includes any extra accessories you might need, such as a scarf or a wide-brimmed hat.";
         tempScale = true;
 
-        Item explorersOutfit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item explorersOutfit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ExplorersOutfit))
         {
             AppLibary.itemDictionary.Add(AppLibary.ExplorersOutfit, explorersOutfit);
@@ -6102,7 +6214,7 @@ public class pathfinderInit : MonoBehaviour {
         tempDescription = "This simple outfit includes sandals, loose breeches, and a loose shirt, and is bound togeather with sashes. The outfit is designed to give you maximum mobility, and it's made of high-quality fabric. You can conceal small weapons in pockets hidden in the folds, and the sashes are strong enough to serve as short ropes.";
         tempScale = true;
 
-        Item monksOutfit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item monksOutfit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.MonksOutfit))
         {
             AppLibary.itemDictionary.Add(AppLibary.MonksOutfit, monksOutfit);
@@ -6117,7 +6229,7 @@ public class pathfinderInit : MonoBehaviour {
         tempDescription = "These clothes are designed specifically to be expensive and gaudy. Precious metals and gems are worked into the cloathing. A would-be noble also needs a signet ring and jewelry (worth at least 100gp) to accessorize this outfit.";
         tempScale = true;
 
-        Item noblesOutfit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item noblesOutfit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.NoblesOutfit))
         {
             AppLibary.itemDictionary.Add(AppLibary.NoblesOutfit, noblesOutfit);
@@ -6132,7 +6244,7 @@ public class pathfinderInit : MonoBehaviour {
         tempDescription = "This set of clothes consits of a loose shirt and baggy breeches, or a loose shirt and skirt or overdress. Cloth wrappings are used for shoes.";
         tempScale = true;
 
-        Item peasantsOutfit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item peasantsOutfit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.PesantsOutfit))
         {
             AppLibary.itemDictionary.Add(AppLibary.PesantsOutfit, peasantsOutfit);
@@ -6147,7 +6259,7 @@ public class pathfinderInit : MonoBehaviour {
         tempDescription = "This is just the clothing, not the royal scepter, crown, ring, and other accoutrements. Royal clothes are ostentatious, with gems, gold, silk, and fur in abundance.";
         tempScale = true;
 
-        Item royalOutfit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item royalOutfit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.RoyalOutfit))
         {
             AppLibary.itemDictionary.Add(AppLibary.RoyalOutfit, royalOutfit);
@@ -6162,7 +6274,7 @@ public class pathfinderInit : MonoBehaviour {
         tempDescription = "Perfect for a scholar, this outfit includes a robe, a belt, a cap, soft shoes, and possibly a cloak.";
         tempScale = true;
 
-        Item scholarsOutfit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item scholarsOutfit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ScholarsOutift))
         {
             AppLibary.itemDictionary.Add(AppLibary.ScholarsOutift, scholarsOutfit);
@@ -6177,7 +6289,7 @@ public class pathfinderInit : MonoBehaviour {
         tempDescription = "This set of clothes consists of boots, a wool skirt or breeches, a sturdy belt, a shirt (perhapse with a vest or jacket), and an ample cloak with a hood.";
         tempScale = true;
 
-        Item travelersOutfit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item travelersOutfit = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.TravlersOutfit))
         {
             AppLibary.itemDictionary.Add(AppLibary.TravlersOutfit, travelersOutfit);
@@ -6192,7 +6304,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 8;
         tempDescription = "A gallon of ale.";
 
-        Item aleGallon = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item aleGallon = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.AleGallon))
         {
             AppLibary.itemDictionary.Add(AppLibary.AleGallon, aleGallon);
@@ -6206,7 +6318,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 1;
         tempDescription = "A mug of ale.";
 
-        Item aleMug = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item aleMug = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.AleMug))
         {
             AppLibary.itemDictionary.Add(AppLibary.AleMug, aleMug);
@@ -6220,7 +6332,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "Cost of attending a nice banquet.";
 
-        Item banquet = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item banquet = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Banquet))
         {
             AppLibary.itemDictionary.Add(AppLibary.Banquet, banquet);
@@ -6234,7 +6346,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0.5f;
         tempDescription = "A loaf of bread.";
 
-        Item breadLoaf = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item breadLoaf = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.BreadLoaf))
         {
             AppLibary.itemDictionary.Add(AppLibary.BreadLoaf, breadLoaf);
@@ -6248,7 +6360,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0.5f;
         tempDescription = "A hunk of cheese.";
 
-        Item cheeseHunk = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item cheeseHunk = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.CheeseHunk))
         {
             AppLibary.itemDictionary.Add(AppLibary.CheeseHunk, cheeseHunk);
@@ -6262,7 +6374,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "A night stay at a good inn.";
 
-        Item innStayGood = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item innStayGood = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.InnStayGood))
         {
             AppLibary.itemDictionary.Add(AppLibary.InnStayGood, innStayGood);
@@ -6276,7 +6388,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "A night stay at a common inn.";
 
-        Item innStayCommon = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item innStayCommon = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.InnStayCommon))
         {
             AppLibary.itemDictionary.Add(AppLibary.InnStayCommon, innStayCommon);
@@ -6290,7 +6402,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "A night stay at a poor inn.";
 
-        Item innStayPoor = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item innStayPoor = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.InnStayPoor))
         {
             AppLibary.itemDictionary.Add(AppLibary.InnStayPoor, innStayPoor);
@@ -6304,7 +6416,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "Three good meals.";
 
-        Item mealsGood = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item mealsGood = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.MealsGood))
         {
             AppLibary.itemDictionary.Add(AppLibary.MealsGood, mealsGood);
@@ -6318,7 +6430,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "Three common meals.";
 
-        Item mealsCommon = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item mealsCommon = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.MealsCommon))
         {
             AppLibary.itemDictionary.Add(AppLibary.MealsCommon, mealsCommon);
@@ -6332,7 +6444,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "Three poor meals.";
 
-        Item mealsPoor = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item mealsPoor = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.MealsPoor))
         {
             AppLibary.itemDictionary.Add(AppLibary.MealsPoor, mealsPoor);
@@ -6346,7 +6458,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0.5f;
         tempDescription = "Half a pound of meat.";
 
-        Item meatChunkOf = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item meatChunkOf = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.MeatChunk))
         {
             AppLibary.itemDictionary.Add(AppLibary.MeatChunk, meatChunkOf);
@@ -6360,7 +6472,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 6;
         tempDescription = "Common wine, served by the pitcher.";
 
-        Item wineCommon = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item wineCommon = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.WineCommon))
         {
             AppLibary.itemDictionary.Add(AppLibary.WineCommon, wineCommon);
@@ -6374,7 +6486,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 1.5f;
         tempDescription = "Fine wine, served by the bottle.";
 
-        Item wineFine = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item wineFine = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.WineFine))
         {
             AppLibary.itemDictionary.Add(AppLibary.WineFine, wineFine);
@@ -6388,9 +6500,10 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 1;
         tempOther = "Cost and Weight are realitive to similar armor for a Medium humanoid. (2x cost, 1x weight).";
         tempSpecial = "In Medium barding, a creature with base speed of 40ft moves at 30ft, at 50ft moves at 35ft, and at 60ft moves at 40ft. In Heavy barding, a creature with base speed of 40ft moves at 30ft, at 50ft moves at 35ft, and at 60ft moves at 40ft.";
-        tempDescription = "Barding is a type of armor that covers the head, neck, chest, body, and possibly legs of a horse or other mount. Barding made of medium or heavy armor provides better protection than light barding, but at the expense of speed. barding can be made of any of the basic armor types. Armor for a horse costs four times as much as human armor and also weighs twice as much. If the armor is for a pony or other Medium mount, the cost is only double, and the weight is the same as for Medium armor word by a humaniod. Medium or heavy barding slows a mout that wears it. A mount wearing heavy armor moves at only triple its normal speed when running instead of quadruple. Flying mounts can't fly in medium or heavy barding. Removing and fitting barding takes five times as long as it does for a human. A barded animal cannot be used to carry any load other than a rider and normal saddlebags.";
+        tempFeature = "Barding is a type of armor that covers the head, neck, chest, body, and possibly legs of a horse or other mount. Barding made of medium or heavy armor provides better protection than light barding, but at the expense of speed. barding can be made of any of the basic armor types. Armor for a horse costs four times as much as human armor and also weighs twice as much. If the armor is for a pony or other Medium mount, the cost is only double, and the weight is the same as for Medium armor word by a humaniod. Medium or heavy barding slows a mout that wears it. A mount wearing heavy armor moves at only triple its normal speed when running instead of quadruple. Flying mounts can't fly in medium or heavy barding. Removing and fitting barding takes five times as long as it does for a human. A barded animal cannot be used to carry any load other than a rider and normal saddlebags.";
+        tempDescription = "Armor for mounts to wear.";
 
-        Item bardingMedium = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item bardingMedium = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.BardingMedium))
         {
             AppLibary.itemDictionary.Add(AppLibary.BardingMedium, bardingMedium);
@@ -6404,14 +6517,15 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 2;
         tempOther = "Cost and Weight are relative to similar armor for a Medium humanoid. (4x cost, 2x weight).";
         tempSpecial = "In Medium barding, a creature with base speed of 40ft moves at 30ft, at 50ft moves at 35ft, and at 60ft moves at 40ft. In Heavy barding, a creature with base speed of 40ft moves at 30ft, at 50ft moves at 35ft, and at 60ft moves at 40ft.";
-        tempDescription = "Barding is a type of armor that covers the head, neck, chest, body, and possibly legs of a horse or other mount. Barding made of medium or heavy armor provides better protection than light barding, but at the expense of speed. barding can be made of any of the basic armor types. Armor for a horse costs four times as much as human armor and also weighs twice as much. If the armor is for a pony or other Medium mount, the cost is only double, and the weight is the same as for Medium armor word by a humaniod. Medium or heavy barding slows a mout that wears it. A mount wearing heavy armor moves at only triple its normal speed when running instead of quadruple. Flying mounts can't fly in medium or heavy barding. Removing and fitting barding takes five times as long as it does for a human. A barded animal cannot be used to carry any load other than a rider and normal saddlebags.";
+        tempFeature = "Barding is a type of armor that covers the head, neck, chest, body, and possibly legs of a horse or other mount. Barding made of medium or heavy armor provides better protection than light barding, but at the expense of speed. barding can be made of any of the basic armor types. Armor for a horse costs four times as much as human armor and also weighs twice as much. If the armor is for a pony or other Medium mount, the cost is only double, and the weight is the same as for Medium armor word by a humaniod. Medium or heavy barding slows a mout that wears it. A mount wearing heavy armor moves at only triple its normal speed when running instead of quadruple. Flying mounts can't fly in medium or heavy barding. Removing and fitting barding takes five times as long as it does for a human. A barded animal cannot be used to carry any load other than a rider and normal saddlebags.";
+        tempDescription = "Armor for a Large animal to wear.";
 
-        Item bardingLarge = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item bardingLarge = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.BardingLarge))
         {
             AppLibary.itemDictionary.Add(AppLibary.BardingLarge, bardingLarge);
         }
-
+        tempFeature = "";
         tempOther = "";
         tempSpecial = "";
         //End Barding, Medium Creature
@@ -6423,7 +6537,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 1;
         tempDescription = "A bit and bridle for a mount.";
 
-        Item bitAndBridle = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item bitAndBridle = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.BitAndBridle))
         {
             AppLibary.itemDictionary.Add(AppLibary.BitAndBridle, bitAndBridle);
@@ -6437,7 +6551,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "This dog is trained to guard an area.";
 
-        Item dogGuard = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item dogGuard = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.DogGaurd))
         {
             AppLibary.itemDictionary.Add(AppLibary.DogGaurd, dogGuard);
@@ -6451,7 +6565,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "This Medium dog is specially trained to carry a Small humanoid rider. It is brave in combat like a war-trained horse. Due to its smaller stature, you take no damage when you fall from a riding dog.";
 
-        Item dogRiding = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item dogRiding = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.DogRiding))
         {
             AppLibary.itemDictionary.Add(AppLibary.DogRiding, dogRiding);
@@ -6465,7 +6579,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "Donkeys and mules are stolid in the face of danger, hardy, surefooted, and capable of carrying heavy loads over vast distances. Unlike a horse, a donkey or mule is willing (though not eager) to enter dungeons and other strange or threatening places.";
 
-        Item donkeyOrMule = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item donkeyOrMule = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.DonkeyMule))
         {
             AppLibary.itemDictionary.Add(AppLibary.DonkeyMule, donkeyOrMule);
@@ -6479,7 +6593,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 10;
         tempDescription = "Horses, donkeys, mules, and ponies can graze to sustain themselves but providing feed for them is better. If you have a riding dog, you have to feed it meat.";
 
-        Item feedPerDay = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item feedPerDay = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Feed))
         {
             AppLibary.itemDictionary.Add(AppLibary.Feed, feedPerDay);
@@ -6493,7 +6607,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "A horse is suitable as a mount for a human, dwarf, elf, half-elf, or half, orc. A pony is maller than a horse and is a suitable mount for a gnome or halfling. A war-trained horse can be ridden into combat without danger. See the Handle Animal skill for a list of tricks known by horses and ponies with combat training.";
 
-        Item horseHeavy = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item horseHeavy = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.HorseHeavy))
         {
             AppLibary.itemDictionary.Add(AppLibary.HorseHeavy, horseHeavy);
@@ -6507,7 +6621,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "A horse is suitable as a mount for a human, dwarf, elf, half-elf, or half, orc. A pony is maller than a horse and is a suitable mount for a gnome or halfling. A war-trained horse can be ridden into combat without danger. See the Handle Animal skill for a list of tricks known by horses and ponies with combat training.";
 
-        Item horseHeavyCombat = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item horseHeavyCombat = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.HorseHeavyCombat))
         {
             AppLibary.itemDictionary.Add(AppLibary.HorseHeavyCombat, horseHeavyCombat);
@@ -6521,7 +6635,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "A horse is suitable as a mount for a human, dwarf, elf, half-elf, or half, orc. A pony is maller than a horse and is a suitable mount for a gnome or halfling. A war-trained horse can be ridden into combat without danger. See the Handle Animal skill for a list of tricks known by horses and ponies with combat training.";
 
-        Item horseLight = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item horseLight = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.HorseLight))
         {
             AppLibary.itemDictionary.Add(AppLibary.HorseLight, horseLight);
@@ -6535,7 +6649,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "A horse is suitable as a mount for a human, dwarf, elf, half-elf, or half, orc. A pony is maller than a horse and is a suitable mount for a gnome or halfling. A war-trained horse can be ridden into combat without danger. See the Handle Animal skill for a list of tricks known by horses and ponies with combat training.";
 
-        Item horseLightCombat = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item horseLightCombat = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.HorseLightCombat))
         {
             AppLibary.itemDictionary.Add(AppLibary.HorseLightCombat, horseLightCombat);
@@ -6549,7 +6663,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "A horse is suitable as a mount for a human, dwarf, elf, half-elf, or half, orc. A pony is maller than a horse and is a suitable mount for a gnome or halfling. A war-trained horse can be ridden into combat without danger. See the Handle Animal skill for a list of tricks known by horses and ponies with combat training.";
 
-        Item pony = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item pony = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Pony))
         {
             AppLibary.itemDictionary.Add(AppLibary.Pony, pony);
@@ -6563,7 +6677,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "A horse is suitable as a mount for a human, dwarf, elf, half-elf, or half, orc. A pony is maller than a horse and is a suitable mount for a gnome or halfling. A war-trained horse can be ridden into combat without danger. See the Handle Animal skill for a list of tricks known by horses and ponies with combat training.";
 
-        Item ponyCombat = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item ponyCombat = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.PonyCombat))
         {
             AppLibary.itemDictionary.Add(AppLibary.PonyCombat, ponyCombat);
@@ -6577,7 +6691,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 30;
         tempDescription = "This saddle braces the rider, providing a +2 circumstance bonus on Ride checks related to staying in the saddle. If you're knocked unconscious while in a military saddle, you have a 75% chance to stay in the saddle.";
 
-        Item saddleMilitary = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item saddleMilitary = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SaddleMilitary))
         {
             AppLibary.itemDictionary.Add(AppLibary.SaddleMilitary, saddleMilitary);
@@ -6591,7 +6705,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 15;
         tempDescription = "A pack saddle holds gear and supplies, but not a rider. It holds as much gear as the mount can carry.";
 
-        Item saddlePack = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item saddlePack = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SaddlePack))
         {
             AppLibary.itemDictionary.Add(AppLibary.SaddlePack, saddlePack);
@@ -6605,7 +6719,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 25;
         tempDescription = "If you are knocked unconscious while in a riding saddle, you have a 50% chance to stay in the saddle.";
 
-        Item saddleRiding = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item saddleRiding = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SaddleRiding))
         {
             AppLibary.itemDictionary.Add(AppLibary.SaddleRiding, saddleRiding);
@@ -6619,7 +6733,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 40;
         tempDescription = "This saddle braces the rider, providing a +2 circumstance bonus on Ride checks related to staying in the saddle. If you're knocked unconscious while in a military saddle, you have a 75% chance to stay in the saddle.";
 
-        Item saddleExoticMilitary = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item saddleExoticMilitary = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SaddleExoticMilitary))
         {
             AppLibary.itemDictionary.Add(AppLibary.SaddleExoticMilitary, saddleExoticMilitary);
@@ -6633,7 +6747,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 20;
         tempDescription = "A pack saddle holds gear and supplies, but not a rider. It holds as much gear as the mount can carry.";
 
-        Item saddleExoticPack = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item saddleExoticPack = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SaddleExoticPack))
         {
             AppLibary.itemDictionary.Add(AppLibary.SaddleExoticPack, saddleExoticPack);
@@ -6647,7 +6761,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 30;
         tempDescription = "If you are knocked unconscious while in a riding saddle, you have a 50% chance to stay in the saddle.";
 
-        Item saddleExoticRiding = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item saddleExoticRiding = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SaddleExoticRiding))
         {
             AppLibary.itemDictionary.Add(AppLibary.SaddleExoticRiding, saddleExoticRiding);
@@ -6661,7 +6775,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 600;
         tempDescription = "This four-wheeled vehicle can transport as many as four people within enclosed cab, plus two drivers. In gneral, two horses (or other beasts of burden) draw it. A carriage comes with the harnesses need to pull it.";
 
-        Item carriage = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item carriage = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Carriage))
         {
             AppLibary.itemDictionary.Add(AppLibary.Carriage, carriage);
@@ -6675,7 +6789,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 200;
         tempDescription = "This two-wheeled vehicle can be drawn by a single horse (or other beast of burden). It comes with a harness.";
 
-        Item cart = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item cart = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Cart))
         {
             AppLibary.itemDictionary.Add(AppLibary.Cart, cart);
@@ -6689,7 +6803,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "This three-masted ship has 70 oars on either side and requires a total crew of 200. A galley is 130 feet long and 20 feet wide, and can carry 150 tons of cargo or 250 soldiers. For 8,000gp more, it can be fitted with a ram and castles with firing platforms fore, aft, and admidships. This ship cannot make sea voyages and sticks to the coast. It moves about 4 miles per hour when being rowed or under sail.";
 
-        Item galley = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item galley = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Galley))
         {
             AppLibary.itemDictionary.Add(AppLibary.Galley, galley);
@@ -6703,7 +6817,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "This 50- to 70-foot-long ship is about 15 to 20 feet wide and has a few oars to supplement its single mast with a square sail. It has a crew of 8 to 15 and can carry 40 to 50 tons of cargo or 100 soldiers. It can make sea voyages, as well as sail down rivers (thanks to its flat bottom). It moves about 1 mile per hour.";
 
-        Item keelboat = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item keelboat = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Keelboat))
         {
             AppLibary.itemDictionary.Add(AppLibary.Keelboat, keelboat);
@@ -6717,7 +6831,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "This 75-foot long ship with 40 oars requires a total crew of 50. It has a single mast and a square sail, and it can cary 50 tons of cargo or 120 soldiers. A longship can make sea voyages. It moves about 3 miles per hour when being rowed or under sail.";
 
-        Item longship = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item longship = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Longship))
         {
             AppLibary.itemDictionary.Add(AppLibary.Longship, longship);
@@ -6731,7 +6845,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 100;
         tempDescription = "This 8- to 12-foot boat with two oars holds two or three Medium passengers. It moves about 1.5 miles per hour.";
 
-        Item rowboat = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item rowboat = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Rowboat))
         {
             AppLibary.itemDictionary.Add(AppLibary.Rowboat, rowboat);
@@ -6745,7 +6859,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 10;
         tempDescription = "A oar is a long shaft of wood with a flat paddle afixed to one end. If used as a weapon, treat it as a improvised weapon that deals damage as a club of its size.";
 
-        Item oar = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item oar = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Oar))
         {
             AppLibary.itemDictionary.Add(AppLibary.Oar, oar);
@@ -6759,7 +6873,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "This large, seaworthy ship is 75 to 90 feet long and 20 feet wide, and has a crew of 20. It can carry 150 tons of cargo. It has square sails on its two masts and can make sea voyages. It moves about 2 miles per hour.";
 
-        Item sailingShip = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item sailingShip = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.SalingShip))
         {
             AppLibary.itemDictionary.Add(AppLibary.SalingShip, sailingShip);
@@ -6773,7 +6887,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 300;
         tempDescription = "This is a wagon on runners for snow and ice travel. In general, two horses (or other beasts of burden) draw it. A sled comes with the harness needed to pull it.";
 
-        Item sled = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item sled = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Sled))
         {
             AppLibary.itemDictionary.Add(AppLibary.Sled, sled);
@@ -6787,7 +6901,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 400;
         tempDescription = "A four-wheeled, open vehicle for transporting heavy loads. Two horses (or other beasts of burden) must draw it. A wagon comes with the harness needed to pull it.";
 
-        Item wagon = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item wagon = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Wagon))
         {
             AppLibary.itemDictionary.Add(AppLibary.Wagon, wagon);
@@ -6801,7 +6915,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "This 100-foot-long ship has a single mast, although oars can also propel it. It has a crew of 60 to 80 rowers. This ship can carry 160 soldiers, but not for long distances, since there isn't room for supplies to support that many people. The warship cannot make sea voyages and sticks to the coast. It is not used for cargo. It moves about 2.5 miles per hour when being rowed or under sail.";
 
-        Item warship = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item warship = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Warship))
         {
             AppLibary.itemDictionary.Add(AppLibary.Warship, warship);
@@ -6817,7 +6931,7 @@ public class pathfinderInit : MonoBehaviour {
         tempSpecial = "Cost is per mile.";
         tempDescription = "The price given is for a ride ina coach that transports people (and cargo) between towns. For a ride in a cab that transports passengers within a city, 1 copper piece usually takes you anywhere you need to go.";
 
-        Item coachCab = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item coachCab = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.CoachCab))
         {
             AppLibary.itemDictionary.Add(AppLibary.CoachCab, coachCab);
@@ -6832,7 +6946,7 @@ public class pathfinderInit : MonoBehaviour {
         tempSpecial = "Cost is per day.";
         tempDescription = "The amount given is the typical daily wage for mercenary warriors, masons, craftsmen, cooks, scribes, teamsters, and other trianed hirelings. this value represents a minimum wage; many such hirelings require significantly higher pay.";
 
-        Item hirelingTrained = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item hirelingTrained = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.HirelingTrained))
         {
             AppLibary.itemDictionary.Add(AppLibary.HirelingTrained, hirelingTrained);
@@ -6847,7 +6961,7 @@ public class pathfinderInit : MonoBehaviour {
         tempSpecial = "Cost is per day.";
         tempDescription = "The amount shown is the typical daily wage for laborers, maids, and other menial workers.";
 
-        Item hirelingUntrianed = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item hirelingUntrianed = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.HirelingUntrained))
         {
             AppLibary.itemDictionary.Add(AppLibary.HirelingUntrained, hirelingUntrianed);
@@ -6862,7 +6976,7 @@ public class pathfinderInit : MonoBehaviour {
         tempSpecial = "Cost is per mile.";
         tempDescription = "This includes horse-riding messengers and runners. Those willing to carry a message to a place they were going to anywyas may ask for only half the indicated amount.";
 
-        Item messenger = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item messenger = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.Messenger))
         {
             AppLibary.itemDictionary.Add(AppLibary.Messenger, messenger);
@@ -6877,7 +6991,7 @@ public class pathfinderInit : MonoBehaviour {
         tempWeight = 0;
         tempDescription = "A toll is sometimes charged to cross a well-kept and well-guarded roat to pay for patrols on it and for its upkeep. Occasionally, a large walled city charges a toll to enter or exit (sometimes just to enter).";
 
-        Item roadOrGateToll = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item roadOrGateToll = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.RoadOrGateToll))
         {
             AppLibary.itemDictionary.Add(AppLibary.RoadOrGateToll, roadOrGateToll);
@@ -6892,7 +7006,7 @@ public class pathfinderInit : MonoBehaviour {
         tempSpecial = "Cost is per mile.";
         tempDescription = "Most ships do not specialize in passengers, but many have the capability to take a few along when transporting cargo. Double the given cost for creatures larger than Medium or otherwize difficult to bring aboard a ship.";
 
-        Item shipsPassage = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item shipsPassage = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ShipsPassage))
         {
             AppLibary.itemDictionary.Add(AppLibary.ShipsPassage, shipsPassage);
@@ -6905,18 +7019,215 @@ public class pathfinderInit : MonoBehaviour {
         tempCost = 0;
         tempWeight = 0;
         tempSpecial = "Cost is Caster Level x spell level x 10 gp.";
-        tempDescription = "The indicated ammount is how much it costs to get a spellcaster to cast a spell for you. This cost assumes that you can go to the spellcaster and have the spell cast at his or hers convenience (generally at least 24 hours later, so they can prepare). If you want to bring the spellcaster somewhere to cast a spell you need to negotiate with him, and the default answer is no. The cost given is for any spell that does not require a costly material component. If the spell includes a material component, add the cost of that component to the cost of the spell. If the spell has a focus component (other than a divine focus), add 1/10th the cost of that focus to the cost of the spell. Furthermore if the spell has dangerous consequences, the spellcaster will certainly require proof that you can and will pay for dealing with any such consequences. In the case of spells that transport the aster and characters over a distance, you will likely have to pay for two castings of the spell, even if you arn't returing with the caster. In addition, not every town or village has a spellcaster of sufficient level to cast any spell. In general, you must tavel to a small town or bigger to be reasonably assured of finding a spellcaster capable of casting 1st-level spells, or a large town for 2nd-level spells, a small city for 3rd- or 4th-level spells, a large city for 5th- or 6th- level spells, and a metropolis for 7th- or 8th-level spells. Even a metropolis isn't guaranteed to have a local spellcaster able to cast 9th-level spells.";
+        tempFeature = "The indicated ammount is how much it costs to get a spellcaster to cast a spell for you. This cost assumes that you can go to the spellcaster and have the spell cast at his or hers convenience (generally at least 24 hours later, so they can prepare). If you want to bring the spellcaster somewhere to cast a spell you need to negotiate with him, and the default answer is no. The cost given is for any spell that does not require a costly material component. If the spell includes a material component, add the cost of that component to the cost of the spell. If the spell has a focus component (other than a divine focus), add 1/10th the cost of that focus to the cost of the spell. Furthermore if the spell has dangerous consequences, the spellcaster will certainly require proof that you can and will pay for dealing with any such consequences. In the case of spells that transport the aster and characters over a distance, you will likely have to pay for two castings of the spell, even if you arn't returing with the caster. In addition, not every town or village has a spellcaster of sufficient level to cast any spell. In general, you must tavel to a small town or bigger to be reasonably assured of finding a spellcaster capable of casting 1st-level spells, or a large town for 2nd-level spells, a small city for 3rd- or 4th-level spells, a large city for 5th- or 6th- level spells, and a metropolis for 7th- or 8th-level spells. Even a metropolis isn't guaranteed to have a local spellcaster able to cast 9th-level spells.";
+        tempDescription = "The rate for hiring a spellcaster to cast something for you.";
 
-        Item spellcasting = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther, tempScale, tempDescription);
+        Item spellcasting = new Item(tempType, tempitemName, tempCost, tempWeight, tempSpecialAbility, tempOther,tempScale, tempFeature, tempDescription);
         if (!AppLibary.itemDictionary.ContainsKey(AppLibary.ShipsPassage))
         {
             AppLibary.itemDictionary.Add(AppLibary.ShipsPassage, shipsPassage);
         }
-
+        tempFeature = "";
         tempSpecial = "";
         //End Spellcasting
         #endregion Utility
 
         #endregion ItemInitalization
     }
+
+    void InitalizeSkills()
+    {
+        #region Skills
+        //temp apprasise skill for testing
+        tempName = "Appraise";
+        tempAbilityType = "Int";
+        tempTotal = 0;
+        tempRanks = 0;
+        tempAbilityModifier = 0;
+        tempTrained = 0;
+        tempMiscMod = 0;
+        tempCheckDescription = "A DC 20 Appraise check determines the value of a common item. If you succeed by 5 or more, you also determine if the item has magic properties, although this success does not grant knowledge of the magic item's abilities. If you fail the check by 5 or more, the price is wildly inaccurate, subject to GM discretion. Particularly rare or exotic items might increase the DC of this check by 5 or more. \n You can also use this check to determine the most valuable item visible in a treasure hoard. The DC of this check is generally 20 but can increase to as high as 30 for a particularly large hoard.";
+        tempActionDescription = "Appraising an item takes 1 standard action. Determining the most valuable object in a treasure hoard takes 1 full-round action.";
+        tempTryAgainDescription = "Additional attempts to Appraise an item reaveal the same result.";
+
+        Skill appraise = new Skill(tempName, tempTotal, tempRanks, tempAbilityModifier, tempTrained, tempMiscMod, tempAbilityType, tempCheckDescription, tempActionDescription, tempTryAgainDescription, tempOther, tempSpecial, tempFeature, tempTableOne, tempTableTwo, tempTableThree, tempTableFour, tempTableFive);
+
+        if (!AppLibary.skillDictionary.ContainsKey(AppLibary.Appraise))
+        {
+            AppLibary.skillDictionary.Add(AppLibary.Appraise, appraise);
+        }
+
+        //end temp appriase 
+        #endregion Skills
+    }
+
+    //adds all the class abilities to the app libary
+    void InitalizeClassAbilitiesAndClass()
+    {
+        #region Fighter
+        #region FighterClassAbilities
+        //weapon and armor proficiency, fighter
+        tempAbilityName = "Weapon and Armor Proficiency";
+        tempFeature = "A fighter is proficient with all simple and martial weapons and with all armor (heavy, light, and medium), and shields (including tower shields).";                  
+        tempDescription = "A fighter has learned how to use most weapons and armor.";
+
+        ClassAbility weaponAndArmorProfFighter = new ClassAbility(tempAbilityName, tempDescription, tempFeature, tempTableOne, tempTableTwo, tempTableThree);
+
+        if (!AppLibary.classAbilityDictionary.ContainsKey(AppLibary.WeaponAndArmorProficiencyFighter))
+        {
+            AppLibary.classAbilityDictionary.Add(AppLibary.WeaponAndArmorProficiencyFighter, weaponAndArmorProfFighter);
+        }
+        //end weapon and armor proficiency, fighter
+
+        //Bonus Feats, Fighter
+        tempAbilityName = "Bonus Feats";
+        tempFeature = "At 1st level, and at ever even level thereafter, a fighter gains a bonus feat in addition to thoese gained from normal advancement (meaning that the fighter gains a feat at every level). These bonus feats must be selected from those listed as combat feats, sometimes also called *fighter bonus feats*. \n Upon reaching 4th level, and every four levels thereafter (8th, 12, and so on), a fighter can choose to learn a new bonus feat in place of a bonus feat he as already learned, In effect, the fighter loses the bonus feat in exchange for the new one. The old feat cannot be one that was used as a prerequisite for another feat, prestiege class, or other ability. A fighter can only change one feat at any given level and must choose weather or not to swap the feat at the time he gains a new bonus feat for the level.";
+        tempDescription = "Fighters pick up many tricks from their training, granting them bonus feats.";
+
+        ClassAbility bonusFeatsFighter = new ClassAbility(tempAbilityName, tempDescription, tempFeature, tempTableOne, tempTableTwo, tempTableThree);
+
+        if (!AppLibary.classAbilityDictionary.ContainsKey(AppLibary.BonusFeatsFighter))
+        {
+            AppLibary.classAbilityDictionary.Add(AppLibary.BonusFeatsFighter, bonusFeatsFighter);
+        }
+        //End Bonus Feats, Fighter
+
+        //Bravery (Ex)
+        tempAbilityName = "Bravery (Ex)";
+        tempFeature = "Starting at 2nd level, a fighter gains a +1 bonus on Will saves against fear. This bonus increases by +1 every four levels beyond 2nd.";
+        tempDescription = "Fighters are braver than most.";
+
+        ClassAbility bravery = new ClassAbility(tempAbilityName, tempDescription, tempFeature, tempTableOne, tempTableTwo, tempTableThree);
+
+        if (!AppLibary.classAbilityDictionary.ContainsKey(AppLibary.Bravery))
+        {
+            AppLibary.classAbilityDictionary.Add(AppLibary.Bravery, bravery);
+        }
+        //End Bravery (Ex)
+
+        //Armor Training (Ex)
+        tempAbilityName = "Armor Training (Ex)";
+        tempFeature = "Starting at 3rd level, a fighter learns to be more maneuverable while wearing armor. Whenever he is wearing armor, he reduces the armor check penalty by 1 (to a minimum of 0) and increases the maximum Dexterity bonus allowed by his armor by 1. Every four levels thereafter (7th, 11th,, and 15th), these bonuses increase by +1 each time, to a maximum of -4 reduction of the armor check penalty and a +4 increase to the maximum Dexterity bonus allowed. \n In addition, a fighter can also move at his normal speed while wearing medium armor. At 7th level, a fighter can move at normal speed when wearing heavy armor.";
+        tempDescription = "Fighters are more adept in using armor than the normal adventurer.";
+
+        ClassAbility armorTraining = new ClassAbility(tempAbilityName, tempDescription, tempFeature, tempTableOne, tempTableTwo, tempTableThree);
+
+        if (!AppLibary.classAbilityDictionary.ContainsKey(AppLibary.Bravery))
+        {
+            AppLibary.classAbilityDictionary.Add(AppLibary.Bravery, bravery);
+        }
+        //End Armor Training (Ex)
+
+        //Weapon Training
+        tempAbilityName = "Weapon Training (Ex)";
+        tempFeature = "Starting at 5th level, a fighter can select one group of weapons, as noted below. Whenever he attacks with a weapon from the group, he gains a +1 bonus on attack and damage rolls. \n Every four levels thereafter (9th, 13th, and 17th), a fighter becomes further trained in another group of weapons. He gains a +1 bonus on attack and damage rolls when using a weapon from this group. In addition, the bonuses granted by previous weapon groups increase by +1 each. For example, when a fighter reaches 9th level, he recieves a +1 bonus on attack and damage rolls with one weapon group and a +2 bonus on attack and damage rolls with the weapon group selected at 5th level. Bonuses granted from overlapping groups do not stack. Take the highest bonus granted for a weapon if it resides in two or more groups. \n A fighter also adds this bonus to any combat maneuver checks made with weapons from this group. This bonus also applies to the fighter's Combat Maneuver Defense when defending against disarm and sunder attempts made against weapons from this group. \n Weapon groups are defined as follows (GM's may add other weapons to these groups, or add entirely new groups). \n Axes: battleaxe, dwarven waraxe, greataxe, handaxe, heavy pick, light pick, orc double axe, and throwing axe. \n Blades, Heavy: bastard sword, elven curve blade, falchion, greatsword, longsword, scimitar, scythe, and two-bladed sword. \n Blades, Light: dagger, kama, kukri, rapier, short sword, sickle, and starknife. \n Bows: composite longbow, composite shortbow, longbow, and shortbow. \n Close: gauntlet, heavy shield,light shield, punching dagger, sap, spiked armor, spiked gauntlet, spiked shield, and unarmed strike. \n Crossbows: hand crossbow, heavy crossbow, light crossbow, heavy repeating crossbow, and light repeating crossbow. \n Double: dire flail, dwarven urgrosh, gnome hooked hammer, orc double axe, quarterstaff, and two-bladed sword. \n Flails: dire flail, flail, heavy flail, morningstar, nunchaku, spiked chain, and whip. \n Hammers: club, greatclub, heavy mace, light hammer, light mace, and warhammer. \n Monk: kama, nunchaku, quaterstaff, sai, shuriken, siangham, and unarmed strike. \n Natural: unarmed strike and all natural weapons, such as bite, claw, gore, tail and wing. \n Pokearms: glaive, guisarme, halberd, and ranseur. \n Spears: javelin, lance, longspear, shortspear, and trident. \n Thrown: blowgun, bolas, club, dagger, dart, halfling slingstaff, javelin, light hammer, net, shortspear, shuriken, sling, spear, starknife, throwing axe, and trident.";
+        tempDescription = "Fighters train harder than anyone else with their weapons of choice.";
+
+        ClassAbility weaponTraining = new ClassAbility(tempAbilityName, tempDescription, tempFeature, tempTableOne, tempTableTwo, tempTableThree);
+
+        if (!AppLibary.classAbilityDictionary.ContainsKey(AppLibary.WeaponTraining))
+        {
+            AppLibary.classAbilityDictionary.Add(AppLibary.WeaponTraining, weaponTraining);
+        }
+        //End Weapon Training
+
+        //Armor Mastery (Ex)
+        tempAbilityName = "Armor Mastery (Ex)";
+        tempFeature = "At 19th level, a fighter gains DR 5/- whever he is wearing armor or using a shield.";
+        tempDescription = "Fighters eventually master the use of armor.";
+
+        ClassAbility armorMastery = new ClassAbility(tempAbilityName, tempDescription, tempFeature, tempTableOne, tempTableTwo, tempTableThree);
+
+        if (!AppLibary.classAbilityDictionary.ContainsKey(AppLibary.ArmorMastery))
+        {
+            AppLibary.classAbilityDictionary.Add(AppLibary.ArmorMastery, armorMastery);
+        }
+        //End Armor Mastery (Ex)
+
+        //Weapon Mastery (Ex)
+        tempAbilityName = "Weapon Mastery (Ex)";
+        tempFeature = "At 20th level, a fighter chooses one weapon, such as the longsword, greataxe, or longbow. Any attacks made with that weapon automatically confirm all critial threats, and have their damage multiplier increased by 1. In addition, he cannot be disarmed while wielding a weapon of this type.";
+        tempDescription = "Fighters eventually master the use of their chosen weapon.";
+
+        ClassAbility weaponMastery = new ClassAbility(tempAbilityName, tempDescription, tempFeature, tempTableOne, tempTableTwo, tempTableThree);
+
+        if (!AppLibary.classAbilityDictionary.ContainsKey(AppLibary.WeaponMastery))
+        {
+            AppLibary.classAbilityDictionary.Add(AppLibary.WeaponMastery, weaponMastery);
+        }
+        //End Weapon Mastery (Ex)
+        #endregion FighterClassAbilities
+
+        //takes the abilities from the libary and adds them to the correct class
+        #region FighterClass
+        
+        //do this for all of the abilities, adding it to the temp array
+        if (!tempFighterClassAbilites.ContainsKey(AppLibary.WeaponAndArmorProficiencyFighter))
+        {
+           tempFighterClassAbilites.Add(AppLibary.WeaponAndArmorProficiencyFighter, weaponAndArmorProfFighter);
+        }
+
+        if (!tempFighterClassAbilites.ContainsKey(AppLibary.BonusFeatsFighter))
+        {
+            tempFighterClassAbilites.Add(AppLibary.BonusFeatsFighter, bonusFeatsFighter);
+        }
+
+        if (!tempFighterClassAbilites.ContainsKey(AppLibary.Bravery))
+        {
+            tempFighterClassAbilites.Add(AppLibary.Bravery, bravery);
+        }
+
+        if (!tempFighterClassAbilites.ContainsKey(AppLibary.ArmorTraining))
+        {
+            tempFighterClassAbilites.Add(AppLibary.ArmorTraining, armorTraining);
+        }
+
+        if (!tempFighterClassAbilites.ContainsKey(AppLibary.WeaponTraining))
+        {
+            tempFighterClassAbilites.Add(AppLibary.WeaponTraining, weaponTraining);
+        }
+
+        if (!tempFighterClassAbilites.ContainsKey(AppLibary.ArmorMastery))
+        {
+            tempFighterClassAbilites.Add(AppLibary.ArmorMastery, armorMastery);
+        }
+
+        if (!tempFighterClassAbilites.ContainsKey(AppLibary.WeaponMastery))
+        {
+            tempFighterClassAbilites.Add(AppLibary.WeaponMastery, weaponMastery);
+        }
+
+        //at this point all of the relivant class abilities have been added to the temp dictionary of skills for the fighter class
+
+        //next is to add in all the additional stuff
+
+        tempClassName = "Fighter";
+        tempDescription = "Some take up arms for glory, wealth, or revenge. Others do battle to prove themselves, to protect others, or because they know nothing else. Still others learn the ways of the weaponcraft to hone their bodies in battle and prove their mettle in the forge of war. Lords of the battlefield, fighters are a disparate lot, training with many weapons or just one, perfecting the uses of armor, learning the fighting techniques of exotic masters, and studying the art of combat, all to shape themselves into living weapons.";
+        tempRole = "Fighters excel in combat-- defeating their enemies, controlling the flow of battle, and surviving such sorties themselves. While their specific weapons and methods grant them a wide variety of tactics, few can match fighters for sheer battle prowess.";
+        tempAlignment = "Any.";
+        tempHitDie = "d10";
+        tempClassSkills = "The fighters class skills are: Climb (Str), Craft(Int), Handle Animal(Cha), Intimidate(Cha), Knowledge(dungeoneering)(Int), Knowledge (engineering)(Int), Profession(Wis), Ride(Dex), Survival(Wis), and Swim(Str).";
+        tempSkillRanksLevel = "2 + Int Mod.";
+        tempMainTable = null;
+
+        //creates the fighter character class\
+        fighter = new CharacterClass(tempClassName, tempDescription, tempRole, tempAlignment, tempHitDie, tempClassSkills, tempSkillRanksLevel, tempMainTable, tempFighterClassAbilites);
+        // adds the fighter class to the database of classes
+
+        if (!AppLibary.characterClassDictionary.ContainsKey(AppLibary.Fighter))
+        {
+            AppLibary.characterClassDictionary.Add(AppLibary.Fighter, fighter);
+        }
+
+        //End Temp class, Fighter
+
+
+        #endregion FighterClass
+        #endregion Fighter
+
+
+    }
+
+
+
 }

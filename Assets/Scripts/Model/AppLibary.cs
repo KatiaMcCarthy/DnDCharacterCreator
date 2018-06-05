@@ -8,6 +8,13 @@ public static class AppLibary{
 
     public static Dictionary<string, Item> itemDictionary = new Dictionary<string, Item>();
 
+    public static Dictionary<string, Skill> skillDictionary = new Dictionary<string, Skill>();
+
+    public static Dictionary<string, ClassAbility> classAbilityDictionary = new Dictionary<string, ClassAbility>();
+
+    public static Dictionary<string, CharacterClass> characterClassDictionary = new Dictionary<string, CharacterClass>();
+
+
     #region FeatKeys
     public const string Acrobatic = "Acrobatic";
     public const string Alertness = "Alertness";
@@ -188,6 +195,8 @@ public static class AppLibary{
 
     #region SkillKeys
     //do last
+    //temp appraise skill for testing
+    public const string Appraise = "Appraise";
     #endregion SkillKeys
 
     #region ItemKeys
@@ -489,4 +498,22 @@ public static class AppLibary{
     public const string ShipsPassage = "Ship's Passage";
     public const string Spellcasting = "Spellcasting";
     #endregion ItemKeys
+
+    #region ClassAbilitiesKeys
+
+    //for fighter vertical slice
+    public const string WeaponAndArmorProficiencyFighter = "Weapon And Armor Proficiency, Fighter";
+    public const string BonusFeatsFighter = "Bonus Feats, Fighter";
+    public const string Bravery = "Bravery";
+    public const string ArmorTraining = "Armor Training";
+    public const string WeaponTraining = "Weapon Training";
+    public const string ArmorMastery = "Armor Mastery";
+    public const string WeaponMastery = "Weapon Mastery";
+
+
+    #endregion ClassAbilitiesKeys
+
+    #region ClassKeys
+    public const string Fighter = "Fighter";
+    #endregion ClassKeys
 }

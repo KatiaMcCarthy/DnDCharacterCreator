@@ -8,6 +8,7 @@ public class Item  {
 
     public string type ="";
     public string itemName = "";
+    public string feature = "";
     public float cost = 0;
     public string damageS = "";
     public string damageM = "";
@@ -30,7 +31,7 @@ public class Item  {
     // end items have
 
     //Utility 
-    public Item(string typ, string name, float cst, float wgt, string spcAbil, string oth, bool scle, string desc)
+    public Item(string typ, string name, float cst, float wgt, string spcAbil, string oth, bool scle, string feat, string desc)
     {
         type = typ;
         itemName = name;
@@ -40,6 +41,7 @@ public class Item  {
         other = oth;
         scalable = scle;
         description = desc;
+        feature = feat;
     }
     //Weapon
     public Item (string typ, string name, float cst, string dS, string dM, string crt, float rng, float wgt, string dmgTy, string spcAbil, string oth, string desc)
@@ -59,7 +61,7 @@ public class Item  {
     }
     
     //Armor
-    public Item(string typ, string name, float cst, float wgt, string spcAbil, string oth, int aB, int mDB, int aCP, int aSF, int sp3, int sp2, string mat, string desc)
+    public Item(string typ, string name, float cst, float wgt, string spcAbil, string oth, int aB, int mDB, int aCP, int aSF, int sp3, int sp2, string mat, string feat, string desc)
     {
         type = typ;
         itemName = name;
@@ -75,10 +77,11 @@ public class Item  {
         speed20 = sp2;
         material = mat;
         description = desc;
+        feature = feat;
     }
 
     //Wildcard
-    public Item (string typ, string name, int cst, string dS, string dM, string crt, float rng, float wgt, string dmgTy, string spcAbil, string oth, int aB, int mDB, int aCP, int aSF, int sp2, int sp3,string mat, bool scle, string desc)
+    public Item (string typ, string name, int cst, string dS, string dM, string crt, float rng, float wgt, string dmgTy, string spcAbil, string oth, int aB, int mDB, int aCP, int aSF, int sp2, int sp3,string mat, bool scle, string feat, string desc)
     {
         type = typ;
         itemName = name;
@@ -99,6 +102,7 @@ public class Item  {
         speed30 = sp3;
         material = mat;
         scalable = scle;
+        feature = feat;
         description = desc;
 
     }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stat : MonoBehaviour {
+public class Stat {
 
     public int value = 0;
     public int abilityMod = 0;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Skill : MonoBehaviour {
+public class Skill {
 
     //for player use
     public string skillName = "";
@@ -15,7 +15,7 @@ public class Skill : MonoBehaviour {
     public string abilityType = "";
 
     //for the data entry
-    public string descriptoin = "";
+    public string description = "";
     public string checkDescription = "";
     public Image tableOne = null;
     public Image tableTwo = null;
@@ -26,10 +26,11 @@ public class Skill : MonoBehaviour {
     public string tryAgainDescription = "";
     public string special = "";
     public string other = "";
+    public string feature = "";
 
 
     //player use
-	public Skill (string name, int tot, int rnk, int abilMod, int train, int misMod, string abilType)
+	public Skill (string name, int tot, int rnk, int abilMod, int train, int misMod, string feat, string abilType)
     {
         skillName = name;
         total = tot;
@@ -38,6 +39,31 @@ public class Skill : MonoBehaviour {
         trained = train;
         miscModfier = misMod;
         abilityType = abilType;
+        feature = feat;
+    }
+
+    //dicitionary use
+    public Skill(string name, int tot, int rnk, int abilMod, int train, int misMod, string abilType, string chkDesc, string actDesc, string tryAgainDesc, string otr, string spec, string feat, Image tblOne, Image tblTwo, Image tblThree, Image tblFour, Image tblFive)
+    {
+        skillName = name;
+        abilityType = abilType;
+        total = tot;
+        ranks = rnk;
+        abilityModfier = abilMod;
+        trained = train;
+        miscModfier = misMod;
+        checkDescription = chkDesc;
+        actionDescription = actDesc;
+        tryAgainDescription = tryAgainDesc;
+        other = otr;
+        special = spec;
+        feature = feat;
+        tableOne = tblOne;
+        tableTwo = tblTwo;
+        tableThree = tblThree;
+        tableFour = tblFour;
+        tableFive = tblFive;
+
     }
 
 
